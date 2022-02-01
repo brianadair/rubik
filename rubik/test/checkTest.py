@@ -168,7 +168,7 @@ class CheckTest(TestCase):
     def test_check_940_ShouldTestLowerThanUniqueColorOccurrencesBound(self):
         parm = {'op': 'check',
                 'cube':'44W44W44WrWrrrrrrryggyggyggAAAAAAAAAyy4yy4yy4WWgWWgWWg'}
-        expected_result = 'error: some color has too few occurrences'
+        expected_result = 'error: some color has too few occurrences on the cube'
         result = check._check(parm)
         self.assertIn('status', result)
         status = result.get('status', None)
@@ -182,7 +182,6 @@ class CheckTest(TestCase):
         self.assertIn('status', result)
         status = result.get('status', None)
         self.assertEqual(status, expected_result)   
- # 44W44W44WrrrrrrrrryggyggyggAAAAAAAAAyy4yy4yy4WWgWWgWWg
  
     def test_check_951_ShouldTestSharedMiddleColorsOnOppositeSidesS2S4(self):
         parm = {'op': 'check',
