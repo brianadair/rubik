@@ -17,8 +17,9 @@ class CheckTest(TestCase):
 #        outputs:
 #            side-effects: no state change
 #            returns: dictionary, contains one key ('status') 
-#                    with a value of 'ok' when all conditions for a valid cube are met, 
-#                    or an error message indicating the failed condition of the cube's properties. 
+#                     with a value of 'ok' when all conditions for a valid cube are met, 
+#                     or an error message indicating the failed condition of the cube's 
+#                     properties. 
 #
 #        confidence level: BVA
 #
@@ -29,7 +30,7 @@ class CheckTest(TestCase):
 #    test 040: BVA test, value for cube contains 54 elements
 #    test 050: BVA test cube value contains 9 occurrences of 6 colors
 #    test 060: every middle face has a different color per side
-#    test 070: adjacent colors are not on opposite middles
+#    test 070: EC: adjacent colors are not also on the opposite middle
   
 # Sad path definitions
 #    test 910: no property for cube in dictionary parameter
@@ -43,7 +44,7 @@ class CheckTest(TestCase):
 #    test 950: Opposite sides S1 and S3 share the same color in the middle position
 #    test 951: Opposite sides S2 and S4 share the same color in the middle position
 #    test 952: Opposite sides S5 and S6 share the same color in the middle position
-#    test 960: adjacent colors that have middles on opposite sides
+#    test 960: EC: adjacent colors that share middle color from opposite side of facing side's middle
     
 # Happy Path Tests
     def test_check_010_ShouldReturnOkOnSolvedCube(self):
@@ -202,11 +203,11 @@ class CheckTest(TestCase):
         self.assertEqual(status, expected_result)    
     
 
-    def test_check_960_ShouldTestIncorrectColorAdjacencyLocations(self):
-        parm = {'op': 'check'}
-        expected_result = 'error: color adjacency rules not met'
-        result = check._check(parm)
-        self.assertIn('status', result)
-        status = result.get('status', None)
-        self.assertEqual(status, expected_result) 
+    # def test_check_960_EC_ShouldTestIncorrectColorAdjacencyLocations(self):
+    #     parm = {'op': 'check'}
+    #     expected_result = 'error: color adjacency rules not met'
+    #     result = check._check(parm)
+    #     self.assertIn('status', result)
+    #     status = result.get('status', None)
+    #     self.assertEqual(status, expected_result) 
 
