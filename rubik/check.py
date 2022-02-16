@@ -58,7 +58,7 @@ def _check(parms):
     #    result['status'] = 'error: adjacency mismatch of colors'
     else:
         result['status'] = 'ok'
-        print(parms)
+        #print(parms)
         
     return result
 
