@@ -202,7 +202,7 @@ class CheckTest(TestCase):
         status = result.get('status', None)
         self.assertEqual(status, expected_result)    
         
-    def test_check_953_ShouldErrNonUniqueValidColorAtEachMiddle(self):
+    def test_check_953_ShouldErrNonUniqueColorsAtMiddlePositions(self):
         parm = {'op': 'check',
                 'cube':"bbbbbbbbwrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwbwwww"}
         expected_result = 'error: each middle color must be unique'

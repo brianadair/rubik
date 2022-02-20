@@ -1,6 +1,7 @@
 # Brian Adair 
 # COMP 6700 - Assignment 02
 # 2022-01-31 
+from pickle import TRUE
 
 #import rubik.cube as rubik
 #from pickle import FALSE
@@ -54,8 +55,8 @@ def _check(parms):
     elif(_check_opposite_side_match(encodedCube, 5, 6)):
         result['status'] = 'error: middle colors on sides S5 and S6 cannot match'
     
-    #elif(_check_nonunique_middle_colors(encodedCube)):
-    #    result['status'] = 'ok-red_light_tddstub'
+    elif(_check_nonunique_middle_colors(encodedCube)):
+        result['status'] = 'error: each middle color must be unique'
         
     #elif(_check_adjacency_mismatch(encodedCube)):
     #    result['status'] = 'error: adjacency mismatch of colors'
@@ -94,7 +95,23 @@ def _check_opposite_side_match(cube, a, b):
         return True  
         
     return False  
+
+
+def _check_nonunique_middle_colors(cube):
+    start = 0
+    mid = 4
+    color_set = []
     
+    for i in range(0,COLOR_CHOICES):
+        start = i * COLOR_OCCURRENCES
+        mid_color = start + mid
+        color_set.append(cube[mid_color])
+        
+    if (len(set(color_set)) < COLOR_CHOICES):
+        return True
+    else:
+        return False
+
 
 def _check_adjacency_mismatch(cube):
 
@@ -103,8 +120,8 @@ def _check_adjacency_mismatch(cube):
     for pair in middle_tuple_arr:
         mid_a = pair[0]
         mid_b = pair[1]
-        mid_a_color = cube[mid_a -1]
-        mid_b_color = cube[mid_b -1]
+        #mid_a_color = cube[mid_a -1]
+        #mid_b_color = cube[mid_b -1]
 
     for m in pair:
         if (m == mid_a):
@@ -116,7 +133,6 @@ def _check_adjacency_mismatch(cube):
             if cube[i-1] != cube[m-1]:
                 pass
             else:
-                #print(f"color {cube[m-1]} matches {cube[i-1]}")
                 for sides in side_tuple_arr:
                     if i in sides:
                         for position in sides:
