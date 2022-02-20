@@ -53,12 +53,14 @@ def _check(parms):
         
     elif(_check_opposite_side_match(encodedCube, 5, 6)):
         result['status'] = 'error: middle colors on sides S5 and S6 cannot match'
+    
+    #elif(_check_nonunique_middle_colors(encodedCube)):
+    #    result['status'] = 'ok-red_light_tddstub'
         
     #elif(_check_adjacency_mismatch(encodedCube)):
     #    result['status'] = 'error: adjacency mismatch of colors'
     else:
         result['status'] = 'ok'
-        #print(parms)
         
     return result
 
