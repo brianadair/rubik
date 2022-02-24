@@ -23,5 +23,13 @@ class Test(unittest.TestCase):
         test_cube = cube.Cube(parm)
         self.assertIsInstance(test_cube, Cube, "Not an instance of Cube")
     
+    def test_020_ShouldPopulateCubeState(self):
+        parm = {'op':'info',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'} 
+        test_cube = cube.Cube(parm)
+        expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
+        actualResult = test_cube.cube_state
+        self.assertEqual(expectedResult, actualResult, "error: cube state property not set") 
+     
     def testName(self):
         pass
