@@ -4,6 +4,5 @@ class Cube:
     '''
 
     def __init__(self, parms):
-        pass
-
- 
+        if (parms.get('cube') != None):
+            self.cube_state = parms.get('cube')
