@@ -18,7 +18,9 @@ class Test(unittest.TestCase):
     # rotate
     
     def test_010_ShouldInstantiateCube(self):
-        test_cube = cube.Cube()
+        parm = {'op':'info',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}        
+        test_cube = cube.Cube(parm)
         self.assertIsInstance(test_cube, Cube, "Not an instance of Cube")
     
     def testName(self):
