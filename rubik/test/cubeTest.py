@@ -4,7 +4,6 @@
 
 # Tests of cube properties and methods
 
-import rubik.cube as cube
 import unittest
 from rubik.cube import Cube
 
@@ -12,21 +11,21 @@ from rubik.cube import Cube
 class Test(unittest.TestCase):
 
 # Happy path tests
-    # create a model
-    # populate a model
+    # test_010: Instantiate cube object
+    # test_020: Assure cube_state property is set
     # get a model
     # rotate
     
     def test_010_ShouldInstantiateCube(self):
         parm = {'op':'info',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}        
-        test_cube = cube.Cube(parm)
+        test_cube = Cube(parm)
         self.assertIsInstance(test_cube, Cube, "Not an instance of Cube")
     
     def test_020_ShouldPopulateCubeState(self):
         parm = {'op':'info',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'} 
-        test_cube = cube.Cube(parm)
+        test_cube = Cube(parm)
         expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         actualResult = test_cube.cube_state
         self.assertEqual(expectedResult, actualResult, "error: cube state property not set") 
