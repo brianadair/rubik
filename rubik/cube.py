@@ -6,3 +6,6 @@ class Cube:
     def __init__(self, parms):
         if (parms.get('cube') != None):
             self.cube_state = parms.get('cube')
+# methods
+# get cube
+# rotate(move)

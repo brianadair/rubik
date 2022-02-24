@@ -29,6 +29,14 @@ class Test(unittest.TestCase):
         expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         actualResult = test_cube.cube_state
         self.assertEqual(expectedResult, actualResult, "error: cube state property not set") 
-     
+    
+    def test_030_ShouldReturnCubeString(self):
+        parm = {'op':'info',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'} 
+        test_cube = Cube(parm)
+        expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
+        actualResult = test_cube.get()
+        self.assertEqual(expectedResult, actualResult, "error: cube get failed")
+         
     def testName(self):
         pass
