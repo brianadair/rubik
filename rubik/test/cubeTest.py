@@ -37,6 +37,14 @@ class Test(unittest.TestCase):
         expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         actualResult = test_cube.getCube()
         self.assertEqual(expectedResult, actualResult, "error: cube get failed")
-         
+    
+    def test_040_ShouldReturnValidCubeStatus(self):
+        parm = {'op':'info',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'} 
+        test_cube = Cube(parm)
+        actualResult = test_cube._isValidCube()
+        self.assertTrue(actualResult)
+        
+    
     def testName(self):
         pass
