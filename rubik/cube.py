@@ -3,7 +3,7 @@ class Cube:
     Rubik's cube
     '''
 
-    def __init__(self):
+    def __init__(self, parms):
         pass
 
  
