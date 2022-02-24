@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'} 
         test_cube = Cube(parm)
         expectedResult = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
-        actualResult = test_cube.get()
+        actualResult = test_cube.getCube()
         self.assertEqual(expectedResult, actualResult, "error: cube get failed")
          
     def testName(self):

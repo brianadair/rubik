@@ -8,4 +8,6 @@ class Cube:
             self.cube_state = parms.get('cube')
 # methods
 # get cube
+    def getCube(self):
+        return self.cube_state
 # rotate(move)
