@@ -16,7 +16,11 @@ class Cube:
         return self.cube_state
 
 # get valid cube status (boolean)
-    def _isValidCube(self):    
-        return False
+    def _isValidCube(self):
+        result = check._check(self.orig_parms)
+        if result.get('status') == 'ok':
+            return True    
+        else:
+            return False
 # rotate(move)
     
