@@ -12,6 +12,7 @@ def _solve(parms):
     elif not cube_model._isRotationValid():
         result['status'] = 'error: request parm invalid data'
     else:
+        
         result['status'] = 'ok'
     
     

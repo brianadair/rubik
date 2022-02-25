@@ -44,4 +44,9 @@ class Cube:
         return True
 
 # rotate(move)
+    def _rotate(self):
+        if (self._isValidCube() and self._isRotationValid()):
+            return 'InvalidRotation'
+            
+            
     

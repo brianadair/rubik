@@ -45,6 +45,12 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isValidCube()
         self.assertTrue(actualResult)
         
-    
-    def testName(self):
-        pass
+    def test_050_ShouldReturnCorrectEncodingAfterDefaultRotation(self):
+        parm = {'op':'solve',
+                'rotate': 'F',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._rotate()
+        expectedResult = 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy'
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")   
+

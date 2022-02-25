@@ -49,3 +49,15 @@ class SolveTest(unittest.TestCase):
         expectedResult = 'ok'
         actualResult = result.get('status')
         self.assertEqual(expectedResult, actualResult)
+    
+    # def test_040_ShouldReturnCorrectEncodingOnDefaultRotation(self):
+    #     parm = {'op':'solve',
+    #             'rotate': 'F',
+    #             'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+    #     result = solve._solve(parm)
+    #     actualResult = result.get('status')
+    #     self.assertEquals(actualResult,'ok')
+    #     actualResult = result.get('cube')
+    #     expectedResult = 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy'
+    #     self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+        
