@@ -22,5 +22,8 @@ class Cube:
             return True    
         else:
             return False
+        
+    def _isRotationValid(self):
+        return False
 # rotate(move)
     
