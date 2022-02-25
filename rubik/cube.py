@@ -97,7 +97,7 @@ class Cube:
             assoc_map = self.rotation_map.get(c.upper())
             for sqr in assoc_map.keys():
                 sqrnum = int(sqr) - 1
-                if c.isUpper():
+                if c.isupper():
                     newEncoding[int(assoc_map[sqr])-1] = self.cube_state[sqrnum]
                 else:
                     newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
