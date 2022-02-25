@@ -30,7 +30,7 @@ class Cube:
         
     def _isRotationValid(self):
         if ( (self.operation == None) or 
-             (type(self.operation) != str)):
+             (type(self.operation) != str) or (self.operation == '')):
             return False
         elif (not self._check_rotate_operation()):
             return False
