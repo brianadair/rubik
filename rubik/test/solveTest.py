@@ -69,6 +69,6 @@ class SolveTest(unittest.TestCase):
         actualResult = result.get('status')
         self.assertEquals(actualResult,'ok')
         actualResult = result.get('cube')
-        expectedResult = ''
+        expectedResult = 'ggggggwrrwrrwrrbbbbbbbbbooyooyooygggwwwwwwooorrryyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
 
