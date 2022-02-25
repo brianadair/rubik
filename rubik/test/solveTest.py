@@ -34,7 +34,7 @@ class SolveTest(unittest.TestCase):
 
     def test_022_ShouldReturnOKOnRotateParamEmptyString(self):
         parm = {'op':'solve',
-                'op':'',
+                'rotate':'',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
         result = solve._solve(parm)
         expectedResult = 'ok'
