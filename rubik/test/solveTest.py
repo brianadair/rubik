@@ -60,4 +60,15 @@ class SolveTest(unittest.TestCase):
         actualResult = result.get('cube')
         expectedResult = 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
-        
+
+    def test_041_ShouldReturnCorrectEncodingOnMultipleRotations(self):
+        parm = {'op':'solve',
+                'rotate': 'Fd',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        result = solve._solve(parm)
+        actualResult = result.get('status')
+        self.assertEquals(actualResult,'ok')
+        actualResult = result.get('cube')
+        expectedResult = ''
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+
