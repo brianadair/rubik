@@ -1,4 +1,5 @@
 import rubik.check as check
+from _ast import Or
 
 class Cube:
     '''
@@ -10,7 +11,9 @@ class Cube:
             self.cube_state = parms.get('cube')
             self.orig_parms = parms
             self.operation = parms.get('rotate')
-            #if (operation == None or operation == '')
+            
+        # if (self.operation == None):
+        #     self.operation = 'F'
 # methods
 
 # get cube string
@@ -26,9 +29,8 @@ class Cube:
             return False
         
     def _isRotationValid(self):
-        if (self.operation == None):
-            return False
-        elif (type(self.operation) != str):
+        if ( (self.operation == None) or 
+             (type(self.operation) != str) or (self.operation == '')):
             return False
         elif (not self._check_rotate_operation()):
             return False
