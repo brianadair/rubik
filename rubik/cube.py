@@ -36,8 +36,11 @@ class Cube:
 
     def _check_rotate_operation(self):
         rotate_key = self.orig_parms['rotate']
+        print(f"Rotate key = {rotate_key}")
         for c in rotate_key:
+            print(f"Operation: {c}")
             if c not in self.valid_operations:
+                print(f"{c} is not a valid operation")
                 return False
         return True
 
