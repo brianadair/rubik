@@ -1,8 +1,6 @@
-import rubik.cube as rubik
+import rubik.cube as cube
 
 def _solve(parms):
     result = {}
     encodedCube = parms.get('cube',None)       #get "cube" parameter if present
-    result['solution'] = 'FfRrBbLlUuDd'        #example rotations
-    result['status'] = 'ok'                     
     return result
