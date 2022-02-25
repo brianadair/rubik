@@ -101,7 +101,7 @@ class Cube:
                     newEncoding[int(assoc_map[sqr])-1] = self.cube_state[sqrnum]
                 else:
                     newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
-        self.cube_state = newEncoding
+        self.cube_state = ''.join(newEncoding)
         return self.cube_state            
         
                     
