@@ -12,8 +12,8 @@ class Cube:
             self.orig_parms = parms
             self.operation = parms.get('rotate')
             
-        # if (self.operation == None):
-        #     self.operation = 'F'
+        if (self.operation == None):
+            self.operation = 'F'
 # methods
 
 # get cube string
@@ -30,7 +30,7 @@ class Cube:
         
     def _isRotationValid(self):
         if ( (self.operation == None) or 
-             (type(self.operation) != str) or (self.operation == '')):
+             (type(self.operation) != str)):
             return False
         elif (not self._check_rotate_operation()):
             return False
