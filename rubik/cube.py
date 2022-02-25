@@ -25,10 +25,10 @@ class Cube:
         
     def _isRotationValid(self):
         rotate_key = self.orig_parms['rotate']
-        if (rotate_key != None):
-            return True
-        elif (type(rotate_key) == str):
-            return True
+        if (rotate_key == None):
+            return False
+        elif (type(rotate_key) != str):
+            return False
         else:
             return False
 # rotate(move)

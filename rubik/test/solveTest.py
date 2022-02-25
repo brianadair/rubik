@@ -26,11 +26,18 @@ class SolveTest(unittest.TestCase):
     
     def test_030_ShouldReturnOKOnRotateParamAsString(self):
         parm = {'op':'solve',
-                'rotate': 7,
+                'rotate': 'F',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
         result = solve._solve(parm)
         expectedResult = 'ok'
         actualResult = result.get('status')
         self.assertEqual(expectedResult, actualResult)
         
-        
+    def test_040_ShouldReturnOKOnRotateValidSymbols(self):
+        parm = {'op':'solve',
+                'rotate': 'F',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
+        result = solve._solve(parm)
+        expectedResult = 'ok'
+        actualResult = result.get('status')
+        self.assertEqual(expectedResult, actualResult)
