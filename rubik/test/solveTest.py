@@ -35,7 +35,7 @@ class SolveTest(unittest.TestCase):
         
     def test_040_ShouldReturnOKOnRotateValidSymbols(self):
         parm = {'op':'solve',
-                'rotate': 'F',
+                'rotate': 'FfRrBbLlUuDd',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
         result = solve._solve(parm)
         expectedResult = 'ok'

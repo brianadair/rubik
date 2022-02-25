@@ -4,8 +4,8 @@ class Cube:
     '''
     Rubik's cube
     '''
-
     def __init__(self, parms):
+        self.valid_operations = 'FfRrBbLlUuDd'
         if (parms.get('cube') != None):
             self.cube_state = parms.get('cube')
             self.orig_parms = parms
@@ -29,7 +29,17 @@ class Cube:
             return False
         elif (type(rotate_key) != str):
             return False
-        else:
+        elif (not self._check_rotate_operation()):
             return False
+        else:
+            return True
+
+    def _check_rotate_operation(self):
+        rotate_key = self.orig_parms['rotate']
+        for c in rotate_key:
+            if c not in self.valid_operations:
+                return False
+        return True
+
 # rotate(move)
     
