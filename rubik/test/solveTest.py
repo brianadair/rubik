@@ -40,18 +40,8 @@ class SolveTest(unittest.TestCase):
         expectedResult = 'ok'
         actualResult = result.get('status')
         self.assertEqual(expectedResult, actualResult)        
-    
-
-    def test_030_ShouldReturnOKOnRotateParamAsString(self):
-        parm = {'op':'solve',
-                'rotate': 'F',
-                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
-        result = solve._solve(parm)
-        expectedResult = 'ok'
-        actualResult = result.get('status')
-        self.assertEqual(expectedResult, actualResult)
-        
-    def test_040_ShouldReturnOKOnRotateValidSymbols(self):
+ 
+    def test_030_ShouldReturnOKOnRotateValidSymbols(self):
         parm = {'op':'solve',
                 'rotate': 'FfRrBbLlUuDd',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
