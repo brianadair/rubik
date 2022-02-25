@@ -52,5 +52,17 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._rotate()
         expectedResult = 'gggggggggwrrwrrwrrbbbbbbbbbooyooyooywwwwwwooorrryyyyyy'
-        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")   
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+    
+    def test_051_ShouldReturnCorrectEncodingAfterMultipleRotations(self):
+        parm = {'op':'solve',
+                'rotate': 'FfR',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._rotate()
+        expectedResult = 'ggyggyggyrrrrrrrrrwbbwbbwbbooooooooowwgwwgwwgyybyybyyb'
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+  
+        
+           
 
