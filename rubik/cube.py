@@ -26,7 +26,6 @@ class Cube:
             return False
         
     def _isRotationValid(self):
-        #rotate_key = self.orig_parms['rotate']
         if (self.operation == None):
             return False
         elif (type(self.operation) != str):
@@ -37,12 +36,8 @@ class Cube:
             return True
 
     def _check_rotate_operation(self):
-        #rotate_key = self.orig_parms['rotate']
-        print(f"Rotate key = {self.operation}")
         for c in self.operation:
-            print(f"Operation: {c}")
             if c not in self.valid_operations:
-                print(f"{c} is not a valid operation")
                 return False
         return True
 
