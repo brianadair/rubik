@@ -91,17 +91,17 @@ class Cube:
 
 # rotate(move)
     def _rotate(self):
-        newEncoding = list(self.cube_state)
         if (self._isValidCube() and self._isRotationValid()):
-            c = self.operation[0]
-            assoc_map = self.rotation_map.get(c.upper())
-            for sqr in assoc_map.keys():
-                sqrnum = int(sqr) - 1
-                if c.isupper():
-                    newEncoding[int(assoc_map[sqr])-1] = self.cube_state[sqrnum]
-                else:
-                    newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
-        self.cube_state = ''.join(newEncoding)
+            for op in self.operation:
+                newEncoding = list(self.cube_state)
+                assoc_map = self.rotation_map.get(op.upper())
+                for sqr in assoc_map.keys():
+                    sqrnum = int(sqr) - 1
+                    if op.isupper():
+                        newEncoding[int(assoc_map[sqr])-1] = self.cube_state[sqrnum]
+                    else:
+                        newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
+                self.cube_state = ''.join(newEncoding)
         return self.cube_state            
         
                     
