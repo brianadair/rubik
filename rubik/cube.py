@@ -12,7 +12,7 @@ class Cube:
             self.orig_parms = parms
             self.operation = parms.get('rotate')
             
-        if (self.operation == None):
+        if ((self.operation == None) or (self.operation == '')):
             self.operation = 'F'
 # methods
 
