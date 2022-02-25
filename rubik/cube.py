@@ -27,6 +27,8 @@ class Cube:
         rotate_key = self.orig_parms['rotate']
         if (rotate_key != None):
             return True
+        elif (type(rotate_key) == str)):
+            return True
         else:
             return False
 # rotate(move)
