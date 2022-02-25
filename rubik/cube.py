@@ -9,6 +9,8 @@ class Cube:
         if (parms.get('cube') != None):
             self.cube_state = parms.get('cube')
             self.orig_parms = parms
+            self.operation = parms.get('rotate')
+            #if (operation == None or operation == '')
 # methods
 
 # get cube string
@@ -24,10 +26,10 @@ class Cube:
             return False
         
     def _isRotationValid(self):
-        rotate_key = self.orig_parms['rotate']
-        if (rotate_key == None):
+        #rotate_key = self.orig_parms['rotate']
+        if (self.operation == None):
             return False
-        elif (type(rotate_key) != str):
+        elif (type(self.operation) != str):
             return False
         elif (not self._check_rotate_operation()):
             return False
@@ -35,9 +37,9 @@ class Cube:
             return True
 
     def _check_rotate_operation(self):
-        rotate_key = self.orig_parms['rotate']
-        print(f"Rotate key = {rotate_key}")
-        for c in rotate_key:
+        #rotate_key = self.orig_parms['rotate']
+        print(f"Rotate key = {self.operation}")
+        for c in self.operation:
             print(f"Operation: {c}")
             if c not in self.valid_operations:
                 print(f"{c} is not a valid operation")
