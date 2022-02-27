@@ -71,4 +71,16 @@ class SolveTest(unittest.TestCase):
         actualResult = result.get('cube')
         expectedResult = 'ggggggwrrwrrwrrbbbbbbbbbooyooyooygggwwwwwwoooryyryyryy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+        
+# Sad path tests
+
+    def test_910_ShouldErrorOnInvalidRotationCommand(self):
+        parm = {'op':'solve',
+                'rotate': 'Z',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        result = solve._solve(parm)
+        actualResult = result.get('status')
+        expectedResult = 'error: xxxxx'
+        self.assertEquals(expectedResult, actualResult, "Invalid rotation command")
+        
 
