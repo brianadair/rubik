@@ -10,7 +10,7 @@ def _solve(parms):
         #encodedCube = parms.get('cube',None)       #get "cube" parameter if present
         result['status'] = 'error: invalid cube'
     elif not cube_model._isRotationValid():
-        result['status'] = 'error: request parm invalid data'
+        result['status'] = 'error: invalid rotation'
     else:
         result['cube'] = cube_model._rotate()
         result['status'] = 'ok'
