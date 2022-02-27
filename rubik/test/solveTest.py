@@ -80,7 +80,7 @@ class SolveTest(unittest.TestCase):
                 'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
         result = solve._solve(parm)
         actualResult = result.get('status')
-        expectedResult = 'error: xxxxx'
+        expectedResult = 'error: invalid rotation'
         self.assertEquals(expectedResult, actualResult, "Invalid rotation command")
         
 
