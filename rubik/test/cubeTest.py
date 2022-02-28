@@ -97,13 +97,9 @@ class Test(unittest.TestCase):
         parm = {'op':'info'}
         expectedResult = '<class \'AttributeError\'>'
         try:
-            print("try 1")
             test_cube = Cube(parm)
-            print("try 2")
             actualResult = test_cube.getCube()
-            print("try worked")
         except AttributeError as e:
-            print("try failed")
             actualResult = str(type(e))
             print(actualResult)
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
