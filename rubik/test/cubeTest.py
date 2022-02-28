@@ -30,11 +30,15 @@ class Test(unittest.TestCase):
 #
 #
 # Happy path tests
-    # test_010: Instantiate cube object
-    # test_020: Assure cube_state property is set
-    # get a model
-    # rotate
-    
+#   test_010: Instantiate cube object
+#   test_020: Assure cube_state property is set
+#   test_030: valid cube instance returns the encoded cube string
+#   test_040: successfully validates a cube
+#   test_050: correct encoded cube returned after default clockwise rotation
+#   test_051: correct encoded cube returned after multiple face rotations in both directions
+#   test_052: correct encoded cube returned after single non-default clockwise rotation
+#   test_053: correct encoded cube returned after single non-default counterclockwise rotation
+        
     def test_010_ShouldInstantiateCube(self):
         parm = {'op':'info',
                 'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}        
@@ -81,8 +85,23 @@ class Test(unittest.TestCase):
         actualResult = test_cube._rotate()
         expectedResult = 'ggyggyggyrrrrrrrrrwbbwbbwbbooooooooowwgwwgwwgyybyybyyb'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+    
+    def test_052_ShouldReturnCorrectEncodingAfterSingleClockwiseRotation(self):
+        parm = {'op':'solve',
+                'rotate': 'L',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._rotate()
+        #expectedResult = 'wggwggwggrrrrrrrrrbbybbybbyooooooooobwwbwwbwwgyygyygyy'
+        expectedResult = ''
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+
+
+   
   
 # Sad path tests
+#    test_910: error on missing constructor argument to Cube()
+#    test_920: error on missing encoded cube string key
 
     def test_910_ShouldErrorOnMissingConstructorArgument(self):
         expectedResult = '<class \'TypeError\'>'

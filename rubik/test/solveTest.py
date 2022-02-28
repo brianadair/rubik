@@ -21,7 +21,9 @@ class SolveTest(unittest.TestCase):
 #                     with the new cube state and the value of 'ok' when all conditions for a valid 
 #                     cube are met, or an error message indicating the failed condition of the request. 
 #
-#        confidence level: BVA
+#        confidence level: BVA; for _solve, the boundary in this context is defined as a rotate operation
+#                          not in the allowed set of characters, which are not in a range or sequence.
+#                    
 #
 #
 # Happy Path tests
@@ -103,7 +105,7 @@ class SolveTest(unittest.TestCase):
 # Sad path tests
 #    Analysis: test the error conditions that can occur with inputs using the solve module
 #                - note: cube string validation checks are performed in the check module, and 
-#                -       unit tested separately
+#                -       are unit tested separately
 #    test_910: generate error on invalid rotation command
 #    test_920: generate error on invalid cube string
 
