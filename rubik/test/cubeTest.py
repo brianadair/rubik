@@ -95,8 +95,15 @@ class Test(unittest.TestCase):
         expectedResult = 'wggwggwggrrrrrrrrrbbybbybbyooooooooobwwbwwbwwgyygyygyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
 
-
-   
+    def test_053_ShouldReturnCorrectEncodingAfterSingleCounterClockwiseRotation(self):
+        parm = {'op':'solve',
+                'rotate': 'd',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._rotate()
+        expectedResult = ''
+        self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+  
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
