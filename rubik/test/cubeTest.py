@@ -101,7 +101,6 @@ class Test(unittest.TestCase):
             actualResult = test_cube.getCube()
         except AttributeError as e:
             actualResult = str(type(e))
-            print(actualResult)
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
                                                             
         
