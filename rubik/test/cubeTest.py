@@ -85,7 +85,7 @@ class Test(unittest.TestCase):
 # Sad path tests
 
     def test_910_ShouldErrorOnMissingConstructorArgument(self):
-        expectedResult = 'str'
+        expectedResult = type(TypeError)
         try:
             test_cube = Cube()
             actualResult = type(test_cube.getCube())
