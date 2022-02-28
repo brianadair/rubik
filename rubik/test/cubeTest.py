@@ -92,8 +92,7 @@ class Test(unittest.TestCase):
                 'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
         test_cube = Cube(parm)
         actualResult = test_cube._rotate()
-        #expectedResult = 'wggwggwggrrrrrrrrrbbybbybbyooooooooobwwbwwbwwgyygyygyy'
-        expectedResult = ''
+        expectedResult = 'wggwggwggrrrrrrrrrbbybbybbyooooooooobwwbwwbwwgyygyygyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
 
 
