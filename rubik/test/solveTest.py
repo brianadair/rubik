@@ -89,7 +89,7 @@ class SolveTest(unittest.TestCase):
                 'cube':'44W44W44WrrrrrrrrryggyggyggAAAAAAAAAyy4yy4Wy4WWgWygWWg'}
         result = solve._solve(parm)
         actualResult = result.get('status')
-        expectedResult = 'error: xxxxx'
+        expectedResult = 'error: invalid cube state'
         self.assertEqual(expectedResult, actualResult, 'Invalid cube state')
      
         

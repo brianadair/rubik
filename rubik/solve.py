@@ -8,7 +8,7 @@ def _solve(parms):
     
     if not cube_model._isValidCube():
         #encodedCube = parms.get('cube',None)       #get "cube" parameter if present
-        result['status'] = 'error: invalid cube'
+        result['status'] = 'error: invalid cube state'
     elif not cube_model._isRotationValid():
         result['status'] = 'error: invalid rotation'
     else:
