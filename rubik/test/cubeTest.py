@@ -88,9 +88,9 @@ class Test(unittest.TestCase):
         expectedResult = '<class \'TypeError\'>'
         try:
             test_cube = Cube()
-            actualResult = type(test_cube.getCube())
+            actualResult = str(type(test_cube.getCube()))
         except Exception as e:
-            actualResult = type(e)
+            actualResult = str(type(e))
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
         
            
