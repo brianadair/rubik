@@ -92,6 +92,17 @@ class Test(unittest.TestCase):
         except Exception as e:
             actualResult = str(type(e))
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
+    
+    def test_920_ShouldErrorOnMissingEncodedCubeStringArgument(self):
+        parm = {'op':'info'}
+        expectedResult = '<class \'AttributeError\'>'
+        try:
+            test_cube = Cube(parm)
+            actualResult = test_cube.getCube()
+        except AttributeError as e:
+            actualResult = str(type(e))
+        self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
+                                                            
         
            
 

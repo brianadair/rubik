@@ -53,11 +53,13 @@ class Cube:
     
     def __init__(self, parms):
         #self.valid_operations = 'FfRrBbLlUuDd'
+        self.orig_parms = parms
+
         if (parms.get('cube') == None):
-            raise TypeError('No encoded cube string present')
+            pass
+            #raise TypeError('No encoded cube string present')
         else: 
             self.cube_state = parms.get('cube')
-            self.orig_parms = parms
             self.operation = parms.get('rotate')
             
         if ((self.operation == None) or (self.operation == '')):
