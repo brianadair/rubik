@@ -105,6 +105,7 @@ class Test(unittest.TestCase):
         except AttributeError as e:
             print("try failed")
             actualResult = str(type(e))
+            print(actualResult)
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
                                                             
         
