@@ -1,11 +1,39 @@
+# Brian Adair 
+# COMP 6700 - Assignment 03
+# 2022-02-24
+
+# Tests of solve operations
 import unittest
 import rubik.solve as solve
 
 class SolveTest(unittest.TestCase):
-
+# Analysis
+#    _solve(parms):
+#        inputs:
+#            parms: dictionary, mandatory, validated
+#                    key: 'op', string, mandatory, validated
+#                    key: 'cube', string, mandatory, unvalidated
+#                    key: 'rotate', string, optional (defaults to 'F'), unvalidated
+#
+#        outputs:
+#            side-effects: cube string is potentially changed for the cube instance
+#            returns: dictionary, contains two keys ('cube','status') 
+#                     with the new cube state and the value of 'ok' when all conditions for a valid 
+#                     cube are met, or an error message indicating the failed condition of the request. 
+#
+#        confidence level: BVA
+#
+#
 # Happy Path tests
-#    - test_010: cube validated before operations performed
-#    - test_020: 
+#    test_010: cube validated before operations performed
+#    test_020:
+#    test_021:
+#    test_022:
+#    test_030:
+#    test_040:
+#    test_041:
+
+
     def test_010_ShouldPassValidCubeCheck(self):
         parm = {'op':'solve',
                 'rotate': 'F',
@@ -73,6 +101,11 @@ class SolveTest(unittest.TestCase):
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
         
 # Sad path tests
+#    Analysis: test the error conditions that can occur with inputs using the solve module
+#                - note: cube string validation checks are performed in the check module, and 
+#                -       unit tested separately
+#    test_910: generate error on invalid rotation command
+#    test_920: generate error on invalid cube string
 
     def test_910_ShouldErrorOnInvalidRotationCommand(self):
         parm = {'op':'solve',

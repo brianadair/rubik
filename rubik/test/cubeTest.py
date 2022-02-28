@@ -6,10 +6,29 @@
 
 import unittest
 from rubik.cube import Cube
+from pickle import NONE
 
 
 class Test(unittest.TestCase):
-
+# Analysis
+#    _cube(parms):
+#        inputs:
+#            parms: dictionary, mandatory, validated
+#                    key: 'op', string, mandatory, validated
+#                    key: 'cube', string, mandatory, unvalidated
+#                    key: 'rotate', string, optional (defaults to 'F'), unvalidated
+#
+#        outputs:
+#            side-effects: cube state is potentially changed (new encoded string)
+#            returns: 
+#                - string: getCube() returns the current cube state for the instance
+#                - boolean: internal functions that validate request parameters and inputs
+#                - string: _rotate() returns the new encoded string for the cube state 
+#                          following the rotation
+#
+#        confidence level: BVA
+#
+#
 # Happy path tests
     # test_010: Instantiate cube object
     # test_020: Assure cube_state property is set
@@ -63,6 +82,16 @@ class Test(unittest.TestCase):
         expectedResult = 'ggyggyggyrrrrrrrrrwbbwbbwbbooooooooowwgwwgwwgyybyybyyb'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
   
+# Sad path tests
+
+    def test_910_ShouldErrorOnMissingConstructorArgument(self):
+        expectedResult = 'str'
+        try:
+            test_cube = Cube()
+            actualResult = type(test_cube.getCube())
+        except Exception as e:
+            actualResult = type(e)
+        self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
         
            
 
