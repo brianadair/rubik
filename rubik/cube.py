@@ -56,7 +56,7 @@ class Cube:
         self.orig_parms = parms
 
         if (parms.get('cube') == None):
-            raise TypeError('No encoded cube string present')
+            raise AttributeError('No encoded cube string present')
         else: 
             self.cube_state = parms.get('cube')
             self.operation = parms.get('rotate')
