@@ -128,11 +128,11 @@ class Test(unittest.TestCase):
             actualResult = str(type(e))
         self.assertEquals(expectedResult, actualResult, 'invalid cube constructor')
         
-    def test_930_ShouldErrorOnUnknownRotateCommandCode(self):
+    def test_930_ShouldReturnFalseOnUnknownRotateCommandCode(self):
         parm = {'op': 'solve',
                 'rotate': 'Z',
                 'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
-        expectedResult = True
+        expectedResult = False
         test_cube = Cube(parm)
         actualResult = test_cube._isRotationValid()
         self.assertEquals(expectedResult, actualResult)
