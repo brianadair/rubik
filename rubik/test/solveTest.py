@@ -125,7 +125,16 @@ class SolveTest(unittest.TestCase):
         result = solve._solve(parm)
         actualResult = result.get('status')
         expectedResult = 'error: invalid cube state'
-        self.assertEqual(expectedResult, actualResult, 'Invalid cube state')
+        self.assertEquals(expectedResult, actualResult, 'Invalid cube state')
+        
+    def test_930_ShouldErrorOnMissingCubeArgument(self):
+        parm = {'op':'solve',
+                'rotate': 'F'}
+        result = solve._solve(parm)
+        actualResult = result.get('status')
+        expectedResult = 'error: no cube argument provided'
+        self.assertEquals(expectedResult, actualResult)
+        
      
         
 
