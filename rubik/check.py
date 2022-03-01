@@ -1,10 +1,7 @@
 # Brian Adair 
 # COMP 6700 - Assignment 02
 # 2022-01-31 
-from pickle import TRUE
 
-#import rubik.cube as rubik
-#from pickle import FALSE
 
 CUBE_STR_LENGTH = 54
 COLOR_CHOICES = 6
@@ -26,7 +23,6 @@ def _check(parms):
         
     elif(type(encodedCube) is not str):
         result['status'] = 'error: value for cube should be of type str'
-        stat = _check_color_occurrences(encodedCube)
         
     elif(len(encodedCube) > CUBE_STR_LENGTH):
         result['status'] = 'error: cube str length exceeds 54 chars'
