@@ -114,7 +114,6 @@ class Cube:
         
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
-        count = 0
         if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
             self.cube_state[41] == bottomMid and self.cube_state[43] == bottomMid):
             print("Success")
