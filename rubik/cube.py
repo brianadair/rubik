@@ -114,12 +114,14 @@ class Cube:
         
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
+        print(f"Bottom Mid is {bottomMid}")
         if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
             self.cube_state[41] == bottomMid and self.cube_state[43] == bottomMid):
             print("Success")
             return True
         else:
             print("Unsuccessful")
+            print(f"{self.cube_state[37]} - {self.cube_state[39]} - {self.cube_state[41]} - {self.cube_state[43]}")
             return False       
             
         
