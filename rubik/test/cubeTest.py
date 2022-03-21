@@ -124,7 +124,7 @@ class Test(unittest.TestCase):
                 'rotate': 'RFFRRBBLL'}
         test_cube = Cube(parm)
         test_cube._tryRandom()
-        actualResult = test_cube._isTopDaisy()
+        actualResult = test_cube._isBottomCross()
         print(test_cube.getCube())
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
