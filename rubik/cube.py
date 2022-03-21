@@ -133,6 +133,7 @@ class Cube:
             
         
     def _tryRandom(self):
+        origCube = self.cube_state
         bottomMid = self.cube_state[49]
         print(f"Bottom Mid is {bottomMid}")
         count = 0
@@ -151,6 +152,10 @@ class Cube:
                 break
             else:
                 count += 1
+                if (count > 300):
+                    count = 0
+                    solution = ""
+                    self.cube_state = origCube
         
                     
     
