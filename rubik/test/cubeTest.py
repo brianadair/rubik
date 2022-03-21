@@ -122,7 +122,7 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         test_cube = Cube(parm)
-        actualResult = test_cube._isTopDaisyMiddle()
+        actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
   
