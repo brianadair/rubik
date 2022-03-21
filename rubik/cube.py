@@ -7,6 +7,16 @@ class Cube:
     Rubik's cube
     '''
     valid_operations = 'FfRrBbLlUuDd'
+    
+    face_map = {
+        'F': [1,2,3,4,5,6,7,8,9],
+        'R': [10,11,12,13,14,15,16,17,18],
+        'B': [19,20,21,22,23,24,25,26,27],
+        'L': [28,29,30,31,32,33,34,35,36],
+        'U': [37,38,39,40,41,42,43,44,45],
+        'D': [46,47,48,49,50,51,52,53,54]
+    }
+    
     rotation_map = {
         'F':{ '1':'3','2':'6','3':'9',
               '4':'2','6':'8',
@@ -107,7 +117,7 @@ class Cube:
                         newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
                 self.cube_state = ''.join(newEncoding)
         return self.cube_state      
-    
+#New code A4    
     def _getTopDaisyMiddle(self):
         # Middle color 
         if (self._isValidCube()):

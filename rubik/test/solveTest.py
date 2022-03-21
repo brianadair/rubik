@@ -102,6 +102,16 @@ class SolveTest(unittest.TestCase):
         expectedResult = 'ggggggwrrwrrwrrbbbbbbbbbooyooyooygggwwwwwwoooryyryyryy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
         
+    def test_101_ShouldProduceTopDaisy(self):
+        parm = {'op':'solve',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+        result = solve._solve(parm)
+        actualResult = result.get('status')
+        self.assertEquals(actualResult,'ok')
+        actualResult = False
+        expectedResult = True
+        self.assertEquals(expectedResult, actualResult,"incorrect solution result")        
+        
 # Sad path tests
 #    Analysis: test the error conditions that can occur with inputs using the solve module
 #                - note: cube string validation checks are performed in the check module, and 
