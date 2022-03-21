@@ -150,7 +150,6 @@ class Cube:
                 print(f"Solution: {solution}")
                 break
             else:
-                print("Unsuccessful")
                 count += 1
         
                     
