@@ -120,7 +120,16 @@ class Cube:
             self.cube_state[41] == bottomMid and self.cube_state[43] == bottomMid):
             return True
         else:
-            return False       
+            return False      
+        
+    def _isBottomCross(self):
+        bottomMid = self.cube_state[49]
+        print(f"Bottom Mid is {bottomMid}")
+        if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
+            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
+            return True
+        else:
+            return False  
             
         
     def _tryRandom(self):
