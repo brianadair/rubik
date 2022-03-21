@@ -121,7 +121,7 @@ class Cube:
             return True
         else:
             print("Unsuccessful")
-            print(f"{self.cube_state[37]} - {self.cube_state[39]} - {self.cube_state[41]} - {self.cube_state[43]}")
+            print(f"{self.cube_state[46]} - {self.cube_state[48]} - {self.cube_state[50]} - {self.cube_state[52]}")
             return False       
             
         
