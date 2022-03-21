@@ -152,7 +152,7 @@ class Cube:
                 break
             else:
                 count += 1
-                if (count > 100):
+                if (count > 50):
                     count = 0
                     solution = ""
                     self.cube_state = origCube
