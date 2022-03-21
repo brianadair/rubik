@@ -110,7 +110,7 @@ class Cube:
     def _getTopDaisyMiddle(self):
         # Middle color 
         if (self._isValidCube()):
-            pass
+            return self.cube_state[40]
         
                     
     
