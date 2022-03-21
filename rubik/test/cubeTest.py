@@ -125,6 +125,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         test_cube._rotate()
         actualResult = test_cube._isTopDaisy()
+        print(test_cube.getCube())
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
   
