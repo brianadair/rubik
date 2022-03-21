@@ -123,6 +123,7 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg',
                 'rotate': 'RFFRRBBLL'}
         test_cube = Cube(parm)
+        test_cube._rotate()
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
