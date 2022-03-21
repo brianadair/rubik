@@ -117,6 +117,14 @@ class Test(unittest.TestCase):
         actualResult = test_cube._getTopDaisyMiddle()
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
+        
+    def test_102_YellowTestTopDaisyIdea(self):
+        parm = {'op': 'solve',
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._isTopDaisyMiddle()
+        expectedResult = True
+        self.assertEquals(expectedResult, actualResult)
   
   
 # Sad path tests
