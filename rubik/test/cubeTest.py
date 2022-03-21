@@ -120,7 +120,8 @@ class Test(unittest.TestCase):
         
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
-                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg',
+                'rotate': 'RFFRRBBLL'}
         test_cube = Cube(parm)
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
