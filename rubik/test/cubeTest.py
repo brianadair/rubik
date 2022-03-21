@@ -123,7 +123,7 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg',
                 'rotate': 'RFFRRBBLL'}
         test_cube = Cube(parm)
-        test_cube._rotate()
+        test_cube._tryRandom()
         actualResult = test_cube._isTopDaisy()
         print(test_cube.getCube())
         expectedResult = True

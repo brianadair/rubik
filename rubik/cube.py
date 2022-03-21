@@ -1,4 +1,5 @@
 import rubik.check as check
+import random
 from _ast import Or
 
 class Cube:
@@ -115,17 +116,33 @@ class Cube:
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
         print(f"Bottom Mid is {bottomMid}")
-        if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
-            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
-            print("Success")
+        if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
+            self.cube_state[41] == bottomMid and self.cube_state[43] == bottomMid):
             return True
         else:
-            print("Unsuccessful")
             return False       
             
         
     def _tryRandom(self):
-        pass
+        bottomMid = self.cube_state[49]
+        print(f"Bottom Mid is {bottomMid}")
+        count = 0
+        randAttempt = 0
+        solution = ""
+        while(True):
+            randAttempt = random.randrange(0,12)
+            self.operation = self.valid_operations[randAttempt]
+            solution = solution + self.operation
+            self._rotate()
+            if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
+                self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
+                print(f"Success: {count} attempts")
+                print(f"Cube: {self.cube_state}")
+                print(f"Solution: {solution}")
+                break
+            else:
+                print("Unsuccessful")
+                count += 1
         
                     
     
