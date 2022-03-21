@@ -121,14 +121,11 @@ class Cube:
             return True
         else:
             print("Unsuccessful")
-            return False
-            
-            
-            
+            return False       
             
         
     def _tryRandom(self):
-        
+        pass
         
                     
     
