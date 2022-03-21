@@ -105,7 +105,12 @@ class Cube:
                     else:
                         newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
                 self.cube_state = ''.join(newEncoding)
-        return self.cube_state            
+        return self.cube_state      
+    
+    def _getTopDaisyMiddle(self):
+        # Middle color 
+        if (self._isValidCube()):
+            pass
         
                     
     

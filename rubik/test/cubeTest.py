@@ -103,6 +103,20 @@ class Test(unittest.TestCase):
         actualResult = test_cube._rotate()
         expectedResult = 'ggggggrrrrrrrrrbbbbbbbbbooooooooogggwwwwwwwwwyyyyyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
+        
+    @unittest.skip('Not ready to test, working on cube model')
+    def test_060_ShouldReturnTopDaisySolutionSequence(self):
+        parm = {'op': 'solve',
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+        test_cube = Cube(parm)
+    
+    def test_101_ShouldReturnTopMiddleColor(self):
+        parm = {'op': 'solve',
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._getTopDaisyMiddle()
+        expectedResult = 'y'
+        self.assertEquals(expectedResult, actualResult)
   
   
 # Sad path tests
