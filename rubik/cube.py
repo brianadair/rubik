@@ -125,8 +125,27 @@ class Cube:
             return self.cube_state[40]
     
     def _getTopDaisySolution(self):
-        pass
-        
+        #1 middle layer
+        bottomMid = self.cube_state[49]
+        for k in self.face_map.keys():
+            if k == 'U' or k == 'D':
+                pass
+            else:
+                if k == 'F':
+                    if self.cube_state[3] == bottomMid and (self.cube_state[0] != bottomMid and 
+                         self.cube_state[6] != bottomMid and 
+                         self.cube_state[36] != bottomMid and
+                         self.cube_state[39] != bottomMid and
+                         self.cube_state[42] != bottomMid and
+                         self.cube_state[27] != bottomMid and
+                         self.cube_state[28] != bottomMid and
+                         self.cube_state[29] != bottomMid and
+                         self.cube_state[20] != bottomMid):
+                        self._rotate('l') 
+                        
+        #2 bottom layer
+        return self.cube_state
+    
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
         print(f"Bottom Mid is {bottomMid}")
@@ -138,7 +157,7 @@ class Cube:
         
     def _isBottomCross(self):
         bottomMid = self.cube_state[49]
-        print(f"Bottom Mid is {bottomMid}")
+        #print(f"Bottom Mid is {bottomMid}")
         if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
             self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
             return True
@@ -146,10 +165,9 @@ class Cube:
             return False  
             
         
-    def _tryRandom(self):
+    def _tryNeural(self):
         origCube = self.cube_state
         bottomMid = self.cube_state[49]
-        print(f"Bottom Mid is {bottomMid}")
         count = 0
         randAttempt = 0
         solution = ""
@@ -160,9 +178,6 @@ class Cube:
             self._rotate()
             if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
                 self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
-                print(f"Success: {count} attempts")
-                print(f"Cube: {self.cube_state}")
-                print(f"Solution: {solution}")
                 break
             else:
                 count += 1

@@ -107,10 +107,10 @@ class Test(unittest.TestCase):
     #@unittest.skip('Not ready to test, working on cube model')
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
-                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'}
         test_cube = Cube(parm)
         actualResult = test_cube._getTopDaisySolution()
-        expectedResult = True
+        expectedResult = 'wwwggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyygggwwwwww'
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
 
     
@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg',
                 'rotate': 'RFFRRBBLL'}
         test_cube = Cube(parm)
-        test_cube._tryRandom()
+        test_cube._tryNeural()
         actualResult = test_cube._isBottomCross()
         print(test_cube.getCube())
         expectedResult = True
