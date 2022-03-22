@@ -124,12 +124,12 @@ class Test(unittest.TestCase):
         
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
-                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg',
-                'rotate': 'RFFRRBBLL'}
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'
+                }
         test_cube = Cube(parm)
-        test_cube._tryNeural()
+        result = test_cube._tryNeural()
+        print(result)
         actualResult = test_cube._isBottomCross()
-        print(test_cube.getCube())
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
   
