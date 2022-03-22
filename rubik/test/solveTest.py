@@ -102,7 +102,7 @@ class SolveTest(unittest.TestCase):
         expectedResult = 'ggggggwrrwrrwrrbbbbbbbbbooyooyooygggwwwwwwoooryyryyryy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
     
-    #@unittest.skip('Work on cube model')    
+    @unittest.skip('Work on cube model')    
     def test_101_ShouldProduceTopDaisy(self):
         parm = {'op':'solve',
                 'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
