@@ -132,7 +132,6 @@ class Test(unittest.TestCase):
                 }
         test_cube = Cube(parm)
         test_cube._tryNeural()
-        print(test_cube.getCube())
         actualResult = test_cube._isBottomCross()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
