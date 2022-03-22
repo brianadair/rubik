@@ -1,3 +1,8 @@
+'''
+    Created on ?
+    @author: Brian Adair
+    
+'''
 import rubik.check as check
 import random
 from _ast import Or
@@ -133,14 +138,14 @@ class Cube:
             else:
                 if k == 'F':
                     if self.cube_state[3] == bottomMid and (self.cube_state[0] != bottomMid and 
-                         self.cube_state[6] != bottomMid and 
-                         self.cube_state[36] != bottomMid and
-                         self.cube_state[39] != bottomMid and
-                         self.cube_state[42] != bottomMid and
-                         self.cube_state[27] != bottomMid and
-                         self.cube_state[28] != bottomMid and
-                         self.cube_state[29] != bottomMid and
-                         self.cube_state[20] != bottomMid):
+                        self.cube_state[6] != bottomMid and 
+                        self.cube_state[36] != bottomMid and
+                        self.cube_state[39] != bottomMid and
+                        self.cube_state[42] != bottomMid and
+                        self.cube_state[27] != bottomMid and
+                        self.cube_state[28] != bottomMid and
+                        self.cube_state[29] != bottomMid and
+                        self.cube_state[20] != bottomMid):
                         self._rotate('l') 
                         
         #2 bottom layer
@@ -148,7 +153,6 @@ class Cube:
     
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
-        print(f"Bottom Mid is {bottomMid}")
         if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
             self.cube_state[41] == bottomMid and self.cube_state[43] == bottomMid):
             return True
@@ -157,7 +161,6 @@ class Cube:
         
     def _isBottomCross(self):
         bottomMid = self.cube_state[49]
-        #print(f"Bottom Mid is {bottomMid}")
         if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
             self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
             return True
@@ -171,6 +174,9 @@ class Cube:
         count = 0
         randAttempt = 0
         solution = ""
+        self.solution = solution
+        if self._isBottomCross():
+            return
         while(True):
             randAttempt = random.randrange(0,12)
             self.operation = self.valid_operations[randAttempt]
@@ -181,10 +187,13 @@ class Cube:
                 break
             else:
                 count += 1
-                if (count > 25):
+                if (count > 15):
                     count = 0
                     solution = ""
                     self.cube_state = origCube
+        self.solution = solution            
+                    
+        
         
                     
     

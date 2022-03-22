@@ -1,3 +1,8 @@
+'''
+    Created on ?
+    @author: Brian Adair
+    
+'''
 import rubik.cube as cube
 
 
@@ -16,8 +21,8 @@ def _solve(parms):
     elif cube_model.solve_flag == False and not cube_model._isRotationValid():
         result['status'] = 'error: invalid rotation'
     elif cube_model.solve_flag == True:
-        
-        result['solution'] = cube_model._tryNeural()
+        cube_model._tryNeural();
+        result['solution'] = cube_model.solution
         result['status'] = 'ok'
     else:
         result['cube'] = cube_model._rotate()

@@ -1,3 +1,8 @@
+'''
+    Created on ?
+    @author: Brian Adair
+    
+'''
 # Brian Adair 
 # COMP 6700 - Assignment 03
 # 2022-02-24
@@ -145,7 +150,3 @@ class SolveTest(unittest.TestCase):
         actualResult = result.get('status')
         expectedResult = 'error: no cube argument provided'
         self.assertEquals(expectedResult, actualResult)
-        
-     
-        
-

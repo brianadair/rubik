@@ -1,3 +1,8 @@
+'''
+    Created on ?
+    @author: Brian Adair
+    
+'''
 # Brian Adair 
 # COMP 6700 - Assignment 03
 # 2022-02-24
@@ -104,7 +109,7 @@ class Test(unittest.TestCase):
         expectedResult = 'ggggggrrrrrrrrrbbbbbbbbbooooooooogggwwwwwwwwwyyyyyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
         
-    #@unittest.skip('Not ready to test, working on cube model')
+    @unittest.skip('Not ready to test, working on cube model')
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'}
@@ -113,7 +118,6 @@ class Test(unittest.TestCase):
         expectedResult = 'wwwggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyygggwwwwww'
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
 
-    
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}

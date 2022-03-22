@@ -1,3 +1,9 @@
+'''
+    Created on ?
+    @author: Brian Adair
+    
+'''
+
 # Brian Adair 
 # COMP 6700 - Assignment 02
 # 2022-01-31 
