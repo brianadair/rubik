@@ -71,9 +71,10 @@ class Cube:
         else: 
             self.cube_state = parms.get('cube')
             self.operation = parms.get('rotate')
+            self.solve_flag = False
             
         if ((self.operation == None) or (self.operation == '')):
-            self.operation = 'F'
+            self.solve_flag = True
 # methods
 
 # get cube string
@@ -122,6 +123,9 @@ class Cube:
         # Middle color 
         if (self._isValidCube()):
             return self.cube_state[40]
+    
+    def _getTopDaisySolution(self):
+        pass
         
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
