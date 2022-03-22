@@ -127,8 +127,8 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'
                 }
         test_cube = Cube(parm)
-        result = test_cube._tryNeural()
-        print(result)
+        test_cube._tryNeural()
+        print(test_cube.getCube())
         actualResult = test_cube._isBottomCross()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
