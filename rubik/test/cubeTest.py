@@ -111,9 +111,12 @@ class Test(unittest.TestCase):
         
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
-                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'}
+                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         test_cube = Cube(parm)
-        test_cube._solveTopDaisySolution()
+        result = test_cube._solveTopDaisySolution()
+        cube = test_cube.getCube()
+        print(f"New cube {cube}\n")
+        print(f"Solution {result}\n")
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")

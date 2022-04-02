@@ -129,25 +129,50 @@ class Cube:
         if (self._isValidCube()):
             return self.cube_state[40]
     
-    def _getTopDaisySolution(self):
+    def _solveTopDaisySolution(self):
         #1 middle layer
         bottomMid = self.cube_state[49]
+        solutionString = ""
         for k in self.face_map.keys():
             if k == 'U' or k == 'D':
                 pass
             else:
                 if k == 'F':
-                    if self.cube_state[3] == bottomMid and (self.cube_state[0] != bottomMid and 
-                        self.cube_state[6] != bottomMid and 
-                        self.cube_state[36] != bottomMid and
-                        self.cube_state[39] != bottomMid and
-                        self.cube_state[42] != bottomMid and
-                        self.cube_state[27] != bottomMid and
-                        self.cube_state[28] != bottomMid and
-                        self.cube_state[29] != bottomMid and
-                        self.cube_state[20] != bottomMid):
-                        self._rotate('l') 
-                        
+                    if (self.cube_state[3] == bottomMid):
+                        while (self.cube_state[39] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'l'
+                    if (self.cube_state[5] == bottomMid):
+                        while (self.cube_state[41] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'R'
+                if k == 'R':
+                    if (self.cube_state[12] == bottomMid):
+                        while (self.cube_state[43] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'f'
+                    if (self.cube_state[14] == bottomMid):
+                        while (self.cube_state[37] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'B'
+                if k == 'B':
+                    if (self.cube_state[21] == bottomMid):
+                        while (self.cube_state[41] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'r'
+                    if (self.cube_state[23] == bottomMid):
+                        while (self.cube_state[39] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'L'
+                if k == 'L':
+                    if (self.cube_state[30] == bottomMid):
+                        while (self.cube_state[37] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'b'
+                    if (self.cube_state[32] == bottomMid):
+                        while (self.cube_state[43] != bottomMid):
+                            solutionString = solutionString + "u"
+                        solutionString = solutionString + 'F'
         #2 bottom layer
         return self.cube_state
     
