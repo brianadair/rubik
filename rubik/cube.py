@@ -206,7 +206,7 @@ class Cube:
                         self.operation = 'F'
                         self._rotate()
         #2 bottom layer
-        return self.cube_state
+        return solutionString
     
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
