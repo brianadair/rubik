@@ -229,28 +229,36 @@ class Cube:
                         solutionString = solutionString + "u"
                         self.operation = 'u'
                         self._rotate()
-                    solutionString = solutionString + 'FF'   
+                    solutionString = solutionString + 'FF'
+                    self.operation = 'FF'
+                    self._rotate()   
             elif k == 'R':
                 if (self.cube_state[16] == bottomMid or self.cube_state[48] == bottomMid):
                     while (self.cube_state[41] == bottomMid):
                         solutionString = solutionString + "u"
                         self.operation = 'u'
                         self._rotate()
-                    solutionString = solutionString + 'RR' 
+                    solutionString = solutionString + 'RR'
+                    self.operation = 'RR'
+                    self._rotate()  
             elif k == 'B':
                 if (self.cube_state[25] == bottomMid or self.cube_state[50] == bottomMid):
                     while (self.cube_state[37] == bottomMid):
                         solutionString = solutionString + "u"
                         self.operation = 'u'
                         self._rotate()
-                    solutionString = solutionString + 'BB' 
+                    solutionString = solutionString + 'BB'
+                    self.operation = 'BB'
+                    self._rotate() 
             elif k == 'L':
                 if (self.cube_state[34] == bottomMid or self.cube_state[52] == bottomMid):
                     while (self.cube_state[39] == bottomMid):
                         solutionString = solutionString + "u"
                         self.operation = 'u'
                         self._rotate()
-                    solutionString = solutionString + 'LL' 
+                    solutionString = solutionString + 'LL'
+                    self.operation = 'LL'
+                    self._rotate() 
         return solutionString
 
     def _flipTopLayerEdges(self):
