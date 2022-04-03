@@ -134,6 +134,13 @@ class Cube:
         bottomMid = self.cube_state[49]
         #solutionString = ""
         solutionString = self._flipTopLayerEdges()
+        solutionString = solutionString + self._daisyMiddleRotations()
+        #2 bottom layer
+        return solutionString
+    
+    def _daisyMiddleRotations(self):
+        bottomMid = self.cube_state[49]
+        solutionString = ""        
         for k in self.face_map.keys():
             if k == 'U' or k == 'D':
                 pass
@@ -206,7 +213,6 @@ class Cube:
                         solutionString = solutionString + 'F'
                         self.operation = 'F'
                         self._rotate()
-        #2 bottom layer
         return solutionString
 
     def _flipTopLayerEdges(self):
