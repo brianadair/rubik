@@ -134,7 +134,7 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
                 'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         test_cube = Cube(parm)
-        actualResult = test_cube._isFlippedEdgePhaseOne()
+        actualResult = test_cube._isFlippedTopEdgePhaseOne()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult) 
 

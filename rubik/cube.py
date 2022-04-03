@@ -215,7 +215,7 @@ class Cube:
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
         edge = 1
-        while self._isFlippedEdgePhaseOne():
+        while self._isFlippedTopEdgePhaseOne():
             for key in keys:
                 face = math.floor(edge / 9)
                 if (self.cube_state[edge] == bottomMid):
@@ -234,7 +234,8 @@ class Cube:
             self._rotate()
         return solutionString
             
-    def _isFlippedEdgePhaseOne(self):
+    def _isFlippedTopEdgePhaseOne(self):
+        # 1, 10, 19, 28 are the top edge locations on each side face
         bottomMid = self.cube_state[49]
         if (self.cube_state[1] == bottomMid or
             self.cube_state[10] == bottomMid or
