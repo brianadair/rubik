@@ -6,7 +6,6 @@
 import rubik.check as check
 import random
 import math
-from _ast import Or
 
 class Cube:
     '''
@@ -229,7 +228,15 @@ class Cube:
             
         return solutionString
             
-
+    def _isFlippedEdgePhaseOne(self):
+        bottomMid = self.cube_state[49]
+        if (self.cube_state[1] == bottomMid or
+            self.cube_state[10] == bottomMid or
+            self.cube_state[19] == bottomMid or
+            self.cube_state[28] == bottomMid):
+            return True
+        else:
+            return False
 # import line + 1
 #END NEW CODE
 
