@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         result = test_cube._flipTopLayerEdges()
         #expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
-        expectedResult = 'fUlfUl'
+        expectedResult = 'fUl'
         self.assertEquals(result, expectedResult)
         
     def test_062_ShouldReturnTrueOnTopEdgeToBeFlipped(self):
