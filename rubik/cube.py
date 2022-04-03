@@ -132,7 +132,8 @@ class Cube:
     def _solveTopDaisySolution(self):
         #1 middle layer
         bottomMid = self.cube_state[49]
-        solutionString = ""
+        #solutionString = ""
+        solutionString = self._flipTopLayerEdges()
         for k in self.face_map.keys():
             if k == 'U' or k == 'D':
                 pass
