@@ -114,9 +114,9 @@ class Test(unittest.TestCase):
                 'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
-        #print(result)
+        print(result)
         cube = test_cube.getCube()
-        #print(cube)
+        print(cube)
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
@@ -152,9 +152,9 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._daisyBottomLayer()
         cube = test_cube.getCube()
-        print(actualResult)
-        print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
-        print(cube)
+        #print(actualResult)
+        #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
+        #print(cube)
         expectedResult = ""
         self.assertEquals(actualResult, expectedResult)                
 

@@ -136,7 +136,8 @@ class Cube:
         solutionString = self._flipTopLayerEdges()
         solutionString = solutionString + self._daisyMiddleLayer()
         #solutionString = self._flipBottomLayerEdges() #untested
-        #solutionString = solutionString + self._daisyBottomLayer()
+        solutionString = solutionString + self._daisyBottomLayer()
+        solutionString = solutionString + self._flipTopLayerEdges()
         #2 bottom layer
         return solutionString
     
