@@ -120,6 +120,15 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
+    
+    def test_061_ShouldFlipUpperEdgesPhaseOne(self):
+        parm = {'op': 'solve',
+                'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb',
+                'rotate': 'Rf'}
+        test_cube = Cube(parm)
+        result = test_cube._flipTopLayerEdges()
+        expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
+        self.assertEquals(result, expectedResult)
 
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
