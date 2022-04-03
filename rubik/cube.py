@@ -5,6 +5,7 @@
 '''
 import rubik.check as check
 import random
+import math
 from _ast import Or
 
 class Cube:
@@ -128,7 +129,7 @@ class Cube:
         # Middle color 
         if (self._isValidCube()):
             return self.cube_state[40]
-    
+# NEW CODE A5
     def _solveTopDaisySolution(self):
         #1 middle layer
         bottomMid = self.cube_state[49]
@@ -207,7 +208,32 @@ class Cube:
                         self._rotate()
         #2 bottom layer
         return solutionString
-    
+
+    def _flipTopLayerEdges(self):
+        solutionString = ""
+        bottomMid = self.cube_state[49]
+        keys = list(self.face_map.keys());
+        edge = 1
+        for key in keys:
+            face = math.floor(edge / 9)
+            print(f"{edge}: {face}")
+            if (self.cube_state[edge] == bottomMid):
+                #face = math.floor(edge / 9) - 1
+                left = face - 1
+                if left < 0:
+                    left = abs(face - 3)
+                solutionString = solutionString + keys[face].lower()
+                solutionString = solutionString + 'U'
+                solutionString = solutionString + keys[left].lower()
+                break
+            edge = edge + 9 #refactor with var
+            
+        return solutionString
+            
+
+# import line + 1
+#END NEW CODE
+
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
         if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
