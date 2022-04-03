@@ -137,6 +137,14 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isFlippedTopEdgePhaseOne()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult) 
+        
+    def test_062_ShouldReturnTrueOnBottomEdgeToBeFlipped(self):
+        parm = {'op': 'solve',
+                'cube': 'rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb'} 
+        test_cube = Cube(parm)
+        actualResult = test_cube._isFlippedBottomEdgePhaseOne()
+        expectedResult = None
+        self.assertEquals(actualResult, expectedResult)        
 
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

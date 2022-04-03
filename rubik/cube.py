@@ -134,11 +134,13 @@ class Cube:
         bottomMid = self.cube_state[49]
         #solutionString = ""
         solutionString = self._flipTopLayerEdges()
-        solutionString = solutionString + self._daisyMiddleRotations()
+        solutionString = solutionString + self._daisyMiddleLayer()
+        solutionString = self._flipBottomLayerEdges()
+        #solutionString = solutionString + self._daisyBottomLayer()
         #2 bottom layer
         return solutionString
     
-    def _daisyMiddleRotations(self):
+    def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""        
         for k in self.face_map.keys():
@@ -239,7 +241,32 @@ class Cube:
             self.operation = solutionStringBuilder
             self._rotate()
         return solutionString
-            
+    
+    def _flipBottomLayerEdges(self):
+        solutionString = ""
+        solutionStringBuilder = ""
+        bottomMid = self.cube_state[49]
+        keys = list(self.face_map.keys());
+        edge = 1
+        while self._isFlippedTopEdgePhaseOne():
+            for key in keys:
+                face = math.floor(edge / 9)
+                if (self.cube_state[edge] == bottomMid):
+                    #face = math.floor(edge / 9) - 1
+                    left = face - 1
+                    if left < 0:
+                        left = abs(face - 3)
+                        solutionStringBuilder = ""
+                        solutionStringBuilder = solutionStringBuilder + keys[face].lower()
+                        solutionStringBuilder = solutionStringBuilder + 'U'
+                        solutionStringBuilder = solutionStringBuilder + keys[left].lower()
+                        solutionString = solutionString + solutionStringBuilder
+                        break
+                edge = edge + 9 #refactor with var
+            self.operation = solutionStringBuilder
+            self._rotate()
+        return solutionString  
+              
     def _isFlippedTopEdgePhaseOne(self):
         # 1, 10, 19, 28 are the top edge locations on each side face
         bottomMid = self.cube_state[49]
@@ -250,6 +277,16 @@ class Cube:
             return True
         else:
             return False
+        
+    def _isFlippedBottomEdgePhaseOne(self):
+        # 46, 48, 50, 52 are the bottom edge locations with potential bottom color
+        bottomMid = self.cube_state[49]
+        result = False
+        for r in range(46,53,2):
+            if (self.cube_state[r] == bottomMid):
+                result = True
+        return result
+    
 # import line + 1
 #END NEW CODE
 
