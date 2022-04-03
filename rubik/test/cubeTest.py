@@ -153,6 +153,7 @@ class Test(unittest.TestCase):
         actualResult = test_cube._daisyBottomLayer()
         cube = test_cube.getCube()
         print(actualResult)
+        print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
         print(cube)
         expectedResult = ""
         self.assertEquals(actualResult, expectedResult)                
