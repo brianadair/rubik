@@ -216,7 +216,6 @@ class Cube:
         edge = 1
         for key in keys:
             face = math.floor(edge / 9)
-            print(f"{edge}: {face}")
             if (self.cube_state[edge] == bottomMid):
                 #face = math.floor(edge / 9) - 1
                 left = face - 1

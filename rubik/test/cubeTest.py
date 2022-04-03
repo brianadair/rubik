@@ -11,7 +11,6 @@
 
 import unittest
 from rubik.cube import Cube
-from pickle import NONE
 
 
 class Test(unittest.TestCase):
@@ -127,6 +126,14 @@ class Test(unittest.TestCase):
         #expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
         expectedResult = 'fUl'
         self.assertEquals(result, expectedResult)
+        
+    def test_062_ShouldReturnTrueOnTopEdgeToBeFlipped(self):
+        parm = {'op': 'solve',
+                'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._isFlippedEdgePhaseOne()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult) 
 
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
