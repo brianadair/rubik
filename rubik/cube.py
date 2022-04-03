@@ -271,7 +271,7 @@ class Cube:
         while self._isFlippedTopEdgePhaseOne():
             for key in keys:
                 face = math.floor(edge / 9)
-                if (self.cube_state[edge] == bottomMid):
+                if (self.cube_state[edge-1] == bottomMid):
                     #face = math.floor(edge / 9) - 1
                     left = face - 1
                     if left < 0:
