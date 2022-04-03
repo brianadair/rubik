@@ -210,6 +210,7 @@ class Cube:
 
     def _flipTopLayerEdges(self):
         solutionString = ""
+        solutionStringBuilder = ""
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
         edge = 1
@@ -221,12 +222,15 @@ class Cube:
                     left = face - 1
                     if left < 0:
                         left = abs(face - 3)
-                        solutionString = solutionString + keys[face].lower()
-                        solutionString = solutionString + 'U'
-                        solutionString = solutionString + keys[left].lower()
+                        solutionStringBuilder = ""
+                        solutionStringBuilder = solutionStringBuilder + keys[face].lower()
+                        solutionStringBuilder = solutionStringBuilder + 'U'
+                        solutionStringBuilder = solutionStringBuilder + keys[left].lower()
+                        solutionString = solutionString + solutionStringBuilder
                         break
-                    edge = edge + 9 #refactor with var
-            
+                edge = edge + 9 #refactor with var
+            self.operation = solutionStringBuilder
+            self._rotate()
         return solutionString
             
     def _isFlippedEdgePhaseOne(self):
