@@ -135,7 +135,7 @@ class Cube:
         #solutionString = ""
         solutionString = self._flipTopLayerEdges()
         solutionString = solutionString + self._daisyMiddleLayer()
-        solutionString = self._flipBottomLayerEdges()
+        #solutionString = self._flipBottomLayerEdges() #untested
         #solutionString = solutionString + self._daisyBottomLayer()
         #2 bottom layer
         return solutionString
@@ -218,10 +218,40 @@ class Cube:
         return solutionString
     
     def _daisyBottomLayer(self):
-        pass
         solutionString = ""
         solutionStringBuilder = ""
-        bottomMid = self.cube_state[49]        
+        bottomMid = self.cube_state[49]
+        
+        for k in list(self.face_map.keys()):
+            if k == 'F':
+                if (self.cube_state[7] == bottomMid or self.cube_state[46] == bottomMid):
+                    while (self.cube_state[43] == bottomMid):
+                        solutionString = solutionString + "u"
+                        self.operation = 'u'
+                        self._rotate()
+                    solutionString = solutionString + 'FF'   
+            elif k == 'R':
+                if (self.cube_state[16] == bottomMid or self.cube_state[48] == bottomMid):
+                    while (self.cube_state[41] == bottomMid):
+                        solutionString = solutionString + "u"
+                        self.operation = 'u'
+                        self._rotate()
+                    solutionString = solutionString + 'RR' 
+            elif k == 'B':
+                if (self.cube_state[25] == bottomMid or self.cube_state[50] == bottomMid):
+                    while (self.cube_state[37] == bottomMid):
+                        solutionString = solutionString + "u"
+                        self.operation = 'u'
+                        self._rotate()
+                    solutionString = solutionString + 'BB' 
+            elif k == 'L':
+                if (self.cube_state[34] == bottomMid or self.cube_state[52] == bottomMid):
+                    while (self.cube_state[39] == bottomMid):
+                        solutionString = solutionString + "u"
+                        self.operation = 'u'
+                        self._rotate()
+                    solutionString = solutionString + 'LL' 
+        return solutionString
 
     def _flipTopLayerEdges(self):
         solutionString = ""

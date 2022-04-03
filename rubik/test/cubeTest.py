@@ -150,7 +150,7 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
                 'cube': 'rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb'}
         test_cube = Cube(parm)
-        actualResult = test_cube._daisyMiddleLayer()
+        actualResult = test_cube._daisyBottomLayer()
         expectedResult = ""
         self.assertEquals(actualResult, expectedResult)                
 
