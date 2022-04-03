@@ -113,7 +113,9 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
+        print(result)
         cube = test_cube.getCube()
+        print(cube)
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
