@@ -216,6 +216,12 @@ class Cube:
                         self.operation = 'F'
                         self._rotate()
         return solutionString
+    
+    def _daisyBottomLayer(self):
+        pass
+        solutionString = ""
+        solutionStringBuilder = ""
+        bottomMid = self.cube_state[49]        
 
     def _flipTopLayerEdges(self):
         solutionString = ""
