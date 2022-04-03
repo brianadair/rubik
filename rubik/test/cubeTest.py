@@ -110,7 +110,8 @@ class Test(unittest.TestCase):
         
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
-                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+        #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
+                'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
         print(result)
