@@ -125,7 +125,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         result = test_cube._flipTopLayerEdges()
         #expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
-        expectedResult = 'rUf'
+        expectedResult = 'fUl'
         self.assertEquals(result, expectedResult)
 
     def test_101_ShouldReturnTopMiddleColor(self):
