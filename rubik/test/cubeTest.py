@@ -114,9 +114,9 @@ class Test(unittest.TestCase):
                 'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
-        print(result)
+        #print(result)
         cube = test_cube.getCube()
-        print(cube)
+        #print(cube)
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
@@ -138,7 +138,7 @@ class Test(unittest.TestCase):
         expectedResult = True
         self.assertEquals(actualResult, expectedResult) 
         
-    def test_062_ShouldReturnTrueOnBottomEdgeToBeFlipped(self):
+    def test_063_ShouldReturnTrueOnBottomEdgeToBeFlipped(self):
         parm = {'op': 'solve',
                 'cube': 'rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb'} 
         test_cube = Cube(parm)
@@ -146,11 +146,14 @@ class Test(unittest.TestCase):
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
     
-    def test_063_ShouldRotateBottomEdgesToTopPhaseOne(self):
+    def test_064_ShouldRotateBottomEdgesToTopPhaseOne(self):
         parm = {'op': 'solve',
                 'cube': 'rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._daisyBottomLayer()
+        cube = test_cube.getCube()
+        print(actualResult)
+        print(cube)
         expectedResult = ""
         self.assertEquals(actualResult, expectedResult)                
 
