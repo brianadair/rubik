@@ -213,18 +213,19 @@ class Cube:
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
         edge = 1
-        for key in keys:
-            face = math.floor(edge / 9)
-            if (self.cube_state[edge] == bottomMid):
-                #face = math.floor(edge / 9) - 1
-                left = face - 1
-                if left < 0:
-                    left = abs(face - 3)
-                solutionString = solutionString + keys[face].lower()
-                solutionString = solutionString + 'U'
-                solutionString = solutionString + keys[left].lower()
-                break
-            edge = edge + 9 #refactor with var
+        while self._isFlippedEdgePhaseOne():
+            for key in keys:
+                face = math.floor(edge / 9)
+                if (self.cube_state[edge] == bottomMid):
+                    #face = math.floor(edge / 9) - 1
+                    left = face - 1
+                    if left < 0:
+                        left = abs(face - 3)
+                        solutionString = solutionString + keys[face].lower()
+                        solutionString = solutionString + 'U'
+                        solutionString = solutionString + keys[left].lower()
+                        break
+                    edge = edge + 9 #refactor with var
             
         return solutionString
             
