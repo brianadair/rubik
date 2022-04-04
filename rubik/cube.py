@@ -134,13 +134,16 @@ class Cube:
         bottomMid = self.cube_state[49]
         #solutionString = ""
         solutionString = self._flipTopLayerEdges()
+        print(f"Cube after frist top flip: {self.cube_state}")
         
         solutionString = solutionString + self._daisyMiddleLayer()
-
+        print(f"Cube after middle layer: {self.cube_state}")
+        
         #solutionString = self._flipBottomLayerEdges() #untested
         
         solutionString = solutionString + self._daisyBottomLayer()
-
+        print(f"Cube after bottom layer: {self.cube_state}")
+        
         solutionString = solutionString + self._flipTopLayerEdges()
         print(f"Cube after last flip: {self.cube_state}")
 
@@ -382,7 +385,7 @@ class Cube:
         
         self.operation = ops
         self._rotate()
-        return ops
+        return self.cube_state
                 
     def _tryNeural(self):
         origCube = self.cube_state
