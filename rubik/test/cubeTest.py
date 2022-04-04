@@ -123,8 +123,8 @@ class Test(unittest.TestCase):
     
     def test_061_ShouldFlipUpperEdgesPhaseOne(self):
         parm = {'op': 'solve',
-                #'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
-                'cube': 'ggbggbbbrwwworgwrgybyobyrowrroroyrgobwgwyoywoyygrwbbyo'}
+                'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
+                #'cube': 'ggbggbbbrwwworgwrgybyobyrowrroroyrgobwgwyoywoyygrwbbyo'}
         test_cube = Cube(parm)
         result = test_cube._flipTopLayerEdges()
         #expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
