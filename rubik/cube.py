@@ -144,7 +144,7 @@ class Cube:
         if self._isFlippedTopEdgePhaseOne():
             print("We still have top edges to flip after middle layer")
         solutionString = solutionString + self._flipTopLayerEdges()
-        print(f"Cube after middle flip: {self.cube_state} ({solutionString})")
+        #print(f"Cube after middle flip: {self.cube_state} ({solutionString})")
         #solutionString = self._flipBottomLayerEdges() #untested
         
         solutionString = solutionString + self._daisyBottomLayer()
