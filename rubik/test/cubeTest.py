@@ -187,7 +187,7 @@ class Test(unittest.TestCase):
                 'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
         test_cube = Cube(parm)
         actualResult = test_cube._solveDownCrossSolution()
-        expectedResult = 'Success'
+        expectedResult = 'UUUFFUURRUBBLL'
         self.assertEquals(actualResult, expectedResult)                        
 
     def test_090_ShouldReturnTrueOnBottomCross(self):
@@ -195,7 +195,7 @@ class Test(unittest.TestCase):
                 'cube': 'yoroggogrbgrrrrgrogbrybowbywroyobgowbywbyybgygwywwwowb'} 
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCross()
-        expectedResult = False
+        expectedResult = True
         self.assertEquals(actualResult, expectedResult)
          
     def test_101_ShouldReturnTopMiddleColor(self):
