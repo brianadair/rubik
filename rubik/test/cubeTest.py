@@ -198,7 +198,7 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isValidCube()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
-        self.assertEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
+        self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
