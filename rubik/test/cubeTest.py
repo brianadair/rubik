@@ -108,7 +108,7 @@ class Test(unittest.TestCase):
         expectedResult = 'ggggggrrrrrrrrrbbbbbbbbbooooooooogggwwwwwwwwwyyyyyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
     
-    @unittest.skip("Fixing error in top flip")    
+    #@unittest.skip("Fixing error in top flip")    
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
@@ -166,7 +166,7 @@ class Test(unittest.TestCase):
         expectedResult = 'ruruubuuL'
         self.assertEquals(actualResult, expectedResult)      
     
-    @unittest.skip("Fixing bottom code")
+    #@unittest.skip("Fixing bottom code")
     def test_065_ShouldRotateBottomEdgesToTopPhaseOne(self):
         parm = {'op': 'solve',
                 'cube': 'rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb'}
@@ -193,7 +193,7 @@ class Test(unittest.TestCase):
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'
                 }
         test_cube = Cube(parm)
-        test_cube._tryNeuralFive()
+        test_cube._tryNeural()
         actualResult = test_cube._isBottomCross()
         print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
         expectedResult = True
