@@ -211,7 +211,7 @@ class Test(unittest.TestCase):
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
         test_cube = Cube(parm)
-        for r in range(1,20):
+        for r in range(1,200):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
             print(f"Test Cube {r}: {test_cube.getCube()} initialized")
