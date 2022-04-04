@@ -177,22 +177,22 @@ class Cube:
                 edge = (increment * r) + beginEdge
                 mid = (increment * r) + beginMiddle
                 top = topSequence[r]
-                print(f"Face {keys[r]} of cube {self.cube_state}")
-                print(f"Comparing edge {edge}: {self.cube_state[edge]} and mid {mid}: {self.cube_state[mid]}")
-                print(f"Top edge is {self.cube_state[top]}")
+                #print(f"Face {keys[r]} of cube {self.cube_state}")
+                #print(f"Comparing edge {edge}: {self.cube_state[edge]} and mid {mid}: {self.cube_state[mid]}")
+                #print(f"Top edge is {self.cube_state[top]}")
                 while self.cube_state[edge] != self.cube_state[mid] or self.cube_state[top] != bottomMid:
-                    print("Need to rotate, not a proper move")
+                    #print("Need to rotate, not a proper move")
                     solutionStringBuilder = solutionStringBuilder + 'U'
                     self.operation = 'U'
                     self._rotate()
                 solutionStringBuilder = solutionStringBuilder + keys[r] + keys[r]
-                print(f"Builder for this face is {solutionStringBuilder}")
+                #print(f"Builder for this face is {solutionStringBuilder}")
                 self.operation = "" + keys[r] + keys[r]
                 self._rotate()
                 solutionString = solutionString + solutionStringBuilder
-                print(f"Solution is now {solutionString}")
-        print(f"Cube after down cross: {self.cube_state}")
-        print(f"Final solution: {solutionString}")
+                #print(f"Solution is now {solutionString}")
+        #print(f"Cube after down cross: {self.cube_state}")
+        #print(f"Final solution: {solutionString}")
         return solutionString
             
     def _daisyMiddleLayer(self):
