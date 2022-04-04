@@ -151,17 +151,18 @@ class Cube:
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""        
-        for k in self.face_map.keys():
+        for k in list(self.face_map.keys()):
             if k == 'U' or k == 'D':
                 pass
             else:
                 if k == 'F':
                     if (self.cube_state[3] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[39] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'l'
+                        solutionString = solutionString + solutionStringBuilder + 'l'
                         self.operation = 'l'
                         self._rotate()
                     if (self.cube_state[5] == bottomMid):
