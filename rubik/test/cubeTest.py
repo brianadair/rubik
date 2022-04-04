@@ -216,14 +216,14 @@ class Test(unittest.TestCase):
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
      
-    @unittest.skip("Replaced functions")    
+    @unittest.skip("Only for trying ideas")    
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
-                'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'
+                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
                 }
         test_cube = Cube(parm)
-        test_cube._tryNeural()
-        actualResult = test_cube._isBottomCross()
+        actualResult = test_cube._tryNeuralFive()
+        #actualResult = test_cube._isBottomCross()
         #print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
@@ -239,7 +239,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    @unittest.skip("only use for random testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
@@ -255,7 +255,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
             
-    @unittest.skip("only use for random testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_105_ShouldCreateBottomCrossOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
