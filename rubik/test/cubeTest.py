@@ -108,7 +108,6 @@ class Test(unittest.TestCase):
         expectedResult = 'ggggggrrrrrrrrrbbbbbbbbbooooooooogggwwwwwwwwwyyyyyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
         
-    @unittest.skip('Working on middle layer problems')     
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
