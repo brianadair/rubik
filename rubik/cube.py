@@ -294,12 +294,12 @@ class Cube:
         keys = list(self.face_map.keys());
         edge = 1
         while self._isFlippedTopEdgePhaseOne() and edge < 54:
-            print(f"Cube state: {self.cube_state}")
+            #print(f"Cube state: {self.cube_state}")
             for r in range(0,4):
                 face = math.floor(edge / 9)
                 #print(f"Edge is {edge}, face is {face}, r is {r}, cube is {self.cube_state}")
                 if (self.cube_state[edge] == bottomMid):
-                    print(f"Edge match at {edge}, face {face}")
+                    #print(f"Edge match at {edge}, face {face}")
                     #face = math.floor(edge / 9) - 1
                     left = face - 1
                     if left < 0:
@@ -313,7 +313,7 @@ class Cube:
                 edge = edge + 9 #refactor with var
             self.operation = solutionStringBuilder
             self._rotate()
-            print(f"After rotate ({solutionStringBuilder}): {self.cube_state}")
+            #print(f"After rotate ({solutionStringBuilder}): {self.cube_state}")
             edge = 1
         return solutionString
     
