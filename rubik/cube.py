@@ -293,7 +293,7 @@ class Cube:
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
         edge = 1
-        while self._isFlippedTopEdgePhaseOne():
+        while self._isFlippedTopEdgePhaseOne() and edge < 54:
             print(f"Cube state: {self.cube_state}")
             #edge = 1
             for r in range(0,4):
@@ -302,7 +302,7 @@ class Cube:
                 if (self.cube_state[edge] == bottomMid):
                     print(f"Edge match at {edge}, face {face}")
                     #face = math.floor(edge / 9) - 1
-                    left = face - 1
+                    left = face
                     if left < 0:
                         left = abs(face - 3)
                     solutionStringBuilder = ""
