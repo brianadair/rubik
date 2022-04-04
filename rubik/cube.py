@@ -307,6 +307,7 @@ class Cube:
                             print(f"Stuck in {k}")
                             solutionStringBuilder = ""
                             while (self.cube_state[39] == bottomMid):
+                                print("Stuck in nested while")
                                 solutionStringBuilder = solutionStringBuilder + "u"
                                 self.operation = 'u'
                                 self._rotate()
