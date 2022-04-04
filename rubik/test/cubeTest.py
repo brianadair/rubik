@@ -202,6 +202,21 @@ class Test(unittest.TestCase):
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
+        
+    def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
+        parm = {'op': 'solve',
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
+                }
+        test_cube = Cube(parm)
+        for r in range(1,10):
+            test_cube._getRandomScramble()
+            result = test_cube._isValidCube()
+            self.assertEquals(result, True)
+            test_cube._solveTopDaisySolution()
+            result = test_cube._isTopDaisy()
+            print(test_cube.getCube())
+            self.assertEquals(result, True)
+ 
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
