@@ -382,11 +382,10 @@ class Cube:
             return False  
             
     def _getRandomScramble(self):
-        pass
         ops = ""
         for r in range(1,15):
             randAttempt = random.randrange(0,12)
-            opsn = ops + self.valid_operations[randAttempt]
+            ops = ops + self.valid_operations[randAttempt]
         
         self.operation = ops
         self._rotate()
