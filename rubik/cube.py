@@ -271,7 +271,7 @@ class Cube:
                 else:
                     if k == 'F':
                         while (self.cube_state[7] == bottomMid or self.cube_state[46] == bottomMid):
-                            if self._isFlippedTopEdgePhaseOne(self):
+                            if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly F")
                                 return solutionString
                             solutionStringBuilder = ""
@@ -284,7 +284,7 @@ class Cube:
                             self._rotate()   
                     if k == 'R':
                         while (self.cube_state[16] == bottomMid or self.cube_state[50] == bottomMid):
-                            if self._isFlippedTopEdgePhaseOne(self):
+                            if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly R")
                                 return solutionString
                             solutionStringBuilder = ""
@@ -297,7 +297,7 @@ class Cube:
                             self._rotate()  
                     if k == 'B':
                         while (self.cube_state[25] == bottomMid or self.cube_state[52] == bottomMid):
-                            if self._isFlippedTopEdgePhaseOne(self):
+                            if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly B")
                                 return solutionString
                             solutionStringBuilder = ""
@@ -311,7 +311,7 @@ class Cube:
                     if k == 'L':
                         while (self.cube_state[34] == bottomMid or self.cube_state[48] == bottomMid):
                             solutionStringBuilder = ""
-                            if self._isFlippedTopEdgePhaseOne(self):
+                            if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly L")
                                 return solutionString
                             while (self.cube_state[39] == bottomMid):
