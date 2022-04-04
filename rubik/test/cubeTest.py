@@ -207,6 +207,26 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isBottomComplete()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
+    
+    @unittest.skip("Work in progress")    
+    def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
+        parm = {'op': 'solve',
+                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                }
+        test_cube = Cube(parm)
+        solution = test_cube._flipIncorrectBottomCornersToTop()
+        cube = test_cube.cube_state
+        expectedResult = test_cube._isBottomCornerPlacementCorrect()
+        self.assertEquals(actualResult, expectedResult)     
+        
+    def test_093_ShouldReturnTrueOnCorrectBottomCorners(self):
+        parm = {'op': 'solve',
+                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                }
+        test_cube = Cube(parm)
+        actualResult = test_cube._isBottomCornerPlacementCorrect()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult)   
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
