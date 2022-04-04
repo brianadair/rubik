@@ -136,18 +136,18 @@ class Cube:
         print(f"Cube initialized: {self.cube_state}")
         
         solutionString = self._flipTopLayerEdges()
-        print(f"Cube after first top flip: {self.cube_state}")
+        print(f"Cube after first top flip: {self.cube_state} ({solutionString})")
         
         solutionString = solutionString + self._daisyMiddleLayer()
-        print(f"Cube after middle layer: {self.cube_state}")
+        print(f"Cube after middle layer: {self.cube_state} ({solutionString})")
         
         #solutionString = self._flipBottomLayerEdges() #untested
         
         solutionString = solutionString + self._daisyBottomLayer()
-        print(f"Cube after bottom layer: {self.cube_state}")
+        print(f"Cube after bottom layer: {self.cube_state} ({solutionString})")
         
         solutionString = solutionString + self._flipTopLayerEdges()
-        print(f"Cube after last flip: {self.cube_state}")
+        print(f"Cube after last flip: {self.cube_state} ({solutionString})")
 
         #2 bottom layer
         return solutionString
