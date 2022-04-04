@@ -186,7 +186,7 @@ class Test(unittest.TestCase):
                 'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
         test_cube = Cube(parm)
         actualResult = test_cube._solveDownCrossSolution()
-        expectedResult = ''
+        expectedResult = 'Success'
         self.assertEquals(actualResult, expectedResult)                        
 
     def test_101_ShouldReturnTopMiddleColor(self):

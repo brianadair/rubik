@@ -162,9 +162,27 @@ class Cube:
         return solutionString
 
     def _solveDownCrossSolution(self):
+        solutionString = ""
+        solutionStringBuilder = ""
+        bottomMid = self.cube_state[49]
+        keys = list(self.face_map.keys());
+        increment = 9
+        beginEdge = 1
+        beginMiddle = 4 
+        
         if self._isTopDaisy():
-            return 'Success'
-    
+            for r in range(0,4):
+                solutionStringBuilder = ""
+                edge = (increment * r) + beginEdge
+                mid = (increment * r) + beginMiddle
+                while self.cube_state[edge] != self.cube_state[mid]:
+                    solutionStringBuilder = solutionStringBuilder + 'U'
+                    self.operation = 'U'
+                    self._rotate()
+                solutionString = solutionString + solutionStringBuilder
+        print(f"Cube after down cross: {self.cube_state}")
+        return solutionString
+            
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""    
