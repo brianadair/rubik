@@ -174,7 +174,7 @@ class Test(unittest.TestCase):
         cube = test_cube.getCube()
         #print(actualResult)
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
-        print(cube)
+        #print(cube)
         #expectedResult = "FFuBB"
         expectedResult = 'FFfUluuBB'
         self.assertEquals(actualResult, expectedResult)                
@@ -208,7 +208,7 @@ class Test(unittest.TestCase):
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
-    @unittest.skip("Flip code not working")    
+
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
