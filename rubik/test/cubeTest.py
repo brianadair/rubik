@@ -194,7 +194,7 @@ class Test(unittest.TestCase):
                 }
         test_cube = Cube(parm)
         cube = test_cube._getRandomScramble()
-        actualResult = test_cube.isValidCube()
+        actualResult = test_cube._isValidCube()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
         self.assertEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
