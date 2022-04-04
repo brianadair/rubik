@@ -194,7 +194,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         test_cube._tryNeuralFive()
         actualResult = test_cube._isBottomCross()
-        print(f"Solved bottom: {test_cube.getCube()}")
+        print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
 
