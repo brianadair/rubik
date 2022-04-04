@@ -150,7 +150,8 @@ class Test(unittest.TestCase):
     
     def test_064_ShouldRotateMiddleEdgesToTopPhaseOne(self):
         parm = {'op': 'solve',
-                'cube': 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'}
+                #'cube': 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'}
+                'cube': 'grrbgwbwwyrrrrgbbbgggobywyyygwoooobyowwyygoygroorwwbbr'}
         test_cube = Cube(parm)
         actualResult = test_cube._daisyMiddleLayer()
         cube = test_cube.getCube()
