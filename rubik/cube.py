@@ -270,7 +270,6 @@ class Cube:
         bottomMid = self.cube_state[49]
         
         while self._hasBottomLayerPhaseOne():
-            print(f"Cube has bottoms to fix {self.cube_state}")
             for k in list(self.face_map.keys()):
                 if k == 'U' or k == 'D':
                     pass
