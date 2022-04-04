@@ -133,11 +133,17 @@ class Cube:
         #1 middle layer
         bottomMid = self.cube_state[49]
         #solutionString = ""
+        print("Top layer")
         solutionString = self._flipTopLayerEdges()
+        
+        print("Middle Layer")
         solutionString = solutionString + self._daisyMiddleLayer()
         #solutionString = self._flipBottomLayerEdges() #untested
+        
+        print("Bottom Layer")
         solutionString = solutionString + self._daisyBottomLayer()
-        print(f"Cube is {self.cube_state}")
+        
+        print("Last top flip")
         solutionString = solutionString + self._flipTopLayerEdges()
         #2 bottom layer
         return solutionString
