@@ -305,12 +305,12 @@ class Cube:
                     left = face - 1
                     if left < 0:
                         left = abs(face - 3)
-                        solutionStringBuilder = ""
-                        solutionStringBuilder = solutionStringBuilder + keys[face].lower()
-                        solutionStringBuilder = solutionStringBuilder + 'U'
-                        solutionStringBuilder = solutionStringBuilder + keys[left].lower()
-                        solutionString = solutionString + solutionStringBuilder
-                        break
+                    solutionStringBuilder = ""
+                    solutionStringBuilder = solutionStringBuilder + keys[face].lower()
+                    solutionStringBuilder = solutionStringBuilder + 'U'
+                    solutionStringBuilder = solutionStringBuilder + keys[left].lower()
+                    solutionString = solutionString + solutionStringBuilder
+                    break
                 edge = edge + 9 #refactor with var
             self.operation = solutionStringBuilder
             self._rotate()
