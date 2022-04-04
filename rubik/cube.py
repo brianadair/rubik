@@ -6,6 +6,7 @@
 import rubik.check as check
 import random
 import math
+from _ast import Or
 
 class Cube:
     '''
@@ -154,88 +155,104 @@ class Cube:
     
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
-        solutionString = ""        
-        for k in list(self.face_map.keys()):
-            if k == 'U' or k == 'D':
-                pass
-            else:
-                if k == 'F':
-                    while (self.cube_state[3] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[39] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+        solutionString = ""    
+        while _hasMiddleLayerPhaseOne():    
+            for k in list(self.face_map.keys()):
+                if k == 'U' or k == 'D':
+                    pass
+                else:
+                    if k == 'F':
+                        while (self.cube_state[3] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[39] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'l'
+                            self.operation = 'l'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'l'
-                        self.operation = 'l'
-                        self._rotate()
-                    while (self.cube_state[5] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[41] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                        while (self.cube_state[5] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[41] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'R'
+                            self.operation = 'R'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'R'
-                        self.operation = 'R'
-                        self._rotate()
-                if k == 'R':
-                    while (self.cube_state[12] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[43] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                    if k == 'R':
+                        while (self.cube_state[12] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[43] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'f'
+                            self.operation = 'f'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'f'
-                        self.operation = 'f'
-                        self._rotate()
-                    while (self.cube_state[14] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[37] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                        while (self.cube_state[14] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[37] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'B'
+                            self.operation = 'B'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'B'
-                        self.operation = 'B'
-                        self._rotate()
-                if k == 'B':
-                    while (self.cube_state[21] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[41] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                    if k == 'B':
+                        while (self.cube_state[21] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[41] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'r'
+                            self.operation = 'r'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'r'
-                        self.operation = 'r'
-                        self._rotate()
-                    while (self.cube_state[23] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[39] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                        while (self.cube_state[23] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[39] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'L'
+                            self.operation = 'L'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'L'
-                        self.operation = 'L'
-                        self._rotate()
-                if k == 'L':
-                    while (self.cube_state[30] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[37] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                    if k == 'L':
+                        while (self.cube_state[30] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[37] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'b'
+                            self.operation = 'B'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'b'
-                        self.operation = 'B'
-                        self._rotate()
-                    while (self.cube_state[32] == bottomMid):
-                        solutionStringBuilder = ""
-                        while (self.cube_state[43] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + "u"
-                            self.operation = 'u'
+                        while (self.cube_state[32] == bottomMid):
+                            solutionStringBuilder = ""
+                            while (self.cube_state[43] == bottomMid):
+                                solutionStringBuilder = solutionStringBuilder + "u"
+                                self.operation = 'u'
+                                self._rotate()
+                            solutionString = solutionString + solutionStringBuilder + 'F'
+                            self.operation = 'F'
                             self._rotate()
-                        solutionString = solutionString + solutionStringBuilder + 'F'
-                        self.operation = 'F'
-                        self._rotate()
         return solutionString
+    
+    def _hasMiddleLayerPhaseOne(self):
+        # 3, 5, 12, 14, 21, 23, 30, 32 are the middle layer locations on each side face
+        bottomMid = self.cube_state[49]
+        if (self.cube_state[3] == bottomMid or
+            self.cube_state[5] == bottomMid or
+            self.cube_state[12] == bottomMid or
+            self.cube_state[14] == bottomMid or
+            self.cube_state[21] == bottomMid or
+            self.cube_state[23] == bottomMid or
+            self.cube_state[30] == bottomMid or
+            self.cube_state[32] == bottomMid):
+            return True
+        else:
+            return False 
     
     def _daisyBottomLayer(self):
         solutionString = ""

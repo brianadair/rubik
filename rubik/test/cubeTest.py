@@ -151,14 +151,16 @@ class Test(unittest.TestCase):
     def test_064_ShouldRotateMiddleEdgesToTopPhaseOne(self):
         parm = {'op': 'solve',
                 #'cube': 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'}
-                'cube': 'grrbgwbwwyrrrrgbbbgggobywyyygwoooobyowwyygoygroorwwbbr'}
+                #'cube': 'grrbgwbwwyrrrrgbbbgggobywyyygwoooobyowwyygoygroorwwbbr'}
+                'cube': 'ygyrgogywrbwyrggrwobywborwogogwobbyorybgyoorbwgrrwwybb'}
         test_cube = Cube(parm)
         actualResult = test_cube._daisyMiddleLayer()
         cube = test_cube.getCube()
         #print(actualResult)
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
         #print(cube)
-        expectedResult = "RuR"
+        #expectedResult = "RuR"
+        expectedResult = 'ruruub'
         self.assertEquals(actualResult, expectedResult)      
     
     def test_065_ShouldRotateBottomEdgesToTopPhaseOne(self):
@@ -208,7 +210,7 @@ class Test(unittest.TestCase):
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
         test_cube = Cube(parm)
-        for r in range(1,100):
+        for r in range(1,20):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
             print(f"Test Cube {r}: {test_cube.getCube()} initialized")
