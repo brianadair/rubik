@@ -142,22 +142,20 @@ class Cube:
         solutionString = solutionString + self._daisyMiddleLayer()
         #print(f"Cube after middle layer: {self.cube_state} ({solutionString})")
         if self._isFlippedTopEdgePhaseOne():
-            print("We still have top edges to flip after middle layer")
-        solutionString = solutionString + self._flipTopLayerEdges()
+            solutionString = solutionString + self._flipTopLayerEdges()
         #print(f"Cube after middle flip: {self.cube_state} ({solutionString})")
         #solutionString = self._flipBottomLayerEdges() #untested
         
         solutionString = solutionString + self._daisyBottomLayer()
         #print(f"Cube after bottom layer: {self.cube_state} ({solutionString})")
+        if self._isFlippedTopEdgePhaseOne():
+            solutionString = solutionString + self._flipTopLayerEdges()
         
         if self._hasMiddleLayerPhaseOne():
-            print("We still have middle locations to move")
             solutionString = solutionString + self._daisyMiddleLayer()
             
         if self._isFlippedTopEdgePhaseOne():
-            print("We still have top edges to flip after bottom layer")
-
-        solutionString = solutionString + self._flipTopLayerEdges()
+            solutionString = solutionString + self._flipTopLayerEdges()
         #print(f"Cube after last flip: {self.cube_state} ({solutionString})")
 
         #2 bottom layer
