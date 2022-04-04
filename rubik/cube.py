@@ -7,6 +7,7 @@ import rubik.check as check
 import random
 import math
 from _ast import Or
+from pickle import FALSE
 
 class Cube:
     '''
@@ -445,7 +446,24 @@ class Cube:
             if (self.cube_state[r] == bottomMid):
                 result = True
         return result
-    
+
+    def _isBottomCross(self):
+        bottomMid = self.cube_state[49]
+        if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
+            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid and 
+            self.cube_state[4] == self.cube_state[7] and self.cube_state[13] == self.cube_state[16] and
+            self.cube_state[22] == self.cube_state[25] and self.cube_state[31] == self.cube_state[34]):
+            return True
+        else:
+            return False  
+        
+    def _isBottomComplete(self):
+        bottomMid = self.cube_state[49]
+        for r in range(45,54):
+            if self.cube_state[r] != bottomMid:
+                return False
+        return True
+                
 # import line + 1
 #END NEW CODE
 
@@ -456,16 +474,6 @@ class Cube:
             return True
         else:
             return False      
-        
-    def _isBottomCross(self):
-        bottomMid = self.cube_state[49]
-        if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
-            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid and 
-            self.cube_state[4] == self.cube_state[7] and self.cube_state[13] == self.cube_state[16] and
-            self.cube_state[22] == self.cube_state[25] and self.cube_state[31] == self.cube_state[34]):
-            return True
-        else:
-            return False  
             
     def _getRandomScramble(self):
         ops = ""
