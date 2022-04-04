@@ -273,7 +273,7 @@ class Cube:
             print(f"Cube state: {self.cube_state}")
             for r in range(0,4):
                 face = math.floor(edge / 9)
-                print(f"Edge is {edge}, face is {face}, cube is {self.cube_state}")
+                print(f"Edge is {edge}, face is {face}, r is {r}, cube is {self.cube_state}")
                 if (self.cube_state[edge] == bottomMid):
                     print(f"Edge match at {edge}, face {face}")
                     #face = math.floor(edge / 9) - 1
