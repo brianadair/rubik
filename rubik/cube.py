@@ -15,6 +15,11 @@ class Cube:
     '''
     valid_operations = 'FfRrBbLlUuDd'
     
+    faceCorners = [1,3,7,9]
+    faceEdges = [2,4,6,8]
+    midIncrement = 4
+    faceIncrement = 9
+    
     face_map = {
         'F': [1,2,3,4,5,6,7,8,9],
         'R': [10,11,12,13,14,15,16,17,18],
@@ -22,6 +27,57 @@ class Cube:
         'L': [28,29,30,31,32,33,34,35,36],
         'U': [37,38,39,40,41,42,43,44,45],
         'D': [46,47,48,49,50,51,52,53,54]
+    }
+    
+    faceAdjMap = {
+        'F': {0: [29,42],
+              1: [43],
+              2: [9,44],
+              3: [32],
+              5: [12],
+              6: [35,45],
+              7: [46],
+              8: [15,47]},    
+        'R': {9: [2,44],
+              10: [41],
+              11: [18,38],
+              12: [5],
+              14: [21],
+              15: [8,47],
+              16: [50],
+              17: [24,53]},   
+        'B': {18: [11,38],
+              19: [37],
+              20: [27,36],
+              21: [14],
+              23: [30],
+              24: [17,53],
+              25: [52],
+              26: [33,51]},   
+        'L': {27: [20,36],
+              28: [39],
+              29: [0,42],
+              30: [23],
+              32: [3],
+              33: [26,51],
+              34: [48],
+              35: [6,45]},    
+        'U': {36: [20,27],
+              37: [19],
+              38: [11,18],
+              39: [28],
+              41: [10],
+              42: [0,29],
+              43: [1],
+              44: [2,9]},    
+        'D': {45: [6, 35],
+              46: [7],
+              47: [8,15],
+              48: [34],
+              50: [16],
+              51: [26,33],
+              52: [25],
+              53: [17,24]}
     }
     
     rotation_map = {
@@ -463,7 +519,32 @@ class Cube:
             if self.cube_state[r] != bottomMid:
                 return False
         return True
-                
+    
+    def _isBottomCornerPlacementCorrect(self):
+        turnOrder = ['L','F','R','B']
+        bottomMid = self.cube_state[49]
+        bottomFace = self.face_map.get('D')         # real numbered
+        bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
+        faceAssoc = list(self.bottomAdjDict.keys())
+        count = 1
+
+        for sqr in bottomFace: # real numbers of bottom face
+            if count in self.faceCorners:   # is this square a corner
+                if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
+                    sqrAdjList = bottomAdjDict.get(sqr - 1)
+                    for adj in sqrAdjList:  # real array nums
+                        face = math.floor(adj / 9)     #determine face that sqr belongs to
+                        faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
+                        if self.cube_state[faceMid] != self.cube_state[sqr-1]:
+                            return False #compare two colors
+            count = count + 1
+        return True
+    
+    def _getMiddleColor(self, facePosition):
+        face = math.floor(facePosition / self.faceIncrement)
+        faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
+        return self.cube_state[faceMid]
+    
 # import line + 1
 #END NEW CODE
 
