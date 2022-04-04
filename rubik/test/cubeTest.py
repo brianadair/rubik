@@ -107,7 +107,8 @@ class Test(unittest.TestCase):
         actualResult = test_cube._rotate()
         expectedResult = 'ggggggrrrrrrrrrbbbbbbbbbooooooooogggwwwwwwwwwyyyyyyyyy'
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
-    @unittest.skip("Fixing error in top flip")    
+    
+    #@unittest.skip("Fixing error in top flip")    
     def test_060_ShouldReturnTopDaisySolutionSequence(self):
         parm = {'op': 'solve',
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
