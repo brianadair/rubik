@@ -223,7 +223,7 @@ class Test(unittest.TestCase):
             self.assertEquals(result, True)
             test_cube._solveTopDaisySolution()
             result = test_cube._isTopDaisy()
-            print(f"Test Cube {r}: {result} {test_cube.getCube()} Result")
+            print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
  
   

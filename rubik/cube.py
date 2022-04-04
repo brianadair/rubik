@@ -315,7 +315,6 @@ class Cube:
                                 print("Flipped edge anomaly L")
                                 solutionStringBuilder = solutionStringBuilder + self._flipTopLayerEdges()
                             while (self.cube_state[39] == bottomMid):
-                                print("Stuck in nested while")
                                 solutionStringBuilder = solutionStringBuilder + "u"
                                 self.operation = 'u'
                                 self._rotate()
