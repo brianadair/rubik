@@ -179,6 +179,9 @@ class Cube:
                     solutionStringBuilder = solutionStringBuilder + 'U'
                     self.operation = 'U'
                     self._rotate()
+                solutionStringBuilder = solutionStringBuilder + keys[r] + keys[r]
+                self.operation = "" + keys[r] + keys[r]
+                self.rotate()
                 solutionString = solutionString + solutionStringBuilder
         print(f"Cube after down cross: {self.cube_state}")
         return solutionString
