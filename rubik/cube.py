@@ -282,10 +282,10 @@ class Cube:
         solutionStringBuilder = ""
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
-        #edge = 1
+        edge = 1
         while self._isFlippedTopEdgePhaseOne():
             print(f"Cube state: {self.cube_state}")
-            edge = 1
+            #edge = 1
             for r in range(0,4):
                 face = math.floor(edge / 9)
                 #print(f"Edge is {edge}, face is {face}, r is {r}, cube is {self.cube_state}")
