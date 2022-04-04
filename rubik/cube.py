@@ -166,6 +166,7 @@ class Cube:
         solutionStringBuilder = ""
         bottomMid = self.cube_state[49]
         keys = list(self.face_map.keys());
+        topSequence = [43, 41, 37, 39]
         increment = 9
         beginEdge = 1
         beginMiddle = 4 
@@ -175,9 +176,10 @@ class Cube:
                 solutionStringBuilder = ""
                 edge = (increment * r) + beginEdge
                 mid = (increment * r) + beginMiddle
+                top = topSequence[r]
                 print(f"Face {keys[r]} of cube {self.cube_state}")
                 print(f"Comparing edge {edge}: {self.cube_state[edge]} and mid {mid}: {self.cube_state[mid]}")
-                while self.cube_state[edge] != self.cube_state[mid]:
+                while (self.cube_state[edge] != self.cube_state[mid]) and (self.cube_state[top] != bottomMid):
                     print(f"{self.cube_state[edge]} neq {self.cube_state[mid]}")
                     solutionStringBuilder = solutionStringBuilder + 'U'
                     self.operation = 'U'

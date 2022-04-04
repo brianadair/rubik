@@ -189,7 +189,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._solveDownCrossSolution()
         #expectedResult = 'UUUFFUURRUBBLL'
-        expectedResult = ''
+        expectedResult = 'UFFUURRUBBLL'
         self.assertEquals(actualResult, expectedResult)                        
 
     def test_090_ShouldReturnTrueOnBottomCross(self):
