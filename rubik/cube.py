@@ -172,7 +172,7 @@ class Cube:
                     while (self.cube_state[5] == bottomMid):
                         solutionStringBuilder = ""
                         while (self.cube_state[41] == bottomMid):
-                            solutionStringBuilder = solutionStringBuilder + + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
                         solutionString = solutionString + solutionStringBuilder + 'R'
