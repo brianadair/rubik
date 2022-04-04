@@ -175,15 +175,20 @@ class Cube:
                 solutionStringBuilder = ""
                 edge = (increment * r) + beginEdge
                 mid = (increment * r) + beginMiddle
+                print(f"Face {keys[r]}")
                 while self.cube_state[edge] != self.cube_state[mid]:
+                    print(f"{self.cube_state[edge]} neq {self.cube_state[mid]}")
                     solutionStringBuilder = solutionStringBuilder + 'U'
                     self.operation = 'U'
                     self._rotate()
                 solutionStringBuilder = solutionStringBuilder + keys[r] + keys[r]
+                print(f"Builder for this face is {solutionStringBuilder}")
                 self.operation = "" + keys[r] + keys[r]
                 self._rotate()
                 solutionString = solutionString + solutionStringBuilder
+                print(f"Solution is now {solutionString}")
         print(f"Cube after down cross: {self.cube_state}")
+        print(f"Final solution: {solutionString}")
         return solutionString
             
     def _daisyMiddleLayer(self):
