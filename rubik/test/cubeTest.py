@@ -168,7 +168,7 @@ class Test(unittest.TestCase):
         #print(actualResult)
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
         #print(cube)
-        expectedResult = "FFuuBB"
+        expectedResult = "FFuBB"
         self.assertEquals(actualResult, expectedResult)                
 
     def test_101_ShouldReturnTopMiddleColor(self):
