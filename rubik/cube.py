@@ -271,7 +271,9 @@ class Cube:
                 else:
                     if k == 'F':
                         while (self.cube_state[7] == bottomMid or self.cube_state[46] == bottomMid):
-                            print(f"Stuck in {k}")
+                            if self._isFlippedTopEdgePhaseOne(self):
+                                print("Flipped edge anomaly F")
+                                return solutionString
                             solutionStringBuilder = ""
                             while (self.cube_state[43] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -282,7 +284,9 @@ class Cube:
                             self._rotate()   
                     if k == 'R':
                         while (self.cube_state[16] == bottomMid or self.cube_state[50] == bottomMid):
-                            print(f"Stuck in {k}")
+                            if self._isFlippedTopEdgePhaseOne(self):
+                                print("Flipped edge anomaly R")
+                                return solutionString
                             solutionStringBuilder = ""
                             while (self.cube_state[41] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -293,7 +297,9 @@ class Cube:
                             self._rotate()  
                     if k == 'B':
                         while (self.cube_state[25] == bottomMid or self.cube_state[52] == bottomMid):
-                            print(f"Stuck in {k}")
+                            if self._isFlippedTopEdgePhaseOne(self):
+                                print("Flipped edge anomaly B")
+                                return solutionString
                             solutionStringBuilder = ""
                             while (self.cube_state[37] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -306,7 +312,7 @@ class Cube:
                         while (self.cube_state[34] == bottomMid or self.cube_state[48] == bottomMid):
                             solutionStringBuilder = ""
                             if self._isFlippedTopEdgePhaseOne(self):
-                                print("Flipped edge anomaly")
+                                print("Flipped edge anomaly L")
                                 return solutionString
                             while (self.cube_state[39] == bottomMid):
                                 print("Stuck in nested while")
