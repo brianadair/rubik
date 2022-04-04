@@ -271,6 +271,7 @@ class Cube:
                 else:
                     if k == 'F':
                         while (self.cube_state[7] == bottomMid or self.cube_state[46] == bottomMid):
+                            print(f"Stuck in {k}")
                             solutionStringBuilder = ""
                             while (self.cube_state[43] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -281,6 +282,7 @@ class Cube:
                             self._rotate()   
                     if k == 'R':
                         while (self.cube_state[16] == bottomMid or self.cube_state[50] == bottomMid):
+                            print(f"Stuck in {k}")
                             solutionStringBuilder = ""
                             while (self.cube_state[41] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -291,6 +293,7 @@ class Cube:
                             self._rotate()  
                     if k == 'B':
                         while (self.cube_state[25] == bottomMid or self.cube_state[52] == bottomMid):
+                            print(f"Stuck in {k}")
                             solutionStringBuilder = ""
                             while (self.cube_state[37] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
@@ -301,6 +304,7 @@ class Cube:
                             self._rotate() 
                     if k == 'L':
                         while (self.cube_state[34] == bottomMid or self.cube_state[48] == bottomMid):
+                            print(f"Stuck in {k}")
                             solutionStringBuilder = ""
                             while (self.cube_state[39] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
