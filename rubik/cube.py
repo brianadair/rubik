@@ -273,8 +273,9 @@ class Cube:
             #for key in keys:
             for r in range(0,4):
                 face = math.floor(edge / 9)
-                print(f"Edge is {edge}, face is {face}")
+                #print(f"Edge is {edge}, face is {face}")
                 if (self.cube_state[edge] == bottomMid):
+                    print(f"Edge match at {edge}")
                     #face = math.floor(edge / 9) - 1
                     left = face - 1
                     if left < 0:
