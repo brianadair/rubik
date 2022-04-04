@@ -270,7 +270,7 @@ class Cube:
         keys = list(self.face_map.keys());
         edge = 1
         while self._isFlippedTopEdgePhaseOne():
-            #for key in keys:
+            print(f"Cube state: {self.cube_state}")
             for r in range(0,4):
                 face = math.floor(edge / 9)
                 #print(f"Edge is {edge}, face is {face}")
