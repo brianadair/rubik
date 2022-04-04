@@ -166,62 +166,69 @@ class Cube:
                         self.operation = 'l'
                         self._rotate()
                     if (self.cube_state[5] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[41] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'R'
+                        solutionString = solutionString + solutionStringBuilder + 'R'
                         self.operation = 'R'
                         self._rotate()
                 if k == 'R':
                     if (self.cube_state[12] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[43] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'f'
+                        solutionString = solutionString + solutionStringBuilder + 'f'
                         self.operation = 'f'
                         self._rotate()
                     if (self.cube_state[14] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[37] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'B'
+                        solutionString = solutionString + solutionStringBuilder + 'B'
                         self.operation = 'B'
                         self._rotate()
                 if k == 'B':
                     if (self.cube_state[21] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[41] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'r'
+                        solutionString = solutionString + solutionStringBuilder + 'r'
                         self.operation = 'r'
                         self._rotate()
                     if (self.cube_state[23] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[39] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'L'
+                        solutionString = solutionString + solutionStringBuilder + 'L'
                         self.operation = 'L'
                         self._rotate()
                 if k == 'L':
                     if (self.cube_state[30] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[37] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'b'
+                        solutionString = solutionString + solutionStringBuilder + 'b'
                         self.operation = 'B'
                         self._rotate()
                     if (self.cube_state[32] == bottomMid):
+                        solutionStringBuilder = ""
                         while (self.cube_state[43] == bottomMid):
-                            solutionString = solutionString + "u"
+                            solutionStringBuilder = solutionStringBuilder + "u"
                             self.operation = 'u'
                             self._rotate()
-                        solutionString = solutionString + 'F'
+                        solutionString = solutionString + solutionStringBuilder + 'F'
                         self.operation = 'F'
                         self._rotate()
         return solutionString

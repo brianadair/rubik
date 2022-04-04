@@ -149,14 +149,14 @@ class Test(unittest.TestCase):
     
     def test_064_ShouldRotateMiddleEdgesToTopPhaseOne(self):
         parm = {'op': 'solve',
-                'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
+                'cube': 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._daisyMiddleLayer()
         cube = test_cube.getCube()
         #print(actualResult)
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
         #print(cube)
-        expectedResult = "FFuuLL"
+        expectedResult = "ul"
         self.assertEquals(actualResult, expectedResult)      
     
     def test_065_ShouldRotateBottomEdgesToTopPhaseOne(self):
