@@ -157,7 +157,7 @@ class Test(unittest.TestCase):
         cube = test_cube.getCube()
         #print(actualResult)
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
-        #print(cube)
+        print(cube)
         expectedResult = "ul"
         self.assertEquals(actualResult, expectedResult)      
     
