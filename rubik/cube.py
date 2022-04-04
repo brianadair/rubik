@@ -314,7 +314,7 @@ class Cube:
                 edge = edge + 9 #refactor with var
             self.operation = solutionStringBuilder
             self._rotate()
-            print(f"After rotate: {self.cube_state}")
+            print(f"After rotate ({solutionStringBuilder}): {self.cube_state}")
         return solutionString
     
     def _flipBottomLayerEdges(self):
