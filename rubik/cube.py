@@ -255,7 +255,7 @@ class Cube:
                     solutionString = solutionString + solutionStringBuilder + 'FF'
                     self.operation = 'FF'
                     self._rotate()   
-            elif k == 'R':
+            if k == 'R':
                 if (self.cube_state[16] == bottomMid or self.cube_state[48] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[41] == bottomMid):
@@ -265,7 +265,7 @@ class Cube:
                     solutionString = solutionString + solutionStringBuilder + 'RR'
                     self.operation = 'RR'
                     self._rotate()  
-            elif k == 'B':
+            if k == 'B':
                 if (self.cube_state[25] == bottomMid or self.cube_state[50] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[37] == bottomMid):
@@ -275,7 +275,7 @@ class Cube:
                     solutionString = solutionString + solutionStringBuilder + 'BB'
                     self.operation = 'BB'
                     self._rotate() 
-            elif k == 'L':
+            if k == 'L':
                 if (self.cube_state[34] == bottomMid or self.cube_state[52] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[39] == bottomMid):
