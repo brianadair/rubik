@@ -178,7 +178,15 @@ class Test(unittest.TestCase):
         #print(cube)
         #expectedResult = "FFuBB"
         expectedResult = 'FFfUluuBB'
-        self.assertEquals(actualResult, expectedResult)                
+        self.assertEquals(actualResult, expectedResult)
+        
+    def test_066_ShouldRotateFacesToDownCrossAfterDaisy(self):
+        parm = {'op': 'solve',
+                'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._solveDownCrossSolution()
+        expectedResult = ''
+        self.assertEquals(actualResult, expectedResult)                        
 
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
@@ -210,13 +218,13 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    #@unittest.skip("Still working on other tests")
+    @unittest.skip("only use for random testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
         test_cube = Cube(parm)
-        for r in range(1,10000):
+        for r in range(1,1000):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
             #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
