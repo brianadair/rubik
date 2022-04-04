@@ -271,10 +271,10 @@ class Cube:
                 else:
                     if k == 'F':
                         while (self.cube_state[7] == bottomMid or self.cube_state[46] == bottomMid):
+                            solutionStringBuilder = ""
                             if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly F")
-                                return solutionString
-                            solutionStringBuilder = ""
+                                solutionStringBuilder = self._flipTopLayerEdges()
                             while (self.cube_state[43] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
                                 self.operation = 'u'
@@ -284,10 +284,10 @@ class Cube:
                             self._rotate()   
                     if k == 'R':
                         while (self.cube_state[16] == bottomMid or self.cube_state[50] == bottomMid):
+                            solutionStringBuilder = ""
                             if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly R")
-                                return solutionString
-                            solutionStringBuilder = ""
+                                solutionStringBuilder = self._flipTopLayerEdges()
                             while (self.cube_state[41] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
                                 self.operation = 'u'
@@ -297,10 +297,10 @@ class Cube:
                             self._rotate()  
                     if k == 'B':
                         while (self.cube_state[25] == bottomMid or self.cube_state[52] == bottomMid):
+                            solutionStringBuilder = ""
                             if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly B")
-                                return solutionString
-                            solutionStringBuilder = ""
+                                solutionStringBuilder = self._flipTopLayerEdges()
                             while (self.cube_state[37] == bottomMid):
                                 solutionStringBuilder = solutionStringBuilder + "u"
                                 self.operation = 'u'
@@ -313,7 +313,7 @@ class Cube:
                             solutionStringBuilder = ""
                             if self._isFlippedTopEdgePhaseOne():
                                 print("Flipped edge anomaly L")
-                                return solutionString
+                                solutionStringBuilder = self._flipTopLayerEdges()
                             while (self.cube_state[39] == bottomMid):
                                 print("Stuck in nested while")
                                 solutionStringBuilder = solutionStringBuilder + "u"
