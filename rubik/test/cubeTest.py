@@ -120,6 +120,7 @@ class Test(unittest.TestCase):
         result = test_cube._solveTopDaisySolution()
         cube = test_cube.getCube()
         actualResult = test_cube._isTopDaisy()
+        print(f"Cube: bbwggryowggbwrorwwybogbygyyyboooygwgbyrryrwoorwbbwgorr")
         print(f"Solution: {result}")
         print(f"Cube after top daisy solution: {cube}")
         expectedResult = True
@@ -179,7 +180,7 @@ class Test(unittest.TestCase):
         #expectedResult = "FFuBB"
         expectedResult = 'FFfUluuBB'
         self.assertEquals(actualResult, expectedResult)
-        
+
     def test_066_ShouldRotateFacesToDownCrossAfterDaisy(self):
         parm = {'op': 'solve',
                 'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
@@ -195,7 +196,8 @@ class Test(unittest.TestCase):
         actualResult = test_cube._getTopDaisyMiddle()
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
-        
+     
+    @unittest.skip("Replaced functions")    
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'
@@ -203,7 +205,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         test_cube._tryNeural()
         actualResult = test_cube._isBottomCross()
-        print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
+        #print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
 

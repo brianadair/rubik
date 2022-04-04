@@ -160,6 +160,10 @@ class Cube:
 
         #2 bottom layer
         return solutionString
+
+    def _solveDownCrossSolution(self):
+        if self._isTopDaisy():
+            return 'Success'
     
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
