@@ -141,7 +141,8 @@ class Cube:
         
         solutionString = solutionString + self._daisyMiddleLayer()
         print(f"Cube after middle layer: {self.cube_state} ({solutionString})")
-        
+        solutionString = solutionString + self._flipTopLayerEdges()
+        print(f"Cube after middle flip: {self.cube_state} ({solutionString})")
         #solutionString = self._flipBottomLayerEdges() #untested
         
         solutionString = solutionString + self._daisyBottomLayer()

@@ -114,7 +114,8 @@ class Test(unittest.TestCase):
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         #        'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         #         'cube': 'bgwggwrwwgrrrrbbbbyryybryyrowwbooyogggggyyryowoobwwboo'}
-                'cube': 'ygyrgogywrbwyrggrwobywborwogogwobbyorybgyoorbwgrrwwybb'}
+        #        'cube': 'ygyrgogywrbwyrggrwobywborwogogwobbyorybgyoorbwgrrwwybb'}
+                'cube': 'bbwggryowggbwrorwwybogbygyyyboooygwgbyrryrwoorwbbwgorr'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
         cube = test_cube.getCube()
