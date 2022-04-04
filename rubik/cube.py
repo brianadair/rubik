@@ -183,6 +183,7 @@ class Cube:
                 while self.cube_state[edge] != self.cube_state[mid] or self.cube_state[top] != bottomMid:
                     print(f"{self.cube_state[edge]} neq {self.cube_state[mid]}")
                     print(f"{self.cube_state[top]} eq {bottomMid}?")
+                    solutionStringBuilder = solutionStringBuilder + 'U'
                     self.operation = 'U'
                     self._rotate()
                 solutionStringBuilder = solutionStringBuilder + keys[r] + keys[r]
