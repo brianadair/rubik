@@ -161,7 +161,7 @@ class Test(unittest.TestCase):
         #print('rbbbggrwwooryrrbrrgroyboybyggwgoowgwywowyygyyboorwbgwb')
         #print(cube)
         #expectedResult = "RuR"
-        expectedResult = 'ruruub'
+        expectedResult = 'ruruubuuL'
         self.assertEquals(actualResult, expectedResult)      
     
     def test_065_ShouldRotateBottomEdgesToTopPhaseOne(self):
