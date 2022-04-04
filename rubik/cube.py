@@ -304,8 +304,10 @@ class Cube:
                             self._rotate() 
                     if k == 'L':
                         while (self.cube_state[34] == bottomMid or self.cube_state[48] == bottomMid):
-                            print(f"Stuck in {k}")
                             solutionStringBuilder = ""
+                            if self._isFlippedTopEdgePhaseOne(self):
+                                print("Flipped edge anomaly")
+                                return solutionString
                             while (self.cube_state[39] == bottomMid):
                                 print("Stuck in nested while")
                                 solutionStringBuilder = solutionStringBuilder + "u"
