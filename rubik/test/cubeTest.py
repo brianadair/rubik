@@ -113,7 +113,7 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         #        'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
-                 'cube': 'rwoggroobbgyyrrwggryywbbwobgywroyybgoogbwwboywgowyrrbr'}
+                 'cube': 'bgwggwrwwgrrrrbbbbyryybryyrowwbooyogggggyyryowoobwwboo'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
         cube = test_cube.getCube()
@@ -192,7 +192,7 @@ class Test(unittest.TestCase):
 
     def test_103_ShouldCreateRandomScrambledCubeFromSolved(self):
         parm = {'op': 'solve',
-                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
         test_cube = Cube(parm)
         cube = test_cube._getRandomScramble()
@@ -200,7 +200,7 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isValidCube()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
-        self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
+        self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
