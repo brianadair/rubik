@@ -180,15 +180,10 @@ class Cube:
                 print(f"Face {keys[r]} of cube {self.cube_state}")
                 print(f"Comparing edge {edge}: {self.cube_state[edge]} and mid {mid}: {self.cube_state[mid]}")
                 print(f"Top edge is {self.cube_state[top]}")
-                while self.cube_state[edge] != self.cube_state[mid]:
+                while self.cube_state[edge] != self.cube_state[mid] or self.cube_state[top] != bottomMid:
                     print(f"{self.cube_state[edge]} neq {self.cube_state[mid]}")
                     print(f"{self.cube_state[top]} eq {bottomMid}?")
-                    if self.cube_state[top] == bottomMid:
-                        solutionStringBuilder = solutionStringBuilder + 'U'
-                        self.operation = 'U'
-                    else: 
-                        solutionStringBuilder = solutionStringBuilder + 'UU'
-                        self.operation = 'UU'
+                    self.operation = 'U'
                     self._rotate()
                 solutionStringBuilder = solutionStringBuilder + keys[r] + keys[r]
                 print(f"Builder for this face is {solutionStringBuilder}")
