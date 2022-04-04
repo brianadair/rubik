@@ -115,9 +115,7 @@ class Test(unittest.TestCase):
                 'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
-        print(result)
         cube = test_cube.getCube()
-        print(cube)
         actualResult = test_cube._isTopDaisy()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
@@ -189,7 +187,17 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isBottomCross()
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
-  
+
+    def test_103_ShouldCreateRandomScrambledCubeFromSolved(self):
+        parm = {'op': 'solve',
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+                }
+        test_cube = Cube(parm)
+        cube = test_cube._getRandomScrambe()
+        actualResult = test_cube.isValidCube()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult)
+        self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()

@@ -381,7 +381,17 @@ class Cube:
         else:
             return False  
             
-        
+    def _getRandomScramble(self):
+        pass
+        # ops = ""
+        # for r in range(1,15):
+        #     randAttempt = random.randrange(0,12)
+        #     opsn = ops + self.valid_operations[randAttempt]
+        #
+        # self.operation = ops
+        # self._rotate()
+        # return self.cube_state
+                
     def _tryNeural(self):
         origCube = self.cube_state
         bottomMid = self.cube_state[49]
