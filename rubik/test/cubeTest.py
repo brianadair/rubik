@@ -11,6 +11,7 @@
 
 import unittest
 from rubik.cube import Cube
+from pickle import FALSE
 
 
 class Test(unittest.TestCase):
@@ -189,6 +190,14 @@ class Test(unittest.TestCase):
         expectedResult = 'Success'
         self.assertEquals(actualResult, expectedResult)                        
 
+    def test_090_ShouldReturnTrueOnBottomCross(self):
+        parm = {'op': 'solve',
+                'cube': 'yoroggogrbgrrrrgrogbrybowbywroyobgowbywbyybgygwywwwowb'} 
+        test_cube = Cube(parm)
+        actualResult = test_cube._isBottomCross()
+        expectedResult = False
+        self.assertEquals(actualResult, expectedResult)
+         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
