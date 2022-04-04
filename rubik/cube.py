@@ -176,7 +176,7 @@ class Cube:
                 edge = (increment * r) + beginEdge
                 mid = (increment * r) + beginMiddle
                 print(f"Face {keys[r]}")
-                print(f"Comparing edge: {self.cube_state[edge]} and mid: {self.cube_state[mid]}")
+                print(f"Comparing edge {edge}: {self.cube_state[edge]} and mid {mid}: {self.cube_state[mid]}")
                 while self.cube_state[edge] != self.cube_state[mid]:
                     print(f"{self.cube_state[edge]} neq {self.cube_state[mid]}")
                     solutionStringBuilder = solutionStringBuilder + 'U'
