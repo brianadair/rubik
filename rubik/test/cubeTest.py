@@ -120,6 +120,7 @@ class Test(unittest.TestCase):
         result = test_cube._solveTopDaisySolution()
         cube = test_cube.getCube()
         actualResult = test_cube._isTopDaisy()
+        print(f"Solution: {result}")
         print(f"Cube after top daisy solution: {cube}")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult,"incorrect solution result")
