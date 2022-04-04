@@ -229,13 +229,13 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    @unittest.skip("only use for random testing when done")
+    #@unittest.skip("only use for random testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
         test_cube = Cube(parm)
-        for r in range(1,1000):
+        for r in range(1,500):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
             print(f"Test Cube {r}: {test_cube.getCube()} initialized")
@@ -245,7 +245,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
             
-    #@unittest.skip("only use for random testing when done")
+    @unittest.skip("only use for random testing when done")
     def test_105_ShouldCreateBottomCrossOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
@@ -257,6 +257,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             solution = test_cube._solveTopDaisySolution()
+            print(f"Test Cube {r}: {test_cube.getCube()} after top daisy")
             solution = solution + test_cube._solveDownCrossSolution()
             result = test_cube._isBottomCross()
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
