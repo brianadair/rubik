@@ -113,7 +113,8 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
         #        'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
         #        'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
-                 'cube': 'bgwggwrwwgrrrrbbbbyryybryyrowwbooyogggggyyryowoobwwboo'}
+        #         'cube': 'bgwggwrwwgrrrrbbbbyryybryyrowwbooyogggggyyryowoobwwboo'}
+                'cube': 'ygyrgogywrbwyrggrwobywborwogogwobbyorybgyoorbwgrrwwybb'}
         test_cube = Cube(parm)
         result = test_cube._solveTopDaisySolution()
         cube = test_cube.getCube()
