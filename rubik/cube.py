@@ -451,7 +451,9 @@ class Cube:
     def _isBottomCross(self):
         bottomMid = self.cube_state[49]
         if (self.cube_state[46] == bottomMid and self.cube_state[48] == bottomMid and 
-            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid):
+            self.cube_state[50] == bottomMid and self.cube_state[52] == bottomMid and 
+            self.cube_state[4] == self.cube_state[7] and self.cube_state[13] == self.cube_state[16] and
+            self.cube_state[22] == self.cube_state[25] and self.cube_state[31] == self.cube_state[34]):
             return True
         else:
             return False  
