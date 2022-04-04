@@ -11,7 +11,7 @@
 
 import unittest
 from rubik.cube import Cube
-from pickle import FALSE
+from pickle import FALSE, TRUE
 
 
 class Test(unittest.TestCase):
@@ -199,7 +199,15 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isBottomCross()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
-         
+    
+    def test_091_ShouldReturnTrueOnBottomComplete(self):
+        parm = {'op': 'solve',
+                'cube': 'yoroggogrbgrrrrgrogbrybowbywroyobgowbywbyybgygwywwwowb'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._isBottomComplete()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult)
+        
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
@@ -247,7 +255,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
             
-    #@unittest.skip("only use for random testing when done")
+    @unittest.skip("only use for random testing when done")
     def test_105_ShouldCreateBottomCrossOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
