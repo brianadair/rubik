@@ -229,7 +229,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    #@unittest.skip("only use for random testing when done")
+    @unittest.skip("only use for random testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
@@ -245,7 +245,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
             
-    @unittest.skip("only use for random testing when done")
+    #@unittest.skip("only use for random testing when done")
     def test_105_ShouldCreateBottomCrossOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
