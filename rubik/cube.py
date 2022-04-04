@@ -304,7 +304,6 @@ class Cube:
                 edge = edge + 9 #refactor with var
             self.operation = solutionStringBuilder
             self._rotate()
-            solutionString = solutionString + solutionStringBuilder
             print(f"After rotate: {self.cube_state}")
         return solutionString
     
