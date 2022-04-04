@@ -193,11 +193,11 @@ class Test(unittest.TestCase):
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
                 }
         test_cube = Cube(parm)
-        cube = test_cube._getRandomScrambe()
+        cube = test_cube._getRandomScramble()
         actualResult = test_cube.isValidCube()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
-        self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
+        self.assertEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy')
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
