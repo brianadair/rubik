@@ -468,7 +468,33 @@ class Cube:
                     self.cube_state = origCube
         self.solution = solution            
                     
-        
+    def _tryNeuralFive(self):
+        origCube = self.cube_state
+        bottomMid = self.cube_state[49]
+        count = 0
+        randAttempt = 0
+        solution = ""
+        self.solution = solution
+        if self._isBottomCross():
+            return
+        while(True):
+            randAttempt = random.randrange(0,12)
+            self.operation = self.valid_operations[randAttempt]
+            solution = solution + self.operation
+            self._rotate()
+            if (self.cube_state[45] == bottomMid and self.cube_state[46] == bottomMid and 
+                self.cube_state[47] == bottomMid and self.cube_state[48] == bottomMid and
+                self.cube_state[50] == bottomMid and self.cube_state[51] == bottomMid and
+                self.cube_state[52] == bottomMid and self.cube_state[53] == bottomMid):
+
+                break
+            else:
+                count += 1
+                if (count > 15):
+                    count = 0
+                    solution = ""
+                    self.cube_state = origCube
+        self.solution = solution          
         
                     
     
