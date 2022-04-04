@@ -301,7 +301,7 @@ class Cube:
                 if (self.cube_state[edge] == bottomMid):
                     print(f"Edge match at {edge}, face {face}")
                     #face = math.floor(edge / 9) - 1
-                    left = face
+                    left = face - 1
                     if left < 0:
                         left = abs(face - 3)
                     solutionStringBuilder = ""
