@@ -146,7 +146,7 @@ class Cube:
         solutionString = solutionString + self._flipTopLayerEdges()
         print(f"Cube after middle flip: {self.cube_state} ({solutionString})")
         #solutionString = self._flipBottomLayerEdges() #untested
-        
+        return
         solutionString = solutionString + self._daisyBottomLayer()
         print(f"Cube after bottom layer: {self.cube_state} ({solutionString})")
         if self._isFlippedTopEdgePhaseOne():
