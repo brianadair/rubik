@@ -184,10 +184,12 @@ class Test(unittest.TestCase):
 
     def test_066_ShouldRotateFacesToDownCrossAfterDaisy(self):
         parm = {'op': 'solve',
-                'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
+                #'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
+                'cube': 'orrrgybbrwgogrogywgbggbrooowowyogbbyrwywywbwbrryywoybg'}
         test_cube = Cube(parm)
         actualResult = test_cube._solveDownCrossSolution()
-        expectedResult = 'UUUFFUURRUBBLL'
+        #expectedResult = 'UUUFFUURRUBBLL'
+        expectedResult = ''
         self.assertEquals(actualResult, expectedResult)                        
 
     def test_090_ShouldReturnTrueOnBottomCross(self):
@@ -260,7 +262,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {test_cube.getCube()} after top daisy")
             solution = solution + test_cube._solveDownCrossSolution()
             result = test_cube._isBottomCross()
-            print(f"Test Cube {r}: {result} {test_cube.getCube()}")
+            print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
         
