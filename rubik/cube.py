@@ -382,7 +382,7 @@ class Cube:
         
         self.operation = ops
         self._rotate()
-        return self.cube_state
+        return ops
                 
     def _tryNeural(self):
         origCube = self.cube_state
