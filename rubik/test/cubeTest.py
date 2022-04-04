@@ -259,7 +259,6 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             solution = test_cube._solveTopDaisySolution()
-            print(f"Test Cube {r}: {test_cube.getCube()} after top daisy")
             solution = solution + test_cube._solveDownCrossSolution()
             result = test_cube._isBottomCross()
             print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
