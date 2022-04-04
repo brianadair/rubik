@@ -525,13 +525,13 @@ class Cube:
         bottomMid = self.cube_state[49]
         bottomFace = self.face_map.get('D')         # real numbered
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
-        faceAssoc = list(self.bottomAdjDict.keys())
+        faceAssoc = list(bottomAdjDict.keys())
         count = 1
 
         for sqr in bottomFace: # real numbers of bottom face
             if count in self.faceCorners:   # is this square a corner
                 if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
-                    sqrAdjList = self.bottomAdjDict.get(sqr - 1)
+                    sqrAdjList = bottomAdjDict.get(sqr - 1)
                     for adj in sqrAdjList:  # real array nums
                         face = math.floor(adj / 9)     #determine face that sqr belongs to
                         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
