@@ -210,7 +210,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    @unittest.skip("Still working on other tests")
+    #@unittest.skip("Still working on other tests")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
