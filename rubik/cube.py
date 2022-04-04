@@ -256,7 +256,7 @@ class Cube:
                     self.operation = 'FF'
                     self._rotate()   
             if k == 'R':
-                if (self.cube_state[16] == bottomMid or self.cube_state[48] == bottomMid):
+                if (self.cube_state[16] == bottomMid or self.cube_state[50] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[41] == bottomMid):
                         solutionStringBuilder = solutionStringBuilder + "u"
@@ -266,7 +266,7 @@ class Cube:
                     self.operation = 'RR'
                     self._rotate()  
             if k == 'B':
-                if (self.cube_state[25] == bottomMid or self.cube_state[50] == bottomMid):
+                if (self.cube_state[25] == bottomMid or self.cube_state[52] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[37] == bottomMid):
                         solutionStringBuilder = solutionStringBuilder + "u"
@@ -276,7 +276,7 @@ class Cube:
                     self.operation = 'BB'
                     self._rotate() 
             if k == 'L':
-                if (self.cube_state[34] == bottomMid or self.cube_state[52] == bottomMid):
+                if (self.cube_state[34] == bottomMid or self.cube_state[48] == bottomMid):
                     solutionStringBuilder = ""
                     while (self.cube_state[39] == bottomMid):
                         solutionStringBuilder = solutionStringBuilder + "u"
