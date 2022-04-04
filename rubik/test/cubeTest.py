@@ -216,7 +216,7 @@ class Test(unittest.TestCase):
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
      
-    @unittest.skip("Only for trying ideas")    
+    #@unittest.skip("Only for trying ideas")    
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
                 'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
