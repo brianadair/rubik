@@ -123,12 +123,12 @@ class Test(unittest.TestCase):
     
     def test_061_ShouldFlipUpperEdgesPhaseOne(self):
         parm = {'op': 'solve',
-                #'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'}
-                'cube': 'ggbggbbbrwwworgwrgybyobyrowrroroyrgobwgwyoywoyygrwbbyo'}
+                #'cube': 'wwwggggggbwwrrrrrrybbybbybboogooyooyyygyygrrrooowwbwwb'} #fUlfUl
+                'cube': 'ggbggbbbrwwworgwrgybyobyrowrroroyrgobwgwyoywoyygrwbbyo'}  #rUf
         test_cube = Cube(parm)
         result = test_cube._flipTopLayerEdges()
         #expectedResult = 'gwwwggwggybborrorroorybrybbgrrgoowoooyywyywggbyybwbrwb'
-        expectedResult = 'fUlfUl'
+        expectedResult = 'rUf'
         self.assertEquals(result, expectedResult)
         
     def test_062_ShouldReturnTrueOnTopEdgeToBeFlipped(self):
