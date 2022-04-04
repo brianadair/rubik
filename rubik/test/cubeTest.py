@@ -211,10 +211,11 @@ class Test(unittest.TestCase):
         for r in range(1,10):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
+            print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             test_cube._solveTopDaisySolution()
             result = test_cube._isTopDaisy()
-            print(f"Test Cube {r}: {test_cube.getCube()}")
+            print(f"Test Cube {r}: {test_cube.getCube()} Result")
             self.assertEquals(result, True)
  
   
