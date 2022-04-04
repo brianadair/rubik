@@ -156,7 +156,7 @@ class Cube:
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""    
-        while _hasMiddleLayerPhaseOne():    
+        while self._hasMiddleLayerPhaseOne():    
             for k in list(self.face_map.keys()):
                 if k == 'U' or k == 'D':
                     pass
