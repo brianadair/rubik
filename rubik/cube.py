@@ -160,7 +160,7 @@ class Cube:
                 pass
             else:
                 if k == 'F':
-                    if (self.cube_state[3] == bottomMid):
+                    while (self.cube_state[3] == bottomMid):
                         solutionStringBuilder = ""
                         while (self.cube_state[39] == bottomMid):
                             solutionStringBuilder = solutionStringBuilder + "u"
@@ -169,7 +169,7 @@ class Cube:
                         solutionString = solutionString + solutionStringBuilder + 'l'
                         self.operation = 'l'
                         self._rotate()
-                    if (self.cube_state[5] == bottomMid):
+                    while (self.cube_state[5] == bottomMid):
                         solutionStringBuilder = ""
                         while (self.cube_state[41] == bottomMid):
                             solutionStringBuilder = solutionStringBuilder + + "u"
