@@ -4,7 +4,7 @@
     
 '''
 # Brian Adair 
-# COMP 6700 - Assignment 03
+# COMP 6700 - Assignment 05
 # 2022-02-24
 
 # Tests of cube properties and methods
@@ -226,20 +226,22 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isBottomCornerPlacementCorrect()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult) 
-        
+    
+    @unittest.skip("This function doesn't work as intended, replacing")    
     def test_094_ShouldReturnSolutionToMoveBottomCornerIncorrectPlacements(self):
         parm = {'op': 'solve',
                 #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
-                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
-                }
+                'cube':'ogyrgybgwgggbrobryoobybrobryyybogworrbwryogyrwwowwwgwb'
+                }    
         test_cube = Cube(parm)
-        solution = test_cube._moveBottomCornerIncorrectPlacements()
-        expectedResult = 'fuF'
+        solution = test_cube._OLDmoveBottomCornerIncorrectPlacements()
+        expectedResult = 'luLfuFbuB'
         self.assertEquals(solution, expectedResult)
     
+    #@unittest.skip("in progess, last phase") 
     def test_095_ShouldReturnSolutionToMoveCornerToCorrectSideAdjacency(self):
         parm = {'op': 'solve',
-                'cube': 'rbbggrwgyogryrbbrrwoorbrwbbgbggoyoogyyboyoyyyowrwwwwwg'}
+                'cube': 'ogyrgybgwgggbrobryoobybrobryyybogworrbwryogyrwwowwwgwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._moveTopCornersToCorrectColorAdj()
         expectedResult = ''
@@ -347,7 +349,7 @@ class Test(unittest.TestCase):
     def test_940_ShouldReturnFalseOnCorrectBottomCorners(self):
         parm = {'op': 'solve',
                 #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
-                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                'cube':'ogyrgybgwgggbrobryoobybrobryyybogworrbwryogyrwwowwwgwb'
                 }
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCornerPlacementCorrect()

@@ -5,8 +5,6 @@
 '''
 import rubik.cube as cube
 
-
-
 def _solve(parms):
     result = {}
     try:
