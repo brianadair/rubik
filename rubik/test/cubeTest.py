@@ -221,8 +221,8 @@ class Test(unittest.TestCase):
         
     def test_093_ShouldReturnTrueOnCorrectBottomCorners(self):
         parm = {'op': 'solve',
-                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
-                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                #'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
                 }
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCornerPlacementCorrect()
