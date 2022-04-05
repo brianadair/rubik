@@ -217,11 +217,12 @@ class Test(unittest.TestCase):
         solution = test_cube._flipIncorrectBottomCornersToTop()
         cube = test_cube.cube_state
         expectedResult = test_cube._isBottomCornerPlacementCorrect()
-        self.assertEquals(actualResult, expectedResult)     
+        self.assertEquals(solution, expectedResult)     
         
     def test_093_ShouldReturnTrueOnCorrectBottomCorners(self):
         parm = {'op': 'solve',
-                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
                 }
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCornerPlacementCorrect()
@@ -275,7 +276,7 @@ class Test(unittest.TestCase):
             print(f"Test Cube {r}: {result} {test_cube.getCube()}")
             self.assertEquals(result, True)
             
-    #@unittest.skip("only use for randomized testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_105_ShouldCreateBottomCrossOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
