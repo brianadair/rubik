@@ -547,9 +547,10 @@ class Cube:
         count = 1
         solutionString = ""
         solutionStringBuilder = ""
+        squaresMoved = []
         
         for sqr in bottomFace: # real numbers of bottom face
-            if count in self.faceCorners:   # is this square a corner
+            if count in self.faceCorners and sqr not in squaresMoved:   # is this square a corner
                 if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
                     sqrAdjList = bottomAdjDict.get(sqr - 1)
                     for adj in sqrAdjList:  # real array nums
@@ -565,6 +566,7 @@ class Cube:
                             solutionString = solutionString + solutionStringBuilder
                             self.operation = solutionStringBuilder
                             self._rotate()
+                            squaresMoved.append(sqr)
                             #return False #compare two colors
             count = count + 1
         print(f"Solution string is {solutionString}")
