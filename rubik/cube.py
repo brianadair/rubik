@@ -559,7 +559,7 @@ class Cube:
                         if self.cube_state[faceMid] != self.cube_state[adj] and sqr not in squaresMoved:
                             solutionStringBuilder = ""
                             faceRotation = turnOrder[self.faceCorners.index(count)]
-                            print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
+                            #print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
                             solutionStringBuilder = solutionStringBuilder + faceRotation.lower()
                             solutionStringBuilder = solutionStringBuilder + 'u'
                             solutionStringBuilder = solutionStringBuilder + faceRotation.upper()
@@ -569,7 +569,6 @@ class Cube:
                             squaresMoved.append(sqr)
                             #return False #compare two colors
             count = count + 1
-        print(f"Solution string is {solutionString}")
         return solutionString      
         
         
