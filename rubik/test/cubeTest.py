@@ -328,6 +328,16 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isRotationValid()
         self.assertEquals(expectedResult, actualResult)
         
+    def test_940_ShouldReturnFalseOnCorrectBottomCorners(self):
+        parm = {'op': 'solve',
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                }
+        test_cube = Cube(parm)
+        actualResult = test_cube._isBottomCornerPlacementCorrect()
+        expectedResult = False
+        self.assertEquals(actualResult, expectedResult)  
+        
                                                             
         
            
