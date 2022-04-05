@@ -536,6 +536,7 @@ class Cube:
                         face = math.floor(adj / 9)     #determine face that sqr belongs to
                         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
                         if self.cube_state[faceMid] != self.cube_state[sqr-1]:
+                            print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[sqr-1]} on {sqr-1}")
                             return False #compare two colors
             count = count + 1
         return True
