@@ -238,6 +238,14 @@ class Test(unittest.TestCase):
         solution = test_cube._moveBottomCornerIncorrectPlacements()
         expectedResult = 'fuF'
         self.assertEquals(solution, expectedResult)
+    
+    def test_095_ShouldReturnSolutionToMoveCornerToCorrectSideAdjacency(self):
+        parm = {'op': 'solve',
+                'cube': 'rbbggrwgyogryrbbrrwoorbrwbbgbggoyoogyyboyoyyyowrwwwwwg'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._moveTopCornersToCorrectColorAdj()
+        expectedResult = ''
+        self.assertEquals(actualResult, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

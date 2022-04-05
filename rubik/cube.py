@@ -216,6 +216,7 @@ class Cube:
         #print(f"Cube after last flip: {self.cube_state} ({solutionString})")
 
         #2 bottom layer
+        self.solution = self.solution + solutionString
         return solutionString
 
     def _solveDownCrossSolution(self):
@@ -250,8 +251,27 @@ class Cube:
                 #print(f"Solution is now {solutionString}")
         #print(f"Cube after down cross: {self.cube_state}")
         #print(f"Final solution: {solutionString}")
+        self.solution = self.solution + solutionString
         return solutionString
-            
+    
+    @unittest.skip("Test last as integration of other modules")
+    def _solveBottomLayerSolution(self):
+        solutionString = ""
+        #Step 1 - move incorrect corner placements on bottom
+        solutionString = self._moveBottomCornerIncorrectPlacements()
+        
+        solutionString = solutionString + _moveTopCornersToCorrectColorAdj()
+        
+        #Step 2 - rotate up face until associated colors match adjacent faces
+        
+        #Step 3 - Flip to a side position if bottom color is on square opposite from bottom
+        
+        #step 4 - Move sequence to place bottom corner correctly
+            # if in face position 7 - ULul
+            # if in face position 9 - urUR
+        self.solution = self.solution + solutionString
+        return solutionString
+    
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""    
@@ -541,14 +561,11 @@ class Cube:
     def _moveBottomCornerIncorrectPlacements(self):
         bottomFace = self.face_map.get('D')         # real numbered
         turnOrder = ['L','F','R','B']
-        #bottomMid = self.cube_state[49]
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
-        #faceAssoc = list(bottomAdjDict.keys())
         count = 1
         solutionString = ""
         solutionStringBuilder = ""
         squaresMoved = []
-        
         for sqr in bottomFace: # real numbers of bottom face
             if count in self.faceCorners:   # is this square a corner
                 if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
@@ -567,13 +584,12 @@ class Cube:
                             self.operation = solutionStringBuilder
                             self._rotate()
                             squaresMoved.append(sqr)
-                            #return False #compare two colors
             count = count + 1
         return solutionString      
-        
-        
 
-    
+    def _moveTopCornersToCorrectColorAdj(self):
+        pass
+
     def _getMiddleColor(self, facePosition):
         face = math.floor(facePosition / self.faceIncrement)
         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face

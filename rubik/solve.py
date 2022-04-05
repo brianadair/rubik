@@ -21,7 +21,9 @@ def _solve(parms):
     elif cube_model.solve_flag == False and not cube_model._isRotationValid():
         result['status'] = 'error: invalid rotation'
     elif cube_model.solve_flag == True:
-        cube_model._tryNeural();
+        cube_model._solveTopDaisySolution()
+        cube_model._solveDownCrossSolution()
+        # cube_model._solveBottomLayerSolution()
         result['solution'] = cube_model.solution
         result['status'] = 'ok'
     else:
