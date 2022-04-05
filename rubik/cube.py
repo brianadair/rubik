@@ -602,7 +602,7 @@ class Cube:
                 return True
         return False
         
-    def _moveTopCornersToCorrectColorAdj(self): # BOTTOM LAYER PHASE
+    def _moveTopCornersToCorrectColorAdj(self): # BOTTOM LAYER PHASE STEP 1
         bottomMid = self.cube_state[49]
         solutionString = ""
         solutionStringBuilder = ""
@@ -615,11 +615,20 @@ class Cube:
             adjCopy.append(corner)
             left = face - 1 if (face - 1) >= 0 else abs(face - 3) 
             if self._doesAssociationContainColor(bottomMid, adjCopy):
-                print(f"Corner has white {corner}")
-                # rotate 
+                # print(f"Corner has white {corner}")
+                # print(f"Corner face mid {corner + self.midIncrement}")
+                # print(f"Left face mid {left * self.faceIncrement + self.midIncrement}")
+                while (not self.doesAssociationContainColor(corner + self.midIncrement,adjCopy) and 
+                       not self.doesAssociationContainColor(left * self.faceIncrement + 
+                                                            self.midIncrement,adjCopy)):
+                    solutionStringBuilder = solutionStringBuilder + 'U'
+                    self.operation = 'U'
+                    self.rotate()
+                solutionString = solutionString + solutionStringBuilder
+                solutionStringBuilder = ""
             else:
                 print(f"Corner does not have white {corner}")
-
+        return solutionString
             # print(f"Adj copy is {adjCopy}")
             # print(f"Corner: {corner}")
             # print(f"Face: {face} | left: {left}")
@@ -627,10 +636,11 @@ class Cube:
             
             # determine face of corner - DONE
             # Get adjacency for corner - DONE
-            # check if adj contains bottom color
+            # check if adj contains bottom color DONE
             # determine left face and left middle for middle comparisons 
             # check if each side middle is in adjacent color
             # rotate U until each middle color is in adjacency
+            # check orientation of white square
             
             
             
