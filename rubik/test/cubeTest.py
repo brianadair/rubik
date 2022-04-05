@@ -227,7 +227,17 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCornerPlacementCorrect()
         expectedResult = True
-        self.assertEquals(actualResult, expectedResult)   
+        self.assertEquals(actualResult, expectedResult) 
+        
+    def test_094_ShouldReturnSolutionToMoveBottomCornerIncorrectPlacements(self):
+        parm = {'op': 'solve',
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                }
+        test_cube = Cube(parm)
+        solution = test_cube._moveBottomCornerIncorrectPlacements()
+        expectedResult = ''
+        self.assertEquals(solution, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
