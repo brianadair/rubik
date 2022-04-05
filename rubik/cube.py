@@ -521,11 +521,8 @@ class Cube:
         return True
     
     def _isBottomCornerPlacementCorrect(self):
-        turnOrder = ['L','F','R','B']
-        bottomMid = self.cube_state[49]
         bottomFace = self.face_map.get('D')         # real numbered
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
-        faceAssoc = list(bottomAdjDict.keys())
         count = 1
 
         for sqr in bottomFace: # real numbers of bottom face
@@ -542,7 +539,39 @@ class Cube:
         return True
     
     def _moveBottomCornerIncorrectPlacements(self):
-        pass
+        bottomFace = self.face_map.get('D')         # real numbered
+        turnOrder = ['L','F','R','B']
+        #bottomMid = self.cube_state[49]
+        bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
+        #faceAssoc = list(bottomAdjDict.keys())
+        count = 1
+        solutionString = ""
+        solutionStringBuilder = ""
+        
+        for sqr in bottomFace: # real numbers of bottom face
+            if count in self.faceCorners:   # is this square a corner
+                if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
+                    sqrAdjList = bottomAdjDict.get(sqr - 1)
+                    for adj in sqrAdjList:  # real array nums
+                        face = math.floor(adj / 9)     #determine face that sqr belongs to
+                        faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
+                        if self.cube_state[faceMid] != self.cube_state[adj]:
+                            solutionStringBuilder = ""
+                            faceRotation = turnOrder[self.faceCorners.index(count)]
+                            print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
+                            solutionStringBuilder = solutionStringBuilder + faceRotation.lower()
+                            solutionStringBuilder = solutionStringBuilder + 'u'
+                            solutionStringBuilder = solutionStringBuilder + faceRotation.upper()
+                            solutionString = solutionString + solutionStringBuilder
+                            self.operation = solutionStringBuilder
+                            self._rotate()
+                            #return False #compare two colors
+            count = count + 1
+        print(f"Solution string is {solutionString}")
+        return solutionString      
+        
+        
+
     
     def _getMiddleColor(self, facePosition):
         face = math.floor(facePosition / self.faceIncrement)

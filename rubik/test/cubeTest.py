@@ -239,6 +239,7 @@ class Test(unittest.TestCase):
         expectedResult = ''
         self.assertEquals(solution, expectedResult)
         
+        
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
