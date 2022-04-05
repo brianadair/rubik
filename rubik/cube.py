@@ -6,8 +6,6 @@
 import rubik.check as check
 import random
 import math
-from _ast import Or
-from pickle import FALSE
 
 class Cube:
     '''

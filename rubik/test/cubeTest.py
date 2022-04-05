@@ -11,8 +11,6 @@
 
 import unittest
 from rubik.cube import Cube
-from pickle import FALSE, TRUE
-
 
 class Test(unittest.TestCase):
 # Analysis
