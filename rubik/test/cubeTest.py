@@ -236,7 +236,7 @@ class Test(unittest.TestCase):
                 }
         test_cube = Cube(parm)
         solution = test_cube._moveBottomCornerIncorrectPlacements()
-        expectedResult = 'fUF'
+        expectedResult = 'fuF'
         self.assertEquals(solution, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):
