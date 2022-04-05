@@ -550,13 +550,13 @@ class Cube:
         squaresMoved = []
         
         for sqr in bottomFace: # real numbers of bottom face
-            if count in self.faceCorners and sqr not in squaresMoved:   # is this square a corner
+            if count in self.faceCorners:   # is this square a corner
                 if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
                     sqrAdjList = bottomAdjDict.get(sqr - 1)
                     for adj in sqrAdjList:  # real array nums
                         face = math.floor(adj / 9)     #determine face that sqr belongs to
                         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
-                        if self.cube_state[faceMid] != self.cube_state[adj]:
+                        if self.cube_state[faceMid] != self.cube_state[adj] and sqr not in squaresMoved:
                             solutionStringBuilder = ""
                             faceRotation = turnOrder[self.faceCorners.index(count)]
                             print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
