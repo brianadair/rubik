@@ -537,7 +537,7 @@ class Cube:
                         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
                         if self.cube_state[faceMid] != self.cube_state[adj]:
                             print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
-                            return False #compare two colors
+                            #return False #compare two colors
             count = count + 1
         return True
     
