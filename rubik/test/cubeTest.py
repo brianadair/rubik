@@ -248,7 +248,7 @@ class Test(unittest.TestCase):
         actualResult = test_cube._moveTopCornersToCorrectColorAdj()
 
 
-        expectedResult = ''
+        expectedResult = 'UUFufUufUFUurURUubUB'
         self.assertEquals(actualResult, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):

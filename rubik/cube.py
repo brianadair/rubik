@@ -263,11 +263,11 @@ class Cube:
         solutionString = ""
         #Step 1 - move incorrect corner placements on bottom
         solutionString = self._moveBottomCornerIncorrectPlacements()
-        print(f"_solveBottomLayerSolution 1: {solutionString}")
+        #print(f"_solveBottomLayerSolution 1: {solutionString}")
 
         #Step 2 - rotate up face until associated colors match adjacent faces
         solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-        print(f"_solveBottomLayerSolution 2: {solutionString}")
+        #print(f"_solveBottomLayerSolution 2: {solutionString}")
 
         self.solution = self.solution + solutionString
         return solutionString
@@ -617,9 +617,9 @@ class Cube:
 
             if (self._isBottomColorInTopCorners()):
                 if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
-                    print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
-                    print(f"adj {adjColors}")
-                    print(f"mid {midColors}")
+                    #print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
+                    #print(f"adj {adjColors}")
+                    #print(f"mid {midColors}")
                     solutionString = solutionString + 'U'
                     self._moveSequence('U')
                     #rotate until midcolors in subset of adjcolors
@@ -627,14 +627,13 @@ class Cube:
                 #if white on top, flip to side
                 
                 if (self._isBottomColorOnTopSquare(adjCopy)):
-                    print("Moving")
                     #flip sequence
                     self._moveSequence('FufUU')
                     solutionString = solutionString + 'FufUU'
 
                 #if white on right ....
                 adjCopy.sort()
-                print(f"adjcopy before flips: {adjCopy}")
+                #print(f"adjcopy before flips: {adjCopy}")
                 if right > face: #white is on left if in first index position on face F
                     if self.cube_state[adjCopy[0]] == bottomMid:
                         sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
@@ -649,8 +648,8 @@ class Cube:
                 
                 self._moveSequence(sequence)
                 solutionString = solutionString + sequence
-                print(f"final solution: {solutionString}")
-                print(f"cube: {self.cube_state}")
+                #print(f"final solution: {solutionString}")
+                #print(f"cube: {self.cube_state}")
 
         return solutionString
 
@@ -694,7 +693,6 @@ class Cube:
     
     def _getMiddleColorByFace(self, facePosition):
         faceMid = (facePosition * self.faceIncrement) + self.midIncrement # get middle color for that face
-        print(f"facemid: {faceMid}")
         return self.cube_state[faceMid]
     
     def _getMiddleColorsForAdjList(self, adjList):
