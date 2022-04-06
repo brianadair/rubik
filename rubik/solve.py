@@ -23,6 +23,7 @@ def _solve(parms):
         cube_model._solveDownCrossSolution()
         cube_model._solveBottomLayerSolution()
         result['solution'] = cube_model.solution
+        print(f"solve solution: {cube_model.solution}")
         result['status'] = 'ok'
     else:
         result['cube'] = cube_model._rotate()
