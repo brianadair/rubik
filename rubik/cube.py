@@ -13,18 +13,19 @@ class Cube:
     '''
     valid_operations = 'FfRrBbLlUuDd'
     
-    faceCorners = [1,3,7,9]
-    faceEdges = [2,4,6,8]
+    faceCorners = [0,2,8,6]
+    faceEdges = [1,3,5,7]
     midIncrement = 4
     faceIncrement = 9
+    maxSideLocation = 35
     
     face_map = {
-        'F': [1,2,3,4,5,6,7,8,9],
-        'R': [10,11,12,13,14,15,16,17,18],
-        'B': [19,20,21,22,23,24,25,26,27],
-        'L': [28,29,30,31,32,33,34,35,36],
-        'U': [37,38,39,40,41,42,43,44,45],
-        'D': [46,47,48,49,50,51,52,53,54]
+        'F': [0,1,2,3,4,5,6,7,8],
+        'R': [9,10,11,12,13,14,15,16,17],
+        'B': [18,19,20,21,22,23,24,25,26],
+        'L': [27,28,29,30,31,32,33,34,35],
+        'U': [36,37,38,39,40,41,42,43,44],
+        'D': [45,46,47,48,49,50,51,52,53]
     }
     
     faceAdjMap = {
@@ -179,13 +180,19 @@ class Cube:
                     else:
                         newEncoding[sqrnum] = self.cube_state[int(assoc_map[sqr])-1]
                 self.cube_state = ''.join(newEncoding)
-        return self.cube_state      
+        return self.cube_state  
+                
 #New code A4    
     def _getTopDaisyMiddle(self):
         # Middle color 
         if (self._isValidCube()):
             return self.cube_state[40]
 # NEW CODE A5
+    def _moveSequence(self, sequence):  
+        for ch in sequence:
+            self.operation = ch
+            self._rotate()
+            
     def _solveTopDaisySolution(self):
         #1 middle layer
         #solutionString = ""
@@ -255,17 +262,13 @@ class Cube:
     def _solveBottomLayerSolution(self):
         solutionString = ""
         #Step 1 - move incorrect corner placements on bottom
-        solutionString = self._OLDmoveBottomCornerIncorrectPlacements()
-        
-        solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-        
+        solutionString = self._moveBottomCornerIncorrectPlacements()
+        print(f"_solveBottomLayerSolution 1: {solutionString}")
+
         #Step 2 - rotate up face until associated colors match adjacent faces
-        
-        #Step 3 - Flip to a side position if bottom color is on square opposite from bottom
-        
-        #step 4 - Move sequence to place bottom corner correctly
-            # if in face position 7 - ULul
-            # if in face position 9 - urUR
+        solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
+        print(f"_solveBottomLayerSolution 2: {solutionString}")
+
         self.solution = self.solution + solutionString
         return solutionString
     
@@ -453,7 +456,7 @@ class Cube:
         edge = 1
         while self._isFlippedTopEdgePhaseOne() and edge < 54:
             #print(f"Cube state: {self.cube_state}")
-            for r in range(0,4):
+            for itr in range(0,4):
                 face = math.floor(edge / 9)
                 #print(f"Edge is {edge}, face is {face}, r is {r}, cube is {self.cube_state}")
                 if (self.cube_state[edge] == bottomMid):
@@ -540,16 +543,16 @@ class Cube:
     def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom corners
         bottomFace = self.face_map.get('D')         # real numbered
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
-        count = 1
+        count = 0
 
         for sqr in bottomFace: # real numbers of bottom face
             if count in self.faceCorners:   # is this square a corner
-                sqrAdjList = bottomAdjDict.get(sqr - 1)
+                sqrAdjList = bottomAdjDict.get(sqr)
                 adjCopy = sqrAdjList.copy()
-                adjCopy.append(sqr-1)
-                if self._doesAssociationContainColor(self._getMiddleColor(sqr-1), adjCopy):
+                adjCopy.append(sqr)
+                if self._doesAssociationContainColor(self._getMiddleColor(sqr), adjCopy):
                 #if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
-                    sqrAdjList = bottomAdjDict.get(sqr - 1)
+                    sqrAdjList = bottomAdjDict.get(sqr)
                     for adj in adjCopy:  # real array nums
                         face = math.floor(adj / 9)     #determine face that sqr belongs to
                         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
@@ -557,93 +560,130 @@ class Cube:
                             #print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
                             return False #compare two colors
             count = count + 1
-        return True
+        return True      
     
-    def _OLDmoveBottomCornerIncorrectPlacements(self): #Step 1 of solving bottom corners
+    def _moveBottomCornerIncorrectPlacements(self): #Step 1 of solving bottom corners
         bottomFace = self.face_map.get('D')         # real numbered
+        bottomMid = self.cube_state[49]
         turnOrder = ['L','F','R','B']
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
-        count = 1
         solutionString = ""
         solutionStringBuilder = ""
-        squaresMoved = []
-        for sqr in bottomFace: # real numbers of bottom face
-            if count in self.faceCorners:   # is this square a corner
-                sqrAdjList = bottomAdjDict.get(sqr - 1)
-                adjCopy = sqrAdjList.copy()
-                adjCopy.append(sqr-1)
-                if self._doesAssociationContainColor(self._getMiddleColor(sqr-1), adjCopy): #check color on all pos
-                    print(f"OLDmoveBottomCornerIncorrect: white is in this corner {sqr-1}")
-                #if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
-                    for adj in sqrAdjList:  # real array nums
-                        face = math.floor(adj / self.faceIncrement)     #determine face that sqr belongs to
-                        faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
-                        if self.cube_state[faceMid] != self.cube_state[adj] and sqr not in squaresMoved:
-                            solutionStringBuilder = ""
-                            faceRotation = turnOrder[self.faceCorners.index(count)]
-                            #print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
-                            solutionStringBuilder = solutionStringBuilder + faceRotation.lower()
-                            solutionStringBuilder = solutionStringBuilder + 'u'
-                            solutionStringBuilder = solutionStringBuilder + faceRotation.upper()
-                            solutionString = solutionString + solutionStringBuilder
-                            self.operation = solutionStringBuilder
-                            self._rotate()
-                            squaresMoved.append(sqr)
-            count = count + 1
+   
+        for itr in range(0,4):  # Look at each cube corner on the bottom and fix before moving on
+            face = bottomFace[self.faceCorners[itr]]
+            adjCopy = bottomAdjDict.get(face).copy()
+            adjCopy.append(face)
+            midColors = self._getMiddleColorsForAdjList(adjCopy)
+            adjColors = self._getColorComboForAdjList(adjCopy)
+            while bottomMid in adjColors and not set(adjColors).issubset(midColors):
+                solutionStringBuilder = ""
+                solutionStringBuilder = solutionStringBuilder + turnOrder[itr].lower()                 
+                solutionStringBuilder = solutionStringBuilder + 'u'
+                solutionStringBuilder = solutionStringBuilder + turnOrder[itr].upper()
+                self._moveSequence(solutionStringBuilder)
+                solutionString = solutionString + solutionStringBuilder
+                adjColors = self._getColorComboForAdjList(adjCopy)
         return solutionString      
     
-    def _doesAssociationContainColor(self, color, list):
-        #print(f"{color}: {list}")
-
-        for item in list:
+    def _doesAssociationContainColor(self, color, assocList):
+        for item in assocList:
             if self.cube_state[item] == color:
-                print(f"item {item} color {self.cube_state[item]}")
-                print(f"list {list}")
+                # print(f"item {item} color {self.cube_state[item]}")
+                # print(f"list {list}")
                 return True
-        return False
-        
+        return False   
+    
     def _moveTopCornersToCorrectColorAdj(self): # BOTTOM LAYER PHASE STEP 1
         bottomMid = self.cube_state[49]
+        turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ""
-        solutionStringBuilder = ""
         faceList = list(self.face_map.keys())
-        for itr in range(0,4): #iterate for each corner / r is the side face
+        for itr in range(0,4): #iterate for each corner / itr is the current face
+            solutionStringBuilder = ""
+            corner = itr * self.faceIncrement
+            face = self._getFaceOfSquare(corner)
+
+            adjList = self.faceAdjMap.get(faceList[face]).get(corner)
+            adjCopy = adjList.copy()
+            adjCopy.append(corner)
+            adjSides = self._getSideAdjacencies(adjCopy)
+            right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+            midColors = []
+            midColors.append(self._getMiddleColorByFace(face))
+            midColors.append(self._getMiddleColorByFace(right))
+
+            adjColors = self._getColorComboForAdjList(adjCopy)
+
+            if (self._isBottomColorInTopCorners()):
+                if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
+                    print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
+                    print(f"adj {adjColors}")
+                    print(f"mid {midColors}")
+                    solutionString = solutionString + 'U'
+                    self._moveSequence('U')
+                    #rotate until midcolors in subset of adjcolors
+                    adjColors = self._getColorComboForAdjList(adjCopy)
+                #if white on top, flip to side
+                
+                if (self._isBottomColorOnTopSquare(adjCopy)):
+                    print("Moving")
+                    #flip sequence
+                    self._moveSequence('FufUU')
+                    solutionString = solutionString + 'FufUU'
+
+                #if white on right ....
+                adjCopy.sort()
+                print(f"adjcopy before flips: {adjCopy}")
+                if right > face: #white is on left if in first index position on face F
+                    if self.cube_state[adjCopy[0]] == bottomMid:
+                        sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                    else:
+                        sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
+                else:
+                    if self.cube_state[adjCopy[0]] == bottomMid:
+                        sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
+                    else:
+                        sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                    pass #white is on right if in first index position on other three faces
+                
+                self._moveSequence(sequence)
+                solutionString = solutionString + sequence
+                print(f"final solution: {solutionString}")
+                print(f"cube: {self.cube_state}")
+
+        return solutionString
+
+    def _isBottomColorOnTopSquare(self, myList):
+        bottomMid = self.cube_state[49]
+        for num in myList:
+            color = self.cube_state[num]
+            if bottomMid == color and num > 35:
+                return True
+        return False
+            
+    def _isBottomColorInTopCorners(self):
+        faceList = list(self.face_map.keys())
+        bottomMid = self.cube_state[49]
+        for itr in range(0,4): #iterate for each corner / itr is the current face
             corner = itr * self.faceIncrement
             face = self._getFaceOfSquare(corner)
             adjList = self.faceAdjMap.get(faceList[face]).get(corner)
             adjCopy = adjList.copy()
             adjCopy.append(corner)
-            left = face - 1 if (face - 1) >= 0 else abs(face - 3) 
-            if self._doesAssociationContainColor(bottomMid, adjCopy):
-                # print(f"Corner has white {corner}")
-                # print(f"Corner face mid {corner + self.midIncrement}")
-                # print(f"Left face mid {left * self.faceIncrement + self.midIncrement}")
-                while (not self.doesAssociationContainColor(corner + self.midIncrement,adjCopy) and 
-                       not self.doesAssociationContainColor(left * self.faceIncrement + 
-                                                            self.midIncrement,adjCopy)):
-                    solutionStringBuilder = solutionStringBuilder + 'U'
-                    self.operation = 'U'
-                    self.rotate()
-                solutionString = solutionString + solutionStringBuilder
-                solutionStringBuilder = ""
-            else:
-                print(f"Corner does not have white {corner}")
-        return solutionString
-            # print(f"Adj copy is {adjCopy}")
-            # print(f"Corner: {corner}")
-            # print(f"Face: {face} | left: {left}")
-            # print(f"Adj: {adjList}")
-            
-            # determine face of corner - DONE
-            # Get adjacency for corner - DONE
-            # check if adj contains bottom color DONE
-            # determine left face and left middle for middle comparisons 
-            # check if each side middle is in adjacent color
-            # rotate U until each middle color is in adjacency
-            # check orientation of white square
-            
-            
-            
+            #right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+            adjColors = self._getColorComboForAdjList(adjCopy)
+            if (bottomMid in adjColors):
+                return True
+        return False
+    
+    def _getSideAdjacencies(self, myList):
+        newList = []
+        for adj in myList:
+            if adj < 36:
+                newList.append(adj)
+        return newList
+    
     def _getFaceOfSquare(self, square):        
         return math.floor(square / self.faceIncrement)
 
@@ -652,6 +692,22 @@ class Cube:
         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
         return self.cube_state[faceMid]
     
+    def _getMiddleColorByFace(self, facePosition):
+        faceMid = (facePosition * self.faceIncrement) + self.midIncrement # get middle color for that face
+        print(f"facemid: {faceMid}")
+        return self.cube_state[faceMid]
+    
+    def _getMiddleColorsForAdjList(self, adjList):
+        newList = []
+        for sqr in adjList:
+            newList.append(self._getMiddleColor(sqr))
+        return newList
+    
+    def _getColorComboForAdjList(self, adjList):
+        newList = []
+        for sqr in adjList:
+            newList.append(self.cube_state[sqr])
+        return newList
     
 # import line + 1
 #END NEW CODE
@@ -666,7 +722,7 @@ class Cube:
             
     def _getRandomScramble(self):
         ops = ""
-        for r in range(1,15):
+        for itr in range(1,15):
             randAttempt = random.randrange(0,12)
             ops = ops + self.valid_operations[randAttempt]
         
@@ -701,7 +757,6 @@ class Cube:
                     
     def _tryNeuralFive(self):
         origCube = self.cube_state
-        bottomMid = self.cube_state[49]
         count = 0
         total = 0
         randAttempt = 0

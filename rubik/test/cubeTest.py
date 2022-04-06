@@ -219,31 +219,35 @@ class Test(unittest.TestCase):
         
     def test_093_ShouldReturnTrueOnCorrectBottomCorners(self):
         parm = {'op': 'solve',
-                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
                 #'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                'cube':'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'
                 }
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCornerPlacementCorrect()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult) 
     
-    @unittest.skip("This function doesn't work as intended, replacing")    
     def test_094_ShouldReturnSolutionToMoveBottomCornerIncorrectPlacements(self):
         parm = {'op': 'solve',
                 #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
                 'cube':'ogyrgybgwgggbrobryoobybrobryyybogworrbwryogyrwwowwwgwb'
                 }    
         test_cube = Cube(parm)
-        solution = test_cube._OLDmoveBottomCornerIncorrectPlacements()
-        expectedResult = 'luLfuFbuB'
+        #solution = test_cube._OLDmoveBottomCornerIncorrectPlacements()
+        solution = test_cube._moveBottomCornerIncorrectPlacements()
+        expectedResult = 'luLfuFfuFbuB'
         self.assertEquals(solution, expectedResult)
     
     #@unittest.skip("in progess, last phase") 
     def test_095_ShouldReturnSolutionToMoveCornerToCorrectSideAdjacency(self):
         parm = {'op': 'solve',
-                'cube': 'ogyrgybgwgggbrobryoobybrobryyybogworrbwryogyrwwowwwgwb'}
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._moveTopCornersToCorrectColorAdj()
+        actualResult = test_cube._moveTopCornersToCorrectColorAdj()
+
+
         expectedResult = ''
         self.assertEquals(actualResult, expectedResult)
         

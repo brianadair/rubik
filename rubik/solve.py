@@ -21,7 +21,7 @@ def _solve(parms):
     elif cube_model.solve_flag == True:
         cube_model._solveTopDaisySolution()
         cube_model._solveDownCrossSolution()
-        # cube_model._solveBottomLayerSolution()
+        cube_model._solveBottomLayerSolution()
         result['solution'] = cube_model.solution
         result['status'] = 'ok'
     else:
