@@ -538,7 +538,14 @@ class Cube:
         for r in range(45,54):
             if self.cube_state[r] != bottomMid:
                 return False
-        
+## <-- START NEW FOR A6
+        for face in range(0,4):
+            for offset in range(6,9):
+                print(f"{self.cube_state[face+set]} at face {face}, position {face+offset} compared to face middle {self._getMiddleColorByFace(face)}")
+                if self.cube_state[face+offset] != self._getMiddleColorByFace(face):
+                    return False
+## <-- END NEW FOR A6
+
         return True
     
     def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom corners
