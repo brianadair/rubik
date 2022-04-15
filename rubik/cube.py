@@ -182,22 +182,17 @@ class Cube:
                 self.cube_state = ''.join(newEncoding)
         return self.cube_state  
                 
-#New code A4    
     def _getTopDaisyMiddle(self):
         # Middle color 
         if (self._isValidCube()):
             return self.cube_state[40]
-# NEW CODE A5
+        
     def _moveSequence(self, sequence):  
         for ch in sequence:
             self.operation = ch
             self._rotate()
             
     def _solveTopDaisySolution(self):
-        #1 middle layer
-        #solutionString = ""
-        #print(f"Cube initialized: {self.cube_state}")
-        
         solutionString = self._flipTopLayerEdges()
         #print(f"Cube after first top flip: {self.cube_state} ({solutionString})")
         
@@ -262,14 +257,15 @@ class Cube:
     def _solveBottomLayerSolution(self):
         solutionString = ""
         #Step 1 - move incorrect corner placements on bottom
-        solutionString = self._moveBottomCornerIncorrectPlacements()
-        #print(f"_solveBottomLayerSolution 1: {solutionString}")
+        if self._isTopDaisy():
+            solutionString = self._moveBottomCornerIncorrectPlacements()
+            #print(f"_solveBottomLayerSolution 1: {solutionString}")
 
-        #Step 2 - rotate up face until associated colors match adjacent faces
-        solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-        #print(f"_solveBottomLayerSolution 2: {solutionString}")
+            #Step 2 - rotate up face until associated colors match adjacent faces
+            solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
+            #print(f"_solveBottomLayerSolution 2: {solutionString}")
 
-        self.solution = self.solution + solutionString
+            self.solution = self.solution + solutionString
         return solutionString
     
     def _daisyMiddleLayer(self):
@@ -547,7 +543,7 @@ class Cube:
 
         return True
     
-    def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom corners
+    def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom face corners
         bottomFace = self.face_map.get('D')         # real numbered
         bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
         count = 0
@@ -713,9 +709,6 @@ class Cube:
         for sqr in adjList:
             newList.append(self.cube_state[sqr])
         return newList
-    
-# import line + 1
-#END NEW CODE
 
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
