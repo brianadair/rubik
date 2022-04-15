@@ -291,7 +291,7 @@ class Test(unittest.TestCase):
         for r in range(1,500):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
-            print(f"Test Cube {r}: {test_cube.getCube()} initialized")
+            #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             test_cube._solveTopDaisySolution()
             result = test_cube._isTopDaisy()
@@ -307,12 +307,13 @@ class Test(unittest.TestCase):
         for r in range(1,500):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
-            print(f"Test Cube {r}: {test_cube.getCube()} initialized")
+            #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             solution = test_cube._solveTopDaisySolution()
+            print(f"Daisy result: {test_cube._isTopDaisy()}")
             solution = solution + test_cube._solveDownCrossSolution()
             result = test_cube._isBottomCross()
-            print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
         
@@ -360,6 +361,25 @@ class Test(unittest.TestCase):
         expectedResult = False
         self.assertEquals(actualResult, expectedResult)  
         
+    #@unittest.skip("only use for randomized testing when done")
+    def test_999_ShouldFailOnBottomCrossAttemptWithNonDaisyCubeState(self):
+        parm = {'op': 'solve',
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
+                }
+        test_cube = Cube(parm)
+        for r in range(1,500):
+            solution = ''
+            test_cube._getRandomScramble()
+            result = test_cube._isValidCube()
+            #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
+            self.assertEquals(result, True)
+            solution = test_cube._solveTopDaisySolution()
+            #print(f"Daisy result: {test_cube._isTopDaisy()}")
+            solution = solution + test_cube._solveDownCrossSolution()
+            result = test_cube._isBottomCross()
+            #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            self.assertEquals(result, False)
+            
                                                             
         
            
