@@ -541,7 +541,7 @@ class Cube:
 ## <-- START NEW FOR A6
         for face in range(0,4):
             for offset in range(6,9):
-                print(f"{self.cube_state[face * self.faceIncrement + offset]} at face {face}, position {face+offset} compared to face middle {self._getMiddleColorByFace(face)}")
+                print(f"{self.cube_state[face * self.faceIncrement + offset]} at face {face}, position {face * self.faceIncrement + offset} compared to face middle {self._getMiddleColorByFace(face)}")
                 if self.cube_state[face * self.faceIncrement + offset] != self._getMiddleColorByFace(face):
                     return False
 ## <-- END NEW FOR A6
