@@ -538,6 +538,7 @@ class Cube:
         for r in range(45,54):
             if self.cube_state[r] != bottomMid:
                 return False
+        
         return True
     
     def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom corners
