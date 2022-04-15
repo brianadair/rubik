@@ -362,7 +362,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)  
         
     #@unittest.skip("only use for randomized testing when done")
-    def test_999_ShouldFailOnBottomCrossAttemptWithNonDaisyCubeState(self):
+    def test_999_ShouldFalseOnBottomCrossAttemptWithNonDaisyCubeState(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
                 }
@@ -373,8 +373,8 @@ class Test(unittest.TestCase):
             result = test_cube._isValidCube()
             #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
-            solution = test_cube._solveTopDaisySolution()
-            #print(f"Daisy result: {test_cube._isTopDaisy()}")
+            #solution = test_cube._solveTopDaisySolution()
+            print(f"Daisy result: {test_cube._isTopDaisy()}")
             solution = solution + test_cube._solveDownCrossSolution()
             result = test_cube._isBottomCross()
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
