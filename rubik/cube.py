@@ -259,11 +259,11 @@ class Cube:
         #Step 1 - move incorrect corner placements on bottom
         if self._isTopDaisy():
             solutionString = self._moveBottomCornerIncorrectPlacements()
-            #print(f"_solveBottomLayerSolution 1: {solutionString}")
+            print(f"_solveBottomLayerSolution 1: {solutionString}")
 
             #Step 2 - rotate up face until associated colors match adjacent faces
             solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-            #print(f"_solveBottomLayerSolution 2: {solutionString}")
+            print(f"_solveBottomLayerSolution 2: {solutionString}")
 
             self.solution = self.solution + solutionString
         return solutionString
@@ -566,10 +566,10 @@ class Cube:
         return True      
     
     def _moveBottomCornerIncorrectPlacements(self): #Step 1 of solving bottom corners
-        bottomFace = self.face_map.get('D')         # real numbered
+        bottomFace = self.face_map.get('D')
         bottomMid = self.cube_state[49]
         turnOrder = ['L','F','R','B']
-        bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
+        bottomAdjDict = self.faceAdjMap.get('D')
         solutionString = ""
         solutionStringBuilder = ""
    
