@@ -260,11 +260,11 @@ class Cube:
         print(f"_solveBottomLayerSolution start: {self.solution}")
         if self._isBottomCross():
             solutionString = self._moveBottomCornerIncorrectPlacements()
-            print(f"_solveBottomLayerSolution 1: {solutionString}")
+            print(f"_solveBottomLayerSolution 1 (move bad corners): {solutionString}")
 
             #Step 2 - rotate up face until associated colors match adjacent faces
             solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-            print(f"_solveBottomLayerSolution 2: {solutionString}")
+            print(f"_solveBottomLayerSolution 2 (move to final pos): {solutionString}")
 
             self.solution = self.solution + solutionString
         print(f"_solveBottomLayerSolution end: {self.solution}")
@@ -600,6 +600,11 @@ class Cube:
         return False   
     
     def _moveTopCornersToCorrectColorAdj(self): # BOTTOM LAYER PHASE STEP 1
+        if self._isBottomCornerPlacementCorrect() and self._isBottomCross():
+            print("Solving bottom layer, white corners are all correct prior to starting...")
+        else:
+            print("ERROR: _moveBottomCornerIncorrectPlacements - not in a clean state")
+            
         bottomMid = self.cube_state[49]
         turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ""
@@ -608,7 +613,6 @@ class Cube:
             solutionStringBuilder = ""
             corner = itr * self.faceIncrement
             face = self._getFaceOfSquare(corner)
-
             adjList = self.faceAdjMap.get(faceList[face]).get(corner)
             adjCopy = adjList.copy()
             adjCopy.append(corner)
@@ -633,8 +637,9 @@ class Cube:
                 
                 if (self._isBottomColorOnTopSquare(adjCopy)):
                     #flip sequence
-                    self._moveSequence('FufUU')
-                    solutionString = solutionString + 'FufUU'
+                    flipSequence = turnOrder[itr].upper() + 'u' + turnOrder[itr].lower() + 'UU'
+                    self._moveSequence(flipSequence)
+                    solutionString = solutionString + flipSequence
 
                 #if white on right ....
                 adjCopy.sort()

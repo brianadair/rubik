@@ -183,18 +183,21 @@ class Test(unittest.TestCase):
     def test_066_ShouldRotateFacesToDownCrossAfterDaisy(self):
         parm = {'op': 'solve',
                 #'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
-                'cube': 'orrrgybbrwgogrogywgbggbrooowowyogbbyrwywywbwbrryywoybg'}
+                #'cube': 'orrrgybbrwgogrogywgbggbrooowowyogbbyrwywywbwbrryywoybg'
+                'cube': 'ygrggoooywrwyrbbryrbrrbygywyooroybowgwgwywbwbggrbwgobo'}
         test_cube = Cube(parm)
         actualResult = test_cube._solveDownCrossSolution()
-        #expectedResult = 'UUUFFUURRUBBLL'
-        expectedResult = 'UFFUURRUBBLL'
+        #expectedResult = 'UUUFFUURRUBBLL'  #cube1
+        expectedResult = 'UFFUURRUBBLL'  #cube2
         self.assertEquals(actualResult, expectedResult)                        
 
     def test_090_ShouldReturnTrueOnBottomCross(self):
         parm = {'op': 'solve',
-                'cube': 'yoroggogrbgrrrrgrogbrybowbywroyobgowbywbyybgygwywwwowb'} 
+                #'cube': 'yoroggogrbgrrrrgrogbrybowbywroyobgowbywbyybgygwywwwowb' #cube1
+                'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}
         test_cube = Cube(parm)
-        actualResult = test_cube._isBottomCross()
+        actualResult = test_cube._isBottomCross() #cube1
+        print(f"CUBE Test090: {actualResult}")
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
     
@@ -285,7 +288,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    #@unittest.skip("only use for randomized testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
