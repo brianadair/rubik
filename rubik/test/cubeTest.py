@@ -270,8 +270,10 @@ class Test(unittest.TestCase):
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
-        adjList = [0, 29, 42]
-        midColors = ['g', 'o', 'w']
+        #adjList = [0, 29, 42]
+        #midColors = ['g', 'o', 'w']
+        adjList = [2,9,44]
+        midColors = ['g','r','w']
         actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
         expectedResult = 'U'
         self.assertEquals(actualResult, expectedResult)
