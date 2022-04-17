@@ -628,14 +628,16 @@ class Cube:
             if (self._isBottomColorInTopCorners()):
                 print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
                 solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
-                print(f'Line 629 solutionStringBuilder {solutionStringBuilder}')
                 if (solutionStringBuilder != ''):
+                    self._moveSequence(solutionStringBuilder)
+                    solutionString = solutionString + solutionStringBuilder
+                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjCopy), midColors)):
                     #if white on top, flip to side
                     if (self._isBottomColorOnTopSquare(adjCopy)):
                         #flip sequence
                         flipSequence = turnOrder[faceIterator].upper() + 'u' + turnOrder[faceIterator].lower() + 'UU'
                         self._moveSequence(flipSequence)
-                        solutionString = solutionStringBuilder + flipSequence
+                        solutionString = solutionString + flipSequence
                 
 # OLD top layer rotation code
 # if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
@@ -716,7 +718,11 @@ class Cube:
             return ''    
     
     def _doesTopCornerMatchBottomColorAdj(self, adjColors, bottomMidColors):
-        pass
+        if set(adjColors).issubset(bottomMidColors):
+            return True
+        else:
+            return False
+        
 #--> END NEW CODE A6
     
     def _getSideAdjacencies(self, myList):
