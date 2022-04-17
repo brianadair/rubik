@@ -609,56 +609,55 @@ class Cube:
         turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ""
         faceList = list(self.face_map.keys())
-        for itr in range(0,4): #iterate for each corner / itr is the current face
+        for faceIterator in range(0,4): #iterate for each corner / itr is the current face
             solutionStringBuilder = ""
-            corner = itr * self.faceIncrement
+            corner = faceIterator * self.faceIncrement
             face = self._getFaceOfSquare(corner)
             adjList = self.faceAdjMap.get(faceList[face]).get(corner)
             adjCopy = adjList.copy()
             adjCopy.append(corner)
-            adjSides = self._getSideAdjacencies(adjCopy)
+            #adjSides = self._getSideAdjacencies(adjCopy)
             right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
             midColors = []
             midColors.append(self._getMiddleColorByFace(face))
             midColors.append(self._getMiddleColorByFace(right))
 
-            adjColors = self._getColorComboForAdjList(adjCopy)
+            #adjColors = self._getColorComboForAdjList(adjCopy)
 
             if (self._isBottomColorInTopCorners()):
-                if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
-                    #print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
-                    #print(f"adj {adjColors}")
-                    #print(f"mid {midColors}")
-                    solutionString = solutionString + 'U'
-                    self._moveSequence('U')
-                    #rotate until midcolors in subset of adjcolors
-                    adjColors = self._getColorComboForAdjList(adjCopy)
-                    print(f"ADJ colors after rotation: {adjColors} matching to {set(midColors)}")
-                #if white on top, flip to side
+                solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
                 
-                if (self._isBottomColorOnTopSquare(adjCopy)):
-                    #flip sequence
-                    flipSequence = turnOrder[itr].upper() + 'u' + turnOrder[itr].lower() + 'UU'
-                    self._moveSequence(flipSequence)
-                    solutionString = solutionString + flipSequence
-
-                #if white on right ....
-                adjCopy.sort()
-                #print(f"adjcopy before flips: {adjCopy}")
-                if right > face: #white is on left if in first index position on face F
-                    if self.cube_state[adjCopy[0]] == bottomMid:
-                        sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
-                    else:
-                        sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
-                else:
-                    if self.cube_state[adjCopy[0]] == bottomMid:
-                        sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
-                    else:
-                        sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
-                    pass #white is on right if in first index position on other three faces
+                if (solutionStringBuilder != ''):
+                    #if white on top, flip to side
+                    if (self._isBottomColorOnTopSquare(adjCopy)):
+                        #flip sequence
+                        flipSequence = turnOrder[faceIterator].upper() + 'u' + turnOrder[faceIterator].lower() + 'UU'
+                        self._moveSequence(flipSequence)
+                        solutionString = solutionStringBuilder + flipSequence
                 
-                self._moveSequence(sequence)
-                solutionString = solutionString + sequence
+# OLD top layer rotation code
+# if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
+#     solutionString = solutionString + 'U'
+#     self._moveSequence('U')
+#     adjColors = self._getColorComboForAdjList(adjCopy)
+                
+                    #if white on right ....
+                    adjCopy.sort()
+                    #print(f"adjcopy before flips: {adjCopy}")
+                    if right > face: #white is on left if in first index position on face F
+                        if self.cube_state[adjCopy[0]] == bottomMid:
+                            sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                        else:
+                            sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
+                    else:
+                        if self.cube_state[adjCopy[0]] == bottomMid:
+                            sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
+                        else:
+                            sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                        pass #white is on right if in first index position on other three faces
+                
+                    self._moveSequence(sequence)
+                    solutionString = solutionString + sequence
                 #print(f"final solution: {solutionString}")
                 #print(f"cube: {self.cube_state}")
 
