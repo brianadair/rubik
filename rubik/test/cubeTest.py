@@ -202,7 +202,8 @@ class Test(unittest.TestCase):
     
     def test_091_ShouldReturnTrueOnBottomComplete(self):
         parm = {'op': 'solve',
-                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1
+                'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomComplete()
         expectedResult = True
