@@ -539,27 +539,27 @@ class Cube:
             for offset in range(6,9):
                 if self.cube_state[face * self.faceIncrement + offset] != self._getMiddleColorByFace(face):
                     return False
+        return True
 ## <-- END NEW FOR A6
 
-        return True
     
-    def _isBottomCornerPlacementCorrect(self): #Step 1 of solving bottom face corners
-        bottomFace = self.face_map.get('D')         # real numbered
-        bottomAdjDict = self.faceAdjMap.get('D')    # array numbered
+    def _isBottomCornerPlacementCorrect(self): #check if corner contains bottom color and should flip
+        bottomFace = self.face_map.get('D')         
+        bottomAdjDict = self.faceAdjMap.get('D')
         count = 0
-
         for sqr in bottomFace: # real numbers of bottom face
             if count in self.faceCorners:   # is this square a corner
                 sqrAdjList = bottomAdjDict.get(sqr)
                 adjCopy = sqrAdjList.copy()
                 adjCopy.append(sqr)
+                
                 if self._doesAssociationContainColor(self._getMiddleColor(sqr), adjCopy):
-                #if self.cube_state[sqr-1] == self._getMiddleColor(sqr-1): #matches its own face middle then check:
-                    sqrAdjList = bottomAdjDict.get(sqr)
-                    for adj in adjCopy:  # real array nums
-                        face = math.floor(adj / 9)     #determine face that sqr belongs to
-                        faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
-                        if self.cube_state[faceMid] != self.cube_state[adj]:
+                    midColors = self._getMiddleColorsForAdjList(adjCopy)
+                    for adj in adjCopy:
+                        if self.cube_state[adj] not in midColors:
+                        # face = math.floor(adj / 9)     #determine face that sqr belongs to
+                        # faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
+                        # if self.cube_state[faceMid] != self.cube_state[adj]:
                             #print(f"{self.cube_state[faceMid]} on {faceMid} does not match {self.cube_state[adj]} on {adj}")
                             return False #compare two colors
             count = count + 1
