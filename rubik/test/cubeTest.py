@@ -277,6 +277,9 @@ class Test(unittest.TestCase):
         expectedResult = 'U'
         self.assertEquals(actualResult, expectedResult)
         
+    def test_098_ShouldReturnTrueOnTopCornerInCorrectColorMatchPositionForBottom(self):
+        pass
+        
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}

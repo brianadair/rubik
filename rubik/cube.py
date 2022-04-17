@@ -715,6 +715,8 @@ class Cube:
             # corner must already be in place on bottom layer
             return ''    
     
+    def _doesTopCornerMatchBottomColorAdj(self, adjColors, bottomMidColors):
+        pass
 #--> END NEW CODE A6
     
     def _getSideAdjacencies(self, myList):
