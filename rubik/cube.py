@@ -694,7 +694,7 @@ class Cube:
         rotationCount = 0
         while rotationCount < 4: # 4 rotations puts us back to original starting pos
             adjColors = self._getColorComboForAdjList(adjList)
-            print(f"Checking if {adjcolors} matches {midColors}")
+            print(f"Checking if {adjColors} matches {midColors}")
             if set(adjColors).issubset(midColors):
                 #We have a match
                 self._moveSequence(solutionSequence.lower()) #put top layer back to original state
