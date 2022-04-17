@@ -197,7 +197,6 @@ class Test(unittest.TestCase):
                 'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}
         test_cube = Cube(parm)
         actualResult = test_cube._isBottomCross() #cube1
-        print(f"CUBE Test090: {actualResult}")
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
     
@@ -245,7 +244,7 @@ class Test(unittest.TestCase):
         expectedResult = 'luLfuFfuFbuB'
         self.assertEquals(solution, expectedResult)
     
-    #@unittest.skip("in progess, last phase") 
+    @unittest.skip("in progess, last phase") 
     def test_095_ShouldReturnSolutionToMoveCornerToCorrectSideAdjacency(self):
         parm = {'op': 'solve',
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} 
@@ -253,14 +252,13 @@ class Test(unittest.TestCase):
         actualResult = test_cube._moveTopCornersToCorrectColorAdj()
         actualResult = test_cube._moveTopCornersToCorrectColorAdj()
 
-
         expectedResult = 'UUFufUufUFUurURUubUB'
         self.assertEquals(actualResult, expectedResult)
     
     @unittest.skip('finish test 097 first')
     def test_096_ShouldReturnEmptyRotationStringOnBottomLayerCornerWithNoMatch(self):
         parm = {'op': 'solve',
-                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
+                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
         adjList = []
@@ -273,9 +271,9 @@ class Test(unittest.TestCase):
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
         adjList = [0, 29, 42]
-        adjColors = ['g', 'r', 'w']
+        adjColors = ['g', 'o', 'w']
         actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, adjColors)
-        expectedResult = 'U'
+        expectedResult = ''
         self.assertEquals(actualResult, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):

@@ -687,13 +687,29 @@ class Cube:
                 return True
         return False
 #<!--START NEW CODE A6   
-    def _getTopRotationForBottomLayerPositionMatch(self,adjList,adjColors):
-        pass
-        bottomMid = self.cube_state[49]
-        if bottomMid not in adjColors:
+    def _getTopRotationForBottomLayerPositionMatch(self, adjList, midColors):
+        # This function gets the middle face colors for a top corner to see if it is position to rotate to 
+        # the bottom layer as part of phase 3
+        solutionSequence = ''
+        rotationCount = 0
+        while rotationCount < 4: # 4 rotations puts us back to original starting pos
+            adjColors = self._getColorComboForAdjList(adjList)
+            print(f"Checking if {adjcolors} matches {midColors}")
+            if set(adjColors).issubset(midColors):
+                #We have a match
+                self._moveSequence(solutionSequence.lower()) #put top layer back to original state
+                return solutionSequence
+            else: 
+                #rotate top and test again
+                self._moveSequence('U')
+                solutionSequence = solutionSequence + 'U'
+                rotationCount = rotationCount + 1
+        if rotationCount == 4:
+            # back where we started with no match, no need to add UUUU to solution, so reset it
+            # corner must already be in place on bottom layer
             return ''
-        else: 
-            return 'U'
+        else:
+            return solutionSequence
     
     
 #--> END NEW CODE A6
