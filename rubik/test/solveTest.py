@@ -123,7 +123,6 @@ class SolveTest(unittest.TestCase):
             print(f"BOTTOM LAYER {r}: {cubeState} initialized")
             self.assertEquals(actualResult, 'ok')
             print(f"BOTTOM LAYER {r}: {result} {result.get('solution')}")
-            self.assertEquals(result, True)
 
         # actualResult = False
         # expectedResult = True

@@ -257,17 +257,18 @@ class Cube:
     def _solveBottomLayerSolution(self):
         solutionString = ""
         #Step 1 - move incorrect corner placements on bottom
-        print(f"_solveBottomLayerSolution start: {self.solution}")
+        #print(f"_solveBottomLayerSolution start: {self.solution}")
         if self._isBottomCross():
             solutionString = self._moveBottomCornerIncorrectPlacements()
-            print(f"_solveBottomLayerSolution 1 (move bad corners to top layer): {solutionString}")
-
+            #print(f"_solveBottomLayerSolution 1 (move bad corners to top layer): {solutionString}")
+            if (not self._isBottomCornerPlacementCorrect()):
+                print(f"ERROR: Attempting to perform final bottom layer moves in bad state")
             #Step 2 - rotate up face until associated colors match adjacent faces
             solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
-            print(f"_solveBottomLayerSolution 2 (move to final pos): {solutionString}")
+            #print(f"_solveBottomLayerSolution 2 (move to final pos): {solutionString}")
 
             self.solution = self.solution + solutionString
-        print(f"_solveBottomLayerSolution end: {self.solution}")
+        #print(f"_solveBottomLayerSolution end: {self.solution}")
         return solutionString
     
     def _daisyMiddleLayer(self):
@@ -600,71 +601,55 @@ class Cube:
         return False   
     
     def _moveTopCornersToCorrectColorAdj(self): # Part 3 of Step 3 (bottom layer)
-        if self._isBottomCornerPlacementCorrect() and self._isBottomCross():
-            print("Solving bottom layer, white corners are all correct prior to starting...")
-        else:
-            print("ERROR: _moveBottomCornerIncorrectPlacements - not in a clean state")
-            
         bottomMid = self.cube_state[49]
         turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ''
         faceList = list(self.face_map.keys())
-        for faceIterator in range(0,4): #iterate for each corner / itr is the current face
-            solutionStringBuilder = ''
-            corner = faceIterator * self.faceIncrement
-            face = self._getFaceOfSquare(corner)
-            adjList = self.faceAdjMap.get(faceList[face]).get(corner)
-            adjCopy = adjList.copy()
-            adjCopy.append(corner)
-            #adjSides = self._getSideAdjacencies(adjCopy)
-            right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
-            midColors = []
-            midColors.append(self._getMiddleColorByFace(face))
-            midColors.append(self._getMiddleColorByFace(right))
-            midColors.append(bottomMid)
-            
-            #adjColors = self._getColorComboForAdjList(adjCopy)
-
-            if (self._isBottomColorInTopCorners()):
-                print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
-                solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
-                if solutionStringBuilder != '':
-                    self._moveSequence(solutionStringBuilder)
-                    solutionString = solutionString + solutionStringBuilder
-                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjCopy), midColors):
-                    #if white on top, flip to side
-                    if (self._isBottomColorOnTopSquare(adjCopy)):
-                        #flip sequence
-                        flipSequence = turnOrder[faceIterator].upper() + 'u' + turnOrder[faceIterator].lower() + 'UU'
-                        self._moveSequence(flipSequence)
-                        solutionString = solutionString + flipSequence
+        while self._isBottomColorInTopCorners():
+            for face in range(0,4): #iterate for each corner / itr is the current face
+                solutionStringBuilder = ''
+                corner = face * self.faceIncrement
+                adjList = self.faceAdjMap.get(faceList[face]).get(corner)
+                adjList.append(corner)
+                right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+                midColors = []
+                midColors.append(self._getMiddleColorByFace(face))
+                midColors.append(self._getMiddleColorByFace(right))
+                midColors.append(bottomMid)
                 
-# OLD top layer rotation code
-# if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
-#     solutionString = solutionString + 'U'
-#     self._moveSequence('U')
-#     adjColors = self._getColorComboForAdjList(adjCopy)
-                
-                    #if white on right ....
-                    adjCopy.sort()
-                    #print(f"adjcopy before flips: {adjCopy}")
-                    if right > face: #white is on left if in first index position on face F
-                        if self.cube_state[adjCopy[0]] == bottomMid:
-                            sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                #adjColors = self._getColorComboForAdjList(adjCopy)
+                if (self._isBottomColorInTopCorners()):
+                    #print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
+                    solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
+                    if solutionStringBuilder != '':
+                        self._moveSequence(solutionStringBuilder)
+                        solutionString = solutionString + solutionStringBuilder
+                    if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjList), midColors):
+                        #if white on top, flip to side
+                        if (self._isBottomColorOnTopSquare(adjList)):
+                            #flip sequence
+                            flipSequence = turnOrder[face].upper() + 'u' + turnOrder[face].lower() + 'UU'
+                            self._moveSequence(flipSequence)
+                            solutionString = solutionString + flipSequence
+    
+                        #if white on right ....
+                        adjList.sort()
+                        #print(f"adjcopy before flips: {adjCopy}")
+                        if right > face: #white is on left if in first index position on face F
+                            if self.cube_state[adjList[0]] == bottomMid:
+                                sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                            else:
+                                sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
                         else:
-                            sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
-                    else:
-                        if self.cube_state[adjCopy[0]] == bottomMid:
-                            sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
-                        else:
-                            sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
-                        pass #white is on right if in first index position on other three faces
-                
-                    self._moveSequence(sequence)
-                    solutionString = solutionString + sequence
-        print(f'final solution: {solutionString}')
-        print(f'cube: {self.cube_state}')
-
+                            if self.cube_state[adjList[0]] == bottomMid:
+                                sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
+                            else:
+                                sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
+                            #pass #white is on right if in first index position on other three faces
+                        self._moveSequence(sequence)
+                        solutionString = solutionString + sequence
+        #print(f'final solution: {solutionString}')
+        #print(f'cube: {self.cube_state}')
         return solutionString
 
     def _isBottomColorOnTopSquare(self, myList):
@@ -697,15 +682,15 @@ class Cube:
         rotationCount = 0
         while rotationCount < 4: # 4 rotations puts us back to original starting pos
             adjColors = self._getColorComboForAdjList(adjList)
-            print(f'Rotations made: {rotationCount}')
-            print(f"Checking if {adjColors} matches {midColors}")
+            #print(f'Rotations made: {rotationCount}')
+            #print(f"Checking if {adjColors} matches {midColors}")
             if set(adjColors).issubset(midColors):
                 #We have a match
-                print(f"Corner match {adjColors}")
-                print(f"Solution sequence is {solutionSequence}")
+                #print(f"Corner match {adjColors}")
+                #print(f"Solution sequence is {solutionSequence}")
                 self._moveSequence(solutionSequence.lower()) #put top layer back to original state
                 adjColors = self._getColorComboForAdjList(adjList)
-                print(f"Reset cube state, corner colors are now {adjColors} again")
+                #print(f"Reset cube state, corner colors are now {adjColors} again")
                 return solutionSequence
             else: 
                 #rotate top and test again

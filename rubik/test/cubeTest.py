@@ -346,6 +346,36 @@ class Test(unittest.TestCase):
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
+    #@unittest.skip("only use for randomized testing when done")
+    def test_106_ShouldCreateBottomCompleteOnManyRandomGeneratedCubes(self):
+        parm = {'op': 'solve',
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
+                }
+        test_cube = Cube(parm)
+        resultTrue = 0
+        resultFalse = 0
+        for r in range(1,500):
+            test_cube._getRandomScramble()
+            result = test_cube._isValidCube()
+            #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
+            self.assertEquals(result, True)
+            solution = test_cube._solveTopDaisySolution()
+            result = test_cube._isTopDaisy()
+            self.assertEquals(result, True)
+            solution = solution + test_cube._solveDownCrossSolution()
+            
+            result = test_cube._isBottomCross()
+            self.assertEquals(result, True)
+            solution = solution + test_cube._solveBottomLayerSolution()
+            result = test_cube._isBottomComplete()
+            if result == True:
+                resultTrue = resultTrue + 1
+            else:
+                resultFalse = resultFalse + 1
+            #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            #self.assertEquals(result, True)
+        print(f"Final results: True ({resultTrue}) False ({resultFalse})")
+       
         
  
   
