@@ -692,7 +692,7 @@ class Cube:
         bottomMid = self.cube_state[49]
         if bottomMid not in adjColors:
             return ''
-        else 
+        else: 
             return 'U'
     
     
