@@ -262,8 +262,8 @@ class Test(unittest.TestCase):
                 'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
         adjList = []
-        adjColors = []
-        actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, adjColors)
+        midColors = []
+        actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
         
     def test_097_ShouldReturnRotationStringOnBottomLayerCornerAfterMatchedPosition(self):
         parm = {'op': 'solve',
@@ -271,9 +271,9 @@ class Test(unittest.TestCase):
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
         adjList = [0, 29, 42]
-        adjColors = ['g', 'o', 'w']
-        actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, adjColors)
-        expectedResult = ''
+        midColors = ['g', 'o', 'w']
+        actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
+        expectedResult = 'U'
         self.assertEquals(actualResult, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):

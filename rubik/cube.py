@@ -701,7 +701,7 @@ class Cube:
                 print(f"Solution sequence is {solutionSequence}")
                 self._moveSequence(solutionSequence.lower()) #put top layer back to original state
                 adjColors = self._getColorComboForAdjList(adjList)
-                print(f"Reset cube state, corner colors are now {adjColors}")
+                print(f"Reset cube state, corner colors are now {adjColors} again")
                 return solutionSequence
             else: 
                 #rotate top and test again
@@ -711,10 +711,7 @@ class Cube:
         if rotationCount == 4:
             # back where we started with no match, no need to add UUUU to solution, so reset it
             # corner must already be in place on bottom layer
-            return ''
-        else:
-            return solutionSequence
-    
+            return ''    
     
 #--> END NEW CODE A6
     
