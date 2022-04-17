@@ -257,7 +257,7 @@ class Cube:
     def _solveBottomLayerSolution(self):
         solutionString = ""
         #Step 1 - move incorrect corner placements on bottom
-        if self._isTopDaisy():
+        if self._isBottomCross():
             solutionString = self._moveBottomCornerIncorrectPlacements()
             print(f"_solveBottomLayerSolution 1: {solutionString}")
 

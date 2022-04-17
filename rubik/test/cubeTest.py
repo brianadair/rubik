@@ -238,6 +238,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         #solution = test_cube._OLDmoveBottomCornerIncorrectPlacements()
         solution = test_cube._moveBottomCornerIncorrectPlacements()
+        print(f"Solution to test094 = {solution}")
         expectedResult = 'luLfuFfuFbuB'
         self.assertEquals(solution, expectedResult)
     
