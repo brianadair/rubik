@@ -604,12 +604,13 @@ class Cube:
         bottomMid = self.cube_state[49]
         turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ''
-        faceList = list(self.face_map.keys())
+        #faceList = list(self.face_map.keys())
         while self._isBottomColorInTopCorners():
             for face in range(0,4): #iterate for each corner / itr is the current face
                 solutionStringBuilder = ''
                 corner = face * self.faceIncrement
-                adjList = self.faceAdjMap.get(faceList[face]).get(corner)
+                #adjList = self.faceAdjMap.get(faceList[face]).get(corner)
+                adjList = self._getAdjacencyListBySquare(corner)
                 adjList.append(corner)
                 right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
                 midColors = []
@@ -741,6 +742,11 @@ class Cube:
             newList.append(self.cube_state[sqr])
         return newList
 
+    def _getAdjacencyListBySquare(self, square):
+        faceList = list(self.face_map.keys())
+        adjList = self.faceAdjMap.get(faceList[self._getFaceOfSquare(square)]).get(square)
+        return adjList
+    
     def _isTopDaisy(self):
         bottomMid = self.cube_state[49]
         if (self.cube_state[37] == bottomMid and self.cube_state[39] == bottomMid and 
