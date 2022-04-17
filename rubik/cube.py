@@ -625,7 +625,7 @@ class Cube:
             adjColors = self._getColorComboForAdjList(adjCopy)
 
             if (self._isBottomColorInTopCorners()):
-                while (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
+                if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
                     #print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
                     #print(f"adj {adjColors}")
                     #print(f"mid {midColors}")
@@ -686,6 +686,10 @@ class Cube:
             if (bottomMid in adjColors):
                 return True
         return False
+#<!--START NEW CODE A6   
+    def _getTopRotationForBottomLayerPositionMatch(self,adjList,adjColors):
+        pass
+#--> END NEW CODE A6
     
     def _getSideAdjacencies(self, myList):
         newList = []
