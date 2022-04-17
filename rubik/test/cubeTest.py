@@ -259,7 +259,7 @@ class Test(unittest.TestCase):
     def test_096_ShouldReturnEmptyRotationStringOnBottomLayerCornerWithNoMatch(self):
         parm = {'op': 'solve',
                 #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
-                #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
+                'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
         adjList = []
         adjColors = []
