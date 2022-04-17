@@ -607,10 +607,10 @@ class Cube:
             
         bottomMid = self.cube_state[49]
         turnOrder = ['F','R','B','L'] # cube is considered upside down
-        solutionString = ""
+        solutionString = ''
         faceList = list(self.face_map.keys())
         for faceIterator in range(0,4): #iterate for each corner / itr is the current face
-            solutionStringBuilder = ""
+            solutionStringBuilder = ''
             corner = faceIterator * self.faceIncrement
             face = self._getFaceOfSquare(corner)
             adjList = self.faceAdjMap.get(faceList[face]).get(corner)
@@ -626,7 +626,7 @@ class Cube:
 
             if (self._isBottomColorInTopCorners()):
                 solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
-                
+                print(f'Line 629 solutionStringBuilder {solutionStringBuilder}')
                 if (solutionStringBuilder != ''):
                     #if white on top, flip to side
                     if (self._isBottomColorOnTopSquare(adjCopy)):
@@ -658,8 +658,8 @@ class Cube:
                 
                     self._moveSequence(sequence)
                     solutionString = solutionString + sequence
-                #print(f"final solution: {solutionString}")
-                #print(f"cube: {self.cube_state}")
+        print(f'final solution: {solutionString}')
+        print(f'cube: {self.cube_state}')
 
         return solutionString
 
@@ -693,6 +693,7 @@ class Cube:
         rotationCount = 0
         while rotationCount < 4: # 4 rotations puts us back to original starting pos
             adjColors = self._getColorComboForAdjList(adjList)
+            print(f'Rotations made: {rotationCount}')
             print(f"Checking if {adjColors} matches {midColors}")
             if set(adjColors).issubset(midColors):
                 #We have a match
