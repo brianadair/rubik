@@ -625,7 +625,7 @@ class Cube:
             adjColors = self._getColorComboForAdjList(adjCopy)
 
             if (self._isBottomColorInTopCorners()):
-                if (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
+                while (not set(midColors).issubset(adjColors) or bottomMid not in adjColors): #change to while
                     #print(f"_moveTopCornersToCorrectColorAdj: rotating top U {adjCopy}")
                     #print(f"adj {adjColors}")
                     #print(f"mid {midColors}")
@@ -633,6 +633,7 @@ class Cube:
                     self._moveSequence('U')
                     #rotate until midcolors in subset of adjcolors
                     adjColors = self._getColorComboForAdjList(adjCopy)
+                    print(f"ADJ colors after rotation: {adjColors}")
                 #if white on top, flip to side
                 
                 if (self._isBottomColorOnTopSquare(adjCopy)):
