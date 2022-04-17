@@ -272,11 +272,11 @@ class Test(unittest.TestCase):
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
-        adjList = []
-        adjColors = []
+        adjList = [0, 29, 42]
+        adjColors = ['g', 'r', 'w']
         actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, adjColors)
         expectedResult = 'U'
-        self.assertEquals(expectedResult, actualResult)
+        self.assertEquals(actualResult, expectedResult)
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

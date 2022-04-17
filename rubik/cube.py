@@ -689,6 +689,13 @@ class Cube:
 #<!--START NEW CODE A6   
     def _getTopRotationForBottomLayerPositionMatch(self,adjList,adjColors):
         pass
+        bottomMid = self.cube_state[49]
+        if bottomMid not in adjColors:
+            return ''
+        else 
+            return 'U'
+    
+    
 #--> END NEW CODE A6
     
     def _getSideAdjacencies(self, myList):
