@@ -604,12 +604,10 @@ class Cube:
         bottomMid = self.cube_state[49]
         turnOrder = ['F','R','B','L'] # cube is considered upside down
         solutionString = ''
-        #faceList = list(self.face_map.keys())
         while self._isBottomColorInTopCorners():
             for face in range(0,4): #iterate for each corner / itr is the current face
                 solutionStringBuilder = ''
                 corner = face * self.faceIncrement
-                #adjList = self.faceAdjMap.get(faceList[face]).get(corner)
                 adjList = self._getAdjacencyListBySquare(corner)
                 adjList.append(corner)
                 right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
@@ -618,7 +616,6 @@ class Cube:
                 midColors.append(self._getMiddleColorByFace(right))
                 midColors.append(bottomMid)
                 
-                #adjColors = self._getColorComboForAdjList(adjCopy)
                 if (self._isBottomColorInTopCorners()):
                     #print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
                     solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
