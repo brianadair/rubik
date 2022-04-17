@@ -255,25 +255,24 @@ class Test(unittest.TestCase):
         expectedResult = 'UUFufUufUFUurURUubUB'
         self.assertEquals(actualResult, expectedResult)
     
-    @unittest.skip('finish test 097 first')
     def test_096_ShouldReturnEmptyRotationStringOnBottomLayerCornerWithNoMatch(self):
         parm = {'op': 'solve',
-                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
-                'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
+                #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
-        adjList = []
-        midColors = []
+        adjList = [36,27,20]
+        midColors = ['b','o','w']
         actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
+        expectedResult = ''
+        self.assertEquals(actualResult, expectedResult)
         
     def test_097_ShouldReturnRotationStringOnBottomLayerCornerAfterMatchedPosition(self):
         parm = {'op': 'solve',
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'} #cube1
                 #'cube': 'yogggrogryrbbrrwrywyryborbywooyoybowbbobygbgogwgwwwrwg'}       
         test_cube = Cube(parm)
-        #adjList = [0, 29, 42]
-        #midColors = ['g', 'o', 'w']
-        adjList = [36,27,20]
-        midColors = ['b','o','w']
+        adjList = [0, 29, 42]
+        midColors = ['g', 'o', 'w']
         actualResult = test_cube._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
         expectedResult = 'U'
         self.assertEquals(actualResult, expectedResult)
