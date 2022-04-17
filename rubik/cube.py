@@ -628,10 +628,10 @@ class Cube:
             if (self._isBottomColorInTopCorners()):
                 print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
                 solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
-                if (solutionStringBuilder != ''):
+                if solutionStringBuilder != '':
                     self._moveSequence(solutionStringBuilder)
                     solutionString = solutionString + solutionStringBuilder
-                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjCopy), midColors)):
+                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjCopy), midColors):
                     #if white on top, flip to side
                     if (self._isBottomColorOnTopSquare(adjCopy)):
                         #flip sequence
