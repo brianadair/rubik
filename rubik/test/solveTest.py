@@ -10,6 +10,7 @@
 # Tests of solve operations
 import unittest
 import rubik.solve as solve
+from rubik.cube import Cube
 
 class SolveTest(unittest.TestCase):
 # Analysis
@@ -121,7 +122,7 @@ class SolveTest(unittest.TestCase):
             actualResult = result.get('status')
             print(f"BOTTOM LAYER {r}: {cubeState} initialized")
             self.assertEquals(actualResult, 'ok')
-            print(f"BOTTOM LAYER {r}: {result} {result.get('solution'}")
+            print(f"BOTTOM LAYER {r}: {result} {result.get('solution')}")
             self.assertEquals(result, True)
 
         # actualResult = False
