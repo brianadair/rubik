@@ -108,12 +108,22 @@ class SolveTest(unittest.TestCase):
         self.assertEquals(expectedResult, actualResult,"incorrect rotation result")
     
     @unittest.skip('Work on cube model')    
-    def test_101_ShouldProduceTopDaisy(self):
+    def test_101_ShouldProduceBottomCrossFromRandomCubes(self):
         parm = {'op':'solve',
                 'cube':'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'}
-        result = solve._solve(parm)
-        actualResult = result.get('status')
-        self.assertEquals(actualResult,'ok')
+        test_cube = Cube(parm)
+        for r in range(1,500):
+            test_cube._getRandomScramble()
+            cubeState = test_cube.cube_state
+            randomParm = {'op':'solve',
+                          'cube': cubeState}
+            result = solve._solve(randomParm)
+            actualResult = result.get('status')
+            print(f"BOTTOM LAYER {r}: {cubeState} initialized")
+            self.assertEquals(actualResult, 'ok')
+            print(f"BOTTOM LAYER {r}: {result} {result.get('solution'}")
+            self.assertEquals(result, True)
+
         # actualResult = False
         # expectedResult = True
         # self.assertEquals(expectedResult, actualResult,"incorrect solution result")        
