@@ -260,7 +260,7 @@ class Cube:
         print(f"_solveBottomLayerSolution start: {self.solution}")
         if self._isBottomCross():
             solutionString = self._moveBottomCornerIncorrectPlacements()
-            print(f"_solveBottomLayerSolution 1 (move bad corners): {solutionString}")
+            print(f"_solveBottomLayerSolution 1 (move bad corners to top layer): {solutionString}")
 
             #Step 2 - rotate up face until associated colors match adjacent faces
             solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
@@ -567,7 +567,7 @@ class Cube:
             count = count + 1
         return True      
     
-    def _moveBottomCornerIncorrectPlacements(self): #Step 1 of solving bottom corners
+    def _moveBottomCornerIncorrectPlacements(self): #Part 1 of Step 3 (solving bottom corners)
         bottomFace = self.face_map.get('D')
         bottomMid = self.cube_state[49]
         turnOrder = ['L','F','R','B']
@@ -599,7 +599,7 @@ class Cube:
                 return True
         return False   
     
-    def _moveTopCornersToCorrectColorAdj(self): # BOTTOM LAYER PHASE STEP 1
+    def _moveTopCornersToCorrectColorAdj(self): # Part 3 of Step 3 (bottom layer)
         if self._isBottomCornerPlacementCorrect() and self._isBottomCross():
             print("Solving bottom layer, white corners are all correct prior to starting...")
         else:
@@ -621,10 +621,12 @@ class Cube:
             midColors = []
             midColors.append(self._getMiddleColorByFace(face))
             midColors.append(self._getMiddleColorByFace(right))
-
+            midColors.append(bottomMid)
+            
             #adjColors = self._getColorComboForAdjList(adjCopy)
 
             if (self._isBottomColorInTopCorners()):
+                print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
                 solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
                 print(f'Line 629 solutionStringBuilder {solutionStringBuilder}')
                 if (solutionStringBuilder != ''):
@@ -726,7 +728,7 @@ class Cube:
         return math.floor(square / self.faceIncrement)
 
     def _getMiddleColor(self, facePosition):
-        face = math.floor(facePosition / self.faceIncrement)
+        face = self._getFaceOfSquare(facePosition)
         faceMid = (face * self.faceIncrement) + self.midIncrement # get middle color for that face
         return self.cube_state[faceMid]
     
