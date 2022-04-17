@@ -697,7 +697,11 @@ class Cube:
             print(f"Checking if {adjColors} matches {midColors}")
             if set(adjColors).issubset(midColors):
                 #We have a match
+                print(f"Corner match {adjColors}")
+                print(f"Solution sequence is {solutionSequence}")
                 self._moveSequence(solutionSequence.lower()) #put top layer back to original state
+                adjColors = self._getColorComboForAdjList(adjList)
+                print(f"Reset cube state, corner colors are now {adjColors}")
                 return solutionSequence
             else: 
                 #rotate top and test again
