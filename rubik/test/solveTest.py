@@ -117,6 +117,16 @@ class SolveTest(unittest.TestCase):
         # actualResult = False
         # expectedResult = True
         # self.assertEquals(expectedResult, actualResult,"incorrect solution result")        
+    
+    #@unittest.skip('Run after generating a random scrambled cube')
+    def test_102_ShouldProduceBottomLayerSolution(self):
+        parm = {'op':'solve',
+                'cube':'wrgoggwgrryrwrobwobygwbybrgogbbogoorwoyyyrowygrwbwbyby'}
+        result = solve._solve(parm)
+        actualResult = result.get('status')
+        print(f"SOLVE Test 102 solution: {result.get('solution')}")
+        self.assertEquals(actualResult,'ok')
+        
         
 # Sad path tests
 #    Analysis: test the error conditions that can occur with inputs using the solve module

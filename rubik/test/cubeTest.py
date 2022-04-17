@@ -285,7 +285,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         self.assertNotEquals(cube, 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww')
 
-    @unittest.skip("only use for randomized testing when done")
+    #@unittest.skip("only use for randomized testing when done")
     def test_104_ShouldCreateTopDaisyOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
@@ -294,7 +294,7 @@ class Test(unittest.TestCase):
         for r in range(1,500):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
-            #print(f"Test Cube {r}: {test_cube.getCube()} initialized")
+            print(f"Test Cube {r}: {test_cube.getCube()} initialized")
             self.assertEquals(result, True)
             test_cube._solveTopDaisySolution()
             result = test_cube._isTopDaisy()
