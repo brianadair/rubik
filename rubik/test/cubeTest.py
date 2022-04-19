@@ -180,6 +180,7 @@ class Test(unittest.TestCase):
         expectedResult = 'FFfUluuBB'
         self.assertEquals(actualResult, expectedResult)
 
+    @unittest.skip("Using another test for bottom layer")
     def test_066_ShouldRotateFacesToDownCrossAfterDaisy(self):
         parm = {'op': 'solve',
                 #'cube': 'wbwogoogroooyrrgoywrrgbygbgbgrrobrryywgwywbwbbyybwgwyo'}
@@ -241,7 +242,6 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         #solution = test_cube._OLDmoveBottomCornerIncorrectPlacements()
         solution = test_cube._moveBottomCornerIncorrectPlacements()
-        print(f"Solution to test094 = {solution}")
         expectedResult = 'luLfuFfuFbuB'
         self.assertEquals(solution, expectedResult)
     
@@ -346,7 +346,7 @@ class Test(unittest.TestCase):
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
-    #@unittest.skip("only use for randomized testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_106_ShouldCreateBottomCompleteOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
@@ -376,8 +376,18 @@ class Test(unittest.TestCase):
             #self.assertEquals(result, True)
         print(f"Final results: True ({resultTrue}) False ({resultFalse})")
        
-        
- 
+    def test_107_ShouldSolveBottomLayerOnDownCrossEncodedCube(self):
+        parm = {'op': 'solve',
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                #'cube':'rbrgggwgrbooorbbrrgbyrbrwbbbrggoyoogooyyyyyyyowwwwwwwg'
+                'cube':'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'
+                }
+        test_cube = Cube(parm)
+        actualResult = test_cube._solveBottomLayerSolution()
+        check = test_cube._isBottomComplete()  #did we maintain the solution from stage 2
+        expectedResult = True
+        #self.assertEquals(actualResult, expectedResult) 
+        self.assertEquals(check, expectedResult) 
   
 # Sad path tests
 #    test_910: error on missing constructor argument to Cube()
