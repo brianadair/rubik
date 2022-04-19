@@ -30,6 +30,7 @@ def _solve(parms):
 
         cube_model._solveBottomLayerSolution()
         print(f"Bottom Layer solution: {cube_model.solution}")
+        print(f"Is Bottom Complete? {cube_model._isBottomComplete()}")
  
         result['solution'] = cube_model.solution
         result['status'] = 'ok'

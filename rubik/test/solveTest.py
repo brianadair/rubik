@@ -137,7 +137,21 @@ class SolveTest(unittest.TestCase):
         print(f"SOLVE Test 102 solution: {result.get('solution')}")
         self.assertEquals(actualResult,'ok')
         
-        
+    
+    def test_103_ShouldProduceBottomLayerFromRandomCubes(self):
+        parm = {'op':'solve',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'}
+        test_cube = Cube(parm)
+        for r in range(1,50):
+            test_cube._getRandomScramble()
+            cubeState = test_cube.cube_state
+            randomParm = {'op':'solve',
+                          'cube': cubeState}
+            result = solve._solve(randomParm)
+            actualResult = result.get('status')
+            print(f"BOTTOM LAYER {r}: {cubeState} initialized")
+            self.assertEquals(actualResult, 'ok')
+            print(f"BOTTOM LAYER {r}: {result} {result.get('solution')}")         
 # Sad path tests
 #    Analysis: test the error conditions that can occur with inputs using the solve module
 #                - note: cube string validation checks are performed in the check module, and 
