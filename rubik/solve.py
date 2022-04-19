@@ -20,12 +20,12 @@ def _solve(parms):
         result['status'] = 'error: invalid rotation'
     elif cube_model.solve_flag == True:
         cube_model._solveTopDaisySolution()
-        print(f"Top Daisy solution: {cube_model.solution}")
-        print(f"Is Top Daisy? {cube_model._isTopDaisy()}")
+        #print(f"Top Daisy solution: {cube_model.solution}")
+        #print(f"Is Top Daisy? {cube_model._isTopDaisy()}")
 
         cube_model._solveDownCrossSolution()
-        print(f"Down Cross solution: {cube_model.solution}")
-        print(f"Is Bottom Cross? {cube_model._isBottomCross()}")
+        #print(f"Down Cross solution: {cube_model.solution}")
+        #print(f"Is Bottom Cross? {cube_model._isBottomCross()}")
 
 
         cube_model._solveBottomLayerSolution()
