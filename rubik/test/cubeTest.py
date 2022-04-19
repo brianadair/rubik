@@ -385,7 +385,7 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._solveBottomLayerSolution()
         check = test_cube._isBottomComplete()  #did we maintain the solution from stage 2
-        print(f"Test 107: cube {self.cube_state}")
+        print(f"Test 107: cube {test_cube.cube_state}")
         expectedResult = True
         #self.assertEquals(actualResult, expectedResult) 
         self.assertEquals(check, expectedResult) 
