@@ -634,6 +634,12 @@ class Cube:
                     #if white on right ....
                     adjList.sort()
                     #print(f"adjcopy before flips: {adjCopy}")
+                    
+                    #test code, remove after done
+                    if self.cube_state[adjList[0]] != bottomMid and self.cube_state[adjList[1]] != bottomMid:
+                        print(f"ERROR: white is on top of corner and should be flipped to side already")
+                    # end test code
+                    
                     if right > face: #white is on left if in first index position on face F
                         if self.cube_state[adjList[0]] == bottomMid:
                             sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
