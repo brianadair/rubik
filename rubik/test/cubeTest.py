@@ -372,7 +372,7 @@ class Test(unittest.TestCase):
                 resultTrue = resultTrue + 1
             else:
                 resultFalse = resultFalse + 1
-            #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             #self.assertEquals(result, True)
         print(f"Final results: True ({resultTrue}) False ({resultFalse})")
        
