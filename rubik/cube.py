@@ -6,7 +6,7 @@
 import rubik.check as check
 import random
 import math
-from pickle import TRUE
+from pickle import TRUE, FALSE
 
 class Cube:
     '''
@@ -795,28 +795,27 @@ class Cube:
     def _isSideFaceMiddleVerticalMatched(self, face):
         if face < 0 or face > 3:
             return False
+        sideMatch = False
         midColor = self._getMiddleColorByFace(face)
         midTop = (face * self.faceIncrement) + self.midIncrement - 3
         midBottom = (face * self.faceIncrement) + self.midIncrement + 3
         edgeAdjList = self._getAdjacencyListBySquare(midTop)
         edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
         
-        # get side mid color adj list
-        #sidefaceAdjColors = self._getSideFaceAdjacencyColors(face)
+        sidefaceAdjColors = self._getSideFaceAdjacencyMiddleColors(face)
+        for edgeColor in edgeAdjColors:
+            if edgeColor in sidefaceAdjColors:
+                sideMatch = True
         
-        if midColor != self.cube_state[midTop] or midColor != self.cube_state[midBottom]:
-            return False
-        return True       
+        if sideMatch and midColor == self.cube_state[midTop] and midColor == self.cube_state[midBottom]:
+            return True
+        else:
+            return False       
     
     def _getSideFaceAdjacencyMiddleColors(self, face):
         #returns a list of middle colors for each side adjacent to the current face
         faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
         faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
-        print(f"Current face: {face}")
-        print(f"Face Left: {faceLeft}")
-        print(f"Face Right: {faceRight}")
-        print(f"Left middle: {self._getMiddleColorByFace(faceLeft)}")
-        print(f"Right middle: {self._getMiddleColorByFace(faceRight)}")
         sideAdjColors = [self._getMiddleColorByFace(faceLeft),self._getMiddleColorByFace(faceRight)]
         return sideAdjColors
     
