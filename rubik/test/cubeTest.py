@@ -239,11 +239,11 @@ class Test(unittest.TestCase):
 
     def test_0914_ShouldReturnFalseOnUnsolvedCube(self):
         parm = {'op': 'solve',
-                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
-                #'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
         test_cube = Cube(parm)
         actualResult = test_cube._isCubeSolved()
-        expectedResult = True
+        expectedResult = False
         self.assertEquals(actualResult, expectedResult) 
         
        
