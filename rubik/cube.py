@@ -815,9 +815,9 @@ class Cube:
         print(f"Current face: {face}")
         print(f"Face Left: {faceLeft}")
         print(f"Face Right: {faceRight}")
-        print(f"Left middle: {self._getMiddleColor(faceLeft)}")
-        print(f"Right middle: {self._getMiddleColor(faceRight)}")
-        sideAdjColors = [self._getMiddleColor(faceLeft),self._getMiddleColor(faceRight)]
+        print(f"Left middle: {self._getMiddleColorByFace(faceLeft)}")
+        print(f"Right middle: {self._getMiddleColorByFace(faceRight)}")
+        sideAdjColors = [self._getMiddleColorByFace(faceLeft),self._getMiddleColorByFace(faceRight)]
         return sideAdjColors
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
