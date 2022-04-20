@@ -225,7 +225,7 @@ class Test(unittest.TestCase):
                 'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
         test_cube = Cube(parm)
         actualResult = test_cube._isMiddleLayerComplete()
-        expectedResult = True
+        expectedResult = False
         self.assertEquals(actualResult, expectedResult)
         
     
