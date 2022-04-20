@@ -228,6 +228,8 @@ class Test(unittest.TestCase):
         expectedResult = False
         self.assertEquals(actualResult, expectedResult)
         
+    def test_0913_ShouldReturnTrueOnSolvedCube(self):
+        pass
     
     @unittest.skip("Work in progress")    
     def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
@@ -308,8 +310,8 @@ class Test(unittest.TestCase):
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
      
-    #@unittest.skip("Only for trying ideas")    
-    def test_102_YellowTestTopDaisyIdea(self):
+    @unittest.skip("Only for trying ideas")    
+    def test_102_YellowTestIdea(self):
         parm = {'op': 'solve',
                 #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
                 'cube': 'bryygbgggbyyoryrrrgryobybbboorrogooogbrgybygowwwwwwwww' #cube with bottom layer complete
