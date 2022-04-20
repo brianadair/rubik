@@ -318,7 +318,7 @@ class Test(unittest.TestCase):
         actualResult = test_cube._tryNeuralFive()
         #actualResult = test_cube._isBottomCross()
         if test_cube._isMiddleLayerComplete():
-            print(f"Solved bottom: {test_cube.getCube()} ({actualResult})")
+            print(f"Solved middle layer: {test_cube.getCube()} ({actualResult})")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
 
