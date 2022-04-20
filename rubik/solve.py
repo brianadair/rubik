@@ -12,6 +12,10 @@ def _solve(parms):
     except AttributeError:
         result['status'] = 'error: no cube argument provided'
         return result    
+    if cube_model._isCubeSolve():
+        result['solution'] = ''
+        result['status'] = 'ok'
+        return result
     
     if not cube_model._isValidCube():
         #encodedCube = parms.get('cube',None)       #get "cube" parameter if present

@@ -51,6 +51,14 @@ class SolveTest(unittest.TestCase):
         actualResult = result.get('status')
         self.assertEqual(expectedResult, actualResult)
     
+    def test_011_ShouldReturnEmptySolutionOnSolvedCubeParam(self):
+        parm = {'op':'solve',
+                'cube':'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
+        result = solve._solve(parm)
+        expectedResult = 'ok'
+        actualResult = result.get('status')
+        self.assertEqual(expectedResult, False)
+    
     def test_020_ShouldReturnOKOnRotateParamPresent(self):
         parm = {'op':'solve',
                 'rotate': 'F',

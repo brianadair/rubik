@@ -472,6 +472,7 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)  
         
     #@unittest.skip("only use for randomized testing when done")
+    #test can fail if random cube is generated with a bottom cross
     def test_999_ShouldFalseOnRandomizedBottomCrossAttemptWithNonDaisyCubeState(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
