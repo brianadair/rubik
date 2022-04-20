@@ -38,7 +38,7 @@ def _solve(parms):
         result['cube'] = cube_model._rotate()
         result['status'] = 'ok'
     
-    if cube_model._isCubeSolved() and cube_model.solve_flag == True:
+    if cube_model._isCubeSolved() and cube_model.solve_flag == True and cube_model.rotation == '':
         result['solution'] = ''
         result['status'] = 'ok'
         return result
