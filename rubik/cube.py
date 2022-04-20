@@ -812,6 +812,9 @@ class Cube:
         #returns a list of middle colors for each side adjacent to the current face
         faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
         faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
+        print(f"Current face: {face}")
+        print(f"Face Left: {faceLeft}")
+        print(f"Face Right: {faceRight}")
         sideAdjColors = [self._getMiddleColor(faceLeft),self._getMiddleColor(faceRight)]
         return sideAdjColors
     
