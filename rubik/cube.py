@@ -787,7 +787,7 @@ class Cube:
         return True
     
     def _isCubeSolved(self):
-        if self._isBottomComplete() and self._isMiddleLayerComplete() and self.isTopComplete():
+        if self._isBottomComplete() and self._isMiddleLayerComplete() and self._isTopComplete():
             return True
         else:
             return False
