@@ -18,6 +18,10 @@ def _solve(parms):
         result['status'] = 'error: invalid cube state'
     elif cube_model.solve_flag == False and not cube_model._isRotationValid():
         result['status'] = 'error: invalid rotation'
+    elif cube_model.solve_flag == True and cube_model._isCubeSolved():
+        result['solution'] = ''
+        result['status'] = 'ok'
+        return result        
     elif cube_model.solve_flag == True:
         cube_model._solveTopDaisySolution()
         #print(f"Top Daisy solution: {cube_model.solution}")
@@ -37,12 +41,7 @@ def _solve(parms):
     else:
         result['cube'] = cube_model._rotate()
         result['status'] = 'ok'
-    
-    if cube_model._isCubeSolved() and cube_model.solve_flag == True:
-        result['solution'] = ''
-        result['status'] = 'ok'
-        return result
-        
+
     return result
 
 
