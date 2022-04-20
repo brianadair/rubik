@@ -209,6 +209,16 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isBottomComplete()
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
+        
+    def test_0911_ShouldReturnTrueOnMiddleLayerComplete(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1
+                'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}
+        test_cube = Cube(parm)
+        actualResult = test_cube._isMiddleLayerComplete()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult)
+        
     
     @unittest.skip("Work in progress")    
     def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
@@ -346,7 +356,7 @@ class Test(unittest.TestCase):
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
-    @unittest.skip("only use for randomized testing when done")
+    #@unittest.skip("only use for randomized testing when done")
     def test_106_ShouldCreateBottomCompleteOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'

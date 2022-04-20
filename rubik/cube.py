@@ -267,8 +267,11 @@ class Cube:
             solutionString = solutionString + self._moveTopCornersToCorrectColorAdj()
             #print(f"_solveBottomLayerSolution 2 (move to final pos): {solutionString}")
 
-            self.solution = self.solution + solutionString
+        self.solution = self.solution + solutionString
         #print(f"_solveBottomLayerSolution end: {self.solution}")
+        if not self._isBottomComplete():
+            print(f"ERROR: _solveBottomLayerSolution (Did not solve the layer!)")
+            
         return solutionString
     
     def _daisyMiddleLayer(self):
@@ -609,7 +612,10 @@ class Cube:
                 solutionStringBuilder = ''
                 corner = face * self.faceIncrement
                 adjList = self._getAdjacencyListBySquare(corner)
-                adjList.append(corner)
+                adjCopy = adjList.copy()
+                adjCopy.append(corner)
+                adjCopy.sort()
+
                 right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
                 midColors = []
                 midColors.append(self._getMiddleColorByFace(face))
@@ -618,39 +624,39 @@ class Cube:
                 
             #if (self._isBottomColorInTopCorners()):
                 #print(f"Calling Top Rotation with adjCopy {adjCopy} and midColors {midColors}")
-                solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjList, midColors)
+                solutionStringBuilder = self._getTopRotationForBottomLayerPositionMatch(adjCopy, midColors)
                 if solutionStringBuilder != '':
                     self._moveSequence(solutionStringBuilder)
                     solutionString = solutionString + solutionStringBuilder
-                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjList), midColors):
-                    #print(f"Color match at {adjList}: {self._getColorComboForAdjList(adjList)} {midColors}")
+                if self._doesTopCornerMatchBottomColorAdj(self._getColorComboForAdjList(adjCopy), midColors):
+                    #print(f"Color match at {adjCopy}: {self._getColorComboForAdjList(adjCopy)} {midColors}")
                     #if white on top, flip to side
-                    if (self._isBottomColorOnTopSquare(adjList)):
+                    if self._isBottomColorOnTopSquare(adjCopy):
                         #flip sequence
                         flipSequence = turnOrder[face].upper() + 'u' + turnOrder[face].lower() + 'UU'
                         self._moveSequence(flipSequence)
                         solutionString = solutionString + flipSequence
-
-                    #if white on right ....
-                    adjList.sort()
-                    #print(f"adjcopy before flips: {adjCopy}")
-                    
+                        
                     #test code, remove after done
-                    if self.cube_state[adjList[0]] != bottomMid and self.cube_state[adjList[1]] != bottomMid:
-                        print(f"ERROR: white is on top of corner and should be flipped to side already")
+                    if bottomMid not in [self.cube_state[adjCopy[0]],self.cube_state[adjCopy[1]]]:
+                        print(f"ERROR: ROTATING A WRONG CORNER!!!!!!")
                     # end test code
-                    
-                    if right > face: #white is on left if in first index position on face F
-                        if self.cube_state[adjList[0]] == bottomMid:
+ ### GOOD UP TO HERE 
+                        
+                    #adjCopy.sort()
+                    #print(f"Check face {face} and right {right}")
+                    #print(f"Turn order face {turnOrder[face]}, turn order right {turnOrder[right]}")
+                    sequence = ''
+                    if right > face: # corner of faces F and L
+                        if self.cube_state[adjCopy[0]] == bottomMid:  #white is on right corner of front face
                             sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
                         else:
                             sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
-                    else:
-                        if self.cube_state[adjList[0]] == bottomMid:
+                    else: #normal case for remaining three faces
+                        if self.cube_state[adjCopy[0]] == bottomMid: #white is on left corner of right face
                             sequence = 'U' + turnOrder[face].upper() + 'u' + turnOrder[face].lower()
                         else:
                             sequence = 'u' + turnOrder[right].lower() + 'U' + turnOrder[right].upper()
-                        #pass #white is on right if in first index position on other three faces
                     self._moveSequence(sequence)
                     solutionString = solutionString + sequence
         #print(f'final solution: {solutionString}')
@@ -758,6 +764,9 @@ class Cube:
             return True
         else:
             return False      
+    
+    def _isMiddleLayerComplete(self):
+        pass
             
     def _getRandomScramble(self):
         ops = ""
@@ -800,7 +809,6 @@ class Cube:
         total = 0
         randAttempt = 0
         solution = ""
-        self.solution = solution
         if self._isBottomComplete():
             return
         while(True):
@@ -817,8 +825,9 @@ class Cube:
                     count = 0
                     solution = ""
                     self.cube_state = origCube
-        self.solution = solution 
-        return self.solution         
+        #self.solution = self.solution + solution 
+        #return self.solution    
+        return solution     
         
                     
     
