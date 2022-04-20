@@ -212,8 +212,8 @@ class Test(unittest.TestCase):
         
     def test_0911_ShouldReturnTrueOnMiddleLayerComplete(self):
         parm = {'op': 'solve',
-                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1
-                'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                #'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
         test_cube = Cube(parm)
         actualResult = test_cube._isMiddleLayerComplete()
         expectedResult = True

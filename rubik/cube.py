@@ -6,6 +6,7 @@
 import rubik.check as check
 import random
 import math
+from pickle import TRUE
 
 class Cube:
     '''
@@ -766,7 +767,13 @@ class Cube:
             return False      
     
     def _isMiddleLayerComplete(self):
-        pass
+        for face in range(0,4):
+            midColor = self._getMiddleColorByFace(face)
+            midLeft = (face * self.faceIncrement) + self.midIncrement - 1
+            midRight = (face * self.faceIncrement) + self.midIncrement + 1
+            if midColor != self.cube_state[midLeft] or midColor != self.cube_state[midRight]:
+                return False
+        return True
             
     def _getRandomScramble(self):
         ops = ""
