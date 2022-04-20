@@ -12,7 +12,7 @@ def _solve(parms):
     except AttributeError:
         result['status'] = 'error: no cube argument provided'
         return result    
-    if cube_model._isCubeSolve():
+    if cube_model._isCubeSolved():
         result['solution'] = ''
         result['status'] = 'ok'
         return result

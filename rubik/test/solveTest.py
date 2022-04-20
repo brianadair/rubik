@@ -57,7 +57,9 @@ class SolveTest(unittest.TestCase):
         result = solve._solve(parm)
         expectedResult = 'ok'
         actualResult = result.get('status')
-        self.assertEqual(expectedResult, False)
+        self.assertEqual(expectedResult, actualResult)
+        actualResult = result.get('solution')
+        self.assertEquals(actualResult, '')
     
     def test_020_ShouldReturnOKOnRotateParamPresent(self):
         parm = {'op':'solve',
