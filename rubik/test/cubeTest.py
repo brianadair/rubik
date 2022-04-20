@@ -11,6 +11,7 @@
 
 import unittest
 from rubik.cube import Cube
+from pickle import TRUE
 
 class Test(unittest.TestCase):
 # Analysis
@@ -246,6 +247,14 @@ class Test(unittest.TestCase):
         expectedResult = False
         self.assertEquals(actualResult, expectedResult) 
         
+    def test_0915_ShouldReturnTrueOnSideVerticalLineColorMatch(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._isSideFaceMiddleVerticalMatched()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult)
        
     @unittest.skip("Work in progress")    
     def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
