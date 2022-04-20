@@ -791,7 +791,17 @@ class Cube:
             return True
         else:
             return False
- 
+
+    def _isSideFaceMiddleVerticalMatched(self, face):
+        if face < 0 or face > 3:
+            return False
+        midColor = self._getMiddleColorByFace(face)
+        midTop = (face * self.faceIncrement) + self.midIncrement - 3
+        midBottom = (face * self.faceIncrement) + self.midIncrement + 3
+        if midColor != self.cube_state[midTop] or midColor != self.cube_state[midBottom]:
+            return False
+        return True       
+
  ## <-- END NEW FOR A6
             
     def _getRandomScramble(self):
