@@ -256,12 +256,12 @@ class Test(unittest.TestCase):
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
    
-    def test_0916_ShouldReturnTrueOnSideVerticalLineColorMatch(self):
+    def test_0916_ShouldReturnFalseOnSideVerticalLineColorMatch(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
         test_cube = Cube(parm)
-        actualResult = test_cube._isSideFaceMiddleVerticalMatched(0)
+        actualResult = test_cube._isSideFaceMiddleVerticalMatched(1)
         expectedResult = False
         self.assertEquals(actualResult, expectedResult)    
        
