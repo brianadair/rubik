@@ -808,7 +808,12 @@ class Cube:
             return False
         return True       
     
-    
+    def _getSideFaceAdjacencyMiddleColors(self, face):
+        #returns a list of middle colors for each side adjacent to the current face
+        faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+        faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
+        sideAdjColors = [self._getMiddleColor(faceLeft),self._getMiddleColor(faceRight)]
+        return sideAdjColors
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
         solutionString = ''
@@ -822,7 +827,7 @@ class Cube:
             if self._isSideFaceMiddleVerticalMatched(face):
                 break
         
-        if sequenceBuilder = 'UUUU':
+        if sequenceBuilder == 'UUUU':
             solutionString = ''
         else:
             solutionString = sequenceBuilder
