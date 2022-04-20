@@ -815,6 +815,8 @@ class Cube:
         print(f"Current face: {face}")
         print(f"Face Left: {faceLeft}")
         print(f"Face Right: {faceRight}")
+        print(f"Left middle: {self._getMiddleColor(faceLeft)}")
+        print(f"Right middle: {self._getMiddleColor(faceRight)}")
         sideAdjColors = [self._getMiddleColor(faceLeft),self._getMiddleColor(faceRight)]
         return sideAdjColors
     
