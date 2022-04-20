@@ -255,6 +255,15 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isSideFaceMiddleVerticalMatched(0)
         expectedResult = True
         self.assertEquals(actualResult, expectedResult)
+   
+    def test_0916_ShouldReturnTrueOnSideVerticalLineColorMatch(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._isSideFaceMiddleVerticalMatched(0)
+        expectedResult = False
+        self.assertEquals(actualResult, expectedResult)    
        
     @unittest.skip("Work in progress")    
     def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
