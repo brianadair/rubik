@@ -816,7 +816,7 @@ class Cube:
         total = 0
         randAttempt = 0
         solution = ""
-        if self._isBottomComplete():
+        if self._isMiddleLayerComplete():
             return
         while(True):
             randAttempt = random.randrange(0,12)

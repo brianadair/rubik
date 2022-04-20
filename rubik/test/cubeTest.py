@@ -308,7 +308,7 @@ class Test(unittest.TestCase):
         expectedResult = 'y'
         self.assertEquals(expectedResult, actualResult)
      
-    @unittest.skip("Only for trying ideas")    
+    #@unittest.skip("Only for trying ideas")    
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
                 #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
@@ -317,7 +317,8 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         actualResult = test_cube._tryNeuralFive()
         #actualResult = test_cube._isBottomCross()
-        #print(f"Solved bottom: {test_cube.getCube()} ({test_cube.solution})")
+        if test_cube._isMiddleLayerComplete():
+            print(f"Solved bottom: {test_cube.getCube()} ({actualResult})")
         expectedResult = True
         self.assertEquals(expectedResult, actualResult)
 
