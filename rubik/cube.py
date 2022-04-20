@@ -536,18 +536,6 @@ class Cube:
         else:
             return False  
         
-    def _isBottomComplete(self):
-        bottomMid = self.cube_state[49]
-        for r in range(45,54):
-            if self.cube_state[r] != bottomMid:
-                return False
-## <-- START NEW FOR A6
-        for face in range(0,4):
-            for offset in range(6,9):
-                if self.cube_state[face * self.faceIncrement + offset] != self._getMiddleColorByFace(face):
-                    return False
-        return True
-## <-- END NEW FOR A6
 
     
     def _isBottomCornerPlacementCorrect(self): #check if corner contains bottom color and should flip
@@ -765,6 +753,18 @@ class Cube:
             return True
         else:
             return False      
+ 
+    def _isBottomComplete(self):
+        bottomMid = self.cube_state[49]
+        for square in range(45,54):
+            if self.cube_state[square] != bottomMid:
+                return False
+## <-- START NEW FOR A6
+        for face in range(0,4):
+            for offset in range(6,9):
+                if self.cube_state[face * self.faceIncrement + offset] != self._getMiddleColorByFace(face):
+                    return False
+        return True
     
     def _isMiddleLayerComplete(self):
         for face in range(0,4):
@@ -773,11 +773,30 @@ class Cube:
             midRight = (face * self.faceIncrement) + self.midIncrement + 1
             if midColor != self.cube_state[midLeft] or midColor != self.cube_state[midRight]:
                 return False
+            return True
+    
+    def _isTopComplete(self):
+        topMid = self.cube_state[40]
+        for square in range(36,45):
+            if self.cube_state[square] != topMid:
+                return False
+        for face in range(0,4):
+            for offset in range(0,3):
+                if self.cube_state[face * self.faceIncrement + offset] != self._getMiddleColorByFace(face):
+                    return False
         return True
+    
+    def _isCubeSolved(self):
+        if self._isBottomComplete() and self._isMiddleLayerComplete() and self.isTopComplete():
+            return True
+        else:
+            return False
+ 
+ ## <-- END NEW FOR A6
             
     def _getRandomScramble(self):
         ops = ""
-        for itr in range(1,15):
+        for _ in range(1,15):
             randAttempt = random.randrange(0,12)
             ops = ops + self.valid_operations[randAttempt]
         

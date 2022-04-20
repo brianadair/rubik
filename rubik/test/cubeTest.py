@@ -229,8 +229,15 @@ class Test(unittest.TestCase):
         self.assertEquals(actualResult, expectedResult)
         
     def test_0913_ShouldReturnTrueOnSolvedCube(self):
-        pass
-    
+        parm = {'op': 'solve',
+                'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                #'cube': 'bgobbybbbyrgorbrrryryygrgggogygooooobbryyyrogwwwwwwwww'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._isCubeSolved()
+        expectedResult = True
+        self.assertEquals(actualResult, expectedResult) 
+        
+       
     @unittest.skip("Work in progress")    
     def test_092_ShouldMoveIncorrectBottomCornersToTopLayer(self):
         parm = {'op': 'solve',
