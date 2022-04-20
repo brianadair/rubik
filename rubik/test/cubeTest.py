@@ -335,6 +335,17 @@ class Test(unittest.TestCase):
         
     def test_098_ShouldReturnTrueOnTopCornerInCorrectColorMatchPositionForBottom(self):
         pass
+    
+    @unittest.skip('part of solving middle layer')
+    def test_0991_ShouldReturnSideFaceAdjColorListForFace(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._getSideFaceAdjacencyColors(0)
+        expectedResult = ['o','r']
+        self.assertEquals(actualResult, expectedResult)
+        
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

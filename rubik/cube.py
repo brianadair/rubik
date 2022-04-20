@@ -798,10 +798,35 @@ class Cube:
         midColor = self._getMiddleColorByFace(face)
         midTop = (face * self.faceIncrement) + self.midIncrement - 3
         midBottom = (face * self.faceIncrement) + self.midIncrement + 3
+        edgeAdjList = self._getAdjacencyListBySquare(midTop)
+        edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
+        
+        # get side mid color adj list
+        #sidefaceAdjColors = self._getSideFaceAdjacencyColors(face)
+        
         if midColor != self.cube_state[midTop] or midColor != self.cube_state[midBottom]:
             return False
         return True       
-
+    
+    
+    
+    def _rotateToMiddleVerticalLineOnSideFace(self, face):
+        solutionString = ''
+        sequenceBuilder = ''
+        attempts = 0
+        while attempts < 4:
+            sequence = 'U'
+            self._moveSequence(sequence)
+            sequenceBuilder = sequenceBuilder + sequence
+            attempts = attempts + 1
+            if self._isSideFaceMiddleVerticalMatched(face):
+                break
+        
+        if sequenceBuilder = 'UUUU':
+            solutionString = ''
+        else:
+            solutionString = sequenceBuilder
+        return solutionString    
  ## <-- END NEW FOR A6
             
     def _getRandomScramble(self):
