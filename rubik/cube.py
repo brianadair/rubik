@@ -823,7 +823,7 @@ class Cube:
             self.operation = self.valid_operations[randAttempt]
             solution = solution + self.operation
             self._rotate()
-            if self._isBottomComplete():
+            if self._isMiddleLayerComplete():
                 break
             else:
                 count += 1

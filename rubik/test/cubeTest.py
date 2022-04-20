@@ -311,7 +311,8 @@ class Test(unittest.TestCase):
     @unittest.skip("Only for trying ideas")    
     def test_102_YellowTestTopDaisyIdea(self):
         parm = {'op': 'solve',
-                'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                #'cube': 'yyrrggwgrwbborygrwooorbygbwgbbgogoooybyyyrrobbwywwwgwr'
+                'cube': 'bryygbgggbyyoryrrrgryobybbboorrogooogbrgybygowwwwwwwww' #cube with bottom layer complete
                 }
         test_cube = Cube(parm)
         actualResult = test_cube._tryNeuralFive()
