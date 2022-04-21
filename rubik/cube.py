@@ -280,6 +280,17 @@ class Cube:
             
         return solutionString
     
+    def _solveMiddleLayerSolution(self):
+        solutionString = ""
+        if self._isBottomComplete():
+            for face in range(0,4):
+                solutionString = solutionString + self._positionTopEdgeToMiddleLayer(face)
+        
+        if not self._isMiddleLayerComplete():
+            print(f"ERROR: _solveMiddleLayerSolution (Did not solve the layer!)")
+            
+        return solutionString
+    
     def _daisyMiddleLayer(self):
         bottomMid = self.cube_state[49]
         solutionString = ""    
@@ -859,7 +870,7 @@ class Cube:
                 return True
         return False
     
-    def _isEdgeMismatchedForMiddleLayer(self, face, edgeAdjList):
+    def _isRightEdgeMismatchedForMiddleLayer(self, face, edgeAdjList):
         edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
         print(f"edge mismatch: {edgeAdjColors}")
         if self._areEdgeColorsInSideEdgeColorPairings(edgeAdjColors) and not self._isRightEdgePlacementCorrectForFace(face):
@@ -965,7 +976,33 @@ class Cube:
         sequence = 'u' + left.lower() + 'U' + left + 'U' + front + 'u' + front.lower()
         print(f"faces{faces} front{front} left{left}")
         self._moveSequence(sequence)
-        return sequence          
+        return sequence 
+    
+    def _positionTopEdgeToMiddleLayer(self, face):
+        solutionString = ''
+        while not self._isSideFaceMiddleVerticalMatched(face): # change to while
+            # flip an edge in place
+            sequence = self._rotateToMiddleVerticalLineOnSideFace(face)
+            if sequence == '':
+                #flip an edge
+                for flipFace in range(0,4):
+                    rightEdge = self._getFaceRightEdgeSquare(flipFace)
+                    rightEdgeAdj = self._getAdjacencyListBySquare(rightEdge)
+                    if self._isRightEdgeMismatchedForMiddleLayer(flipFace, rightEdgeAdj):
+                        flipSequence = self._rotateRightForMiddleLayer(flipFace, self._getFaceRightNormalOrientation(flipFace))
+                        sequence = sequence + flipSequence
+                        break
+            solutionString = solutionString + sequence
+            
+        if self._isSideFaceMiddleVerticalMatched(face):
+            target = self._getTargetForMiddleLayerFinalSequence(face)
+            if target == self._getFaceRightNormalOrientation(face):
+                solutionString = solutionString + self._rotateRightForMiddleLayer(face, self._getFaceRightNormalOrientation(face))
+            else:
+                solutionString = solutionString + self._rotateLeftForMiddleLayer(face, self._getFaceLeftNormalOrientation(face))
+            #found a new square to test
+            
+        return solutionString             
  ## <-- END NEW FOR A6
             
     def _getRandomScramble(self):

@@ -355,13 +355,13 @@ class Test(unittest.TestCase):
         actualResult = test_cube._getSideFaceColorPairings()
         print(f"Color pairings in test: {actualResult}")
     
-    def test_09903_ShouldReturnTrueOnMismatchedEdgeForMiddleLayer(self):
+    def test_09903_ShouldReturnTrueOnMismatchedRightEdgeForMiddleLayer(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
                 'cube':'bgoggboggggbororryryrybyobbyrrroooowgbwbyrywygywwwwwwb'} #cube above after FF move
         test_cube = Cube(parm)
-        actualResult = test_cube._isEdgeMismatchedForMiddleLayer(0,[5,12])
+        actualResult = test_cube._isRightEdgeMismatchedForMiddleLayer(0,[5,12])
         print(f"9903 Edge mismatch?: {actualResult}")
         self.assertEquals(actualResult, True)
 
@@ -411,13 +411,20 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
-                'cube': 'ogbggggboygbwroyryryrybyobbyrgroyoowgbwbyrworrogwwwwwb'} #above cube after U move
+                'cube': 'ogbggggboygbwroyryryrybyobbyrgroyoowgbwbyrworrogwwwwwb'} #above cube after f move
         test_cube = Cube(parm)
         actualResult = test_cube._getTargetForMiddleLayerFinalSequence(0)
         print(f"9908 target: {actualResult}")
         self.assertEquals(actualResult, 1)
 
-
+    def test_09909_ShouldReturnSolutionToMoveTopEdgeToMiddleLayerForFace(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._positionTopEdgeToMiddleLayer(0)
+        print(f"9909 solution: {actualResult}")
+        self.assertEquals(actualResult, 1)
     
        
     def test_101_ShouldReturnTopMiddleColor(self):
