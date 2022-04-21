@@ -535,12 +535,13 @@ class Test(unittest.TestCase):
                 resultFalse = resultFalse + 1
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             
-            solution = solution + test_cube._solveMiddleLayerSolution()
-            result = test_cube._isMiddleLayerComplete()
-            if result == True:
-                middleTrue = middleTrue + 1
-            else:
-                middleFalse = middleFalse + 1            
+            if test_cube._isBottomComplete():
+                solution = solution + test_cube._solveMiddleLayerSolution()
+                result = test_cube._isMiddleLayerComplete()
+                if result == True:
+                    middleTrue = middleTrue + 1
+                else:
+                    middleFalse = middleFalse + 1            
             
             #self.assertEquals(result, True)
         print(f"Final bottom results: True ({resultTrue}) False ({resultFalse})")
