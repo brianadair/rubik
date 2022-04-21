@@ -878,7 +878,7 @@ class Cube:
     
     def _isRightEdgeMismatchedForMiddleLayer(self, face, edgeAdjList):
         edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
-        print(f"edge mismatch: {edgeAdjColors}")
+        print(f"edge mismatch: {edgeAdjList} {edgeAdjColors}")
         if self._areEdgeColorsInSideEdgeColorPairings(edgeAdjColors) and not self._isRightEdgePlacementCorrectForFace(face):
             return True
         else:
