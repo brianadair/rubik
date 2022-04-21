@@ -288,7 +288,8 @@ class Cube:
         
         if not self._isMiddleLayerComplete():
             print(f"ERROR: _solveMiddleLayerSolution (Did not solve the layer!)")
-            
+        else:
+            print(f"SOLVED THE MIDDLE!! {solutionString} {self.cube_state}")    
         return solutionString
     
     def _daisyMiddleLayer(self):

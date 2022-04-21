@@ -428,6 +428,16 @@ class Test(unittest.TestCase):
         print(f"9909 solution: {actualResult}")
         self.assertEquals(actualResult, expectedResult)
     
+    def test_09910_ShouldReturnSolutionToMiddleLayer(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'rbyrbbgbbboorrrrrrbgwggggggbbyooyooooyyoyygyrywwwwwwww'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._solveMiddleLayerSolution()
+        expectedResult = ''
+        print(f"9910 solution: {actualResult}")
+        self.assertEquals(actualResult, expectedResult)
+
        
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
