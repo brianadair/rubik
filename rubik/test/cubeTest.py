@@ -505,7 +505,7 @@ class Test(unittest.TestCase):
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
-    @unittest.skip("only use for randomized testing when done")
+    #@unittest.skip("only use for randomized testing when done")
     def test_106_ShouldCreateBottomCompleteOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
