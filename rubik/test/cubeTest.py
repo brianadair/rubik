@@ -386,6 +386,16 @@ class Test(unittest.TestCase):
         print(f"9905 cube: {test_cube.cube_state}")
         self.assertEquals(actualResult, 'URurufUF')
 
+    def test_09906_ShouldReturnSolutionStringForMiddleLayerLeftRotation(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                #'cube': 'bgoyggrgbwgbororryryoybbobggoooorrryybwwyrwyggwybwwwwb'} #above cube after ll move
+        test_cube = Cube(parm)
+        actualResult = test_cube._rotateRightForMiddleLayer(0, 1)
+        print(f"9906 sequence: {actualResult}")
+        print(f"9906 cube: {test_cube.cube_state}")
+        self.assertEquals(actualResult, 'ulULUFuf')
     
        
     def test_101_ShouldReturnTopMiddleColor(self):
