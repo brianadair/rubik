@@ -250,7 +250,8 @@ class Test(unittest.TestCase):
     def test_0915_ShouldReturnTrueOnSideVerticalLineColorMatch(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
-                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                'cube': 'wgbbggogbryrororryyrrybyobbggoroooogwbgyybgrwywywwwwwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._isSideFaceMiddleVerticalMatched(0)
         expectedResult = True

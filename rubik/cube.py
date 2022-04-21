@@ -605,7 +605,8 @@ class Cube:
                 adjCopy.append(corner)
                 adjCopy.sort()
 
-                right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+                #right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+                right = self._getFaceRightFlippedOrientation(face)
                 midColors = []
                 midColors.append(self._getMiddleColorByFace(face))
                 midColors.append(self._getMiddleColorByFace(right))
@@ -814,10 +815,35 @@ class Cube:
     
     def _getSideFaceAdjacencyMiddleColors(self, face):
         #returns a list of middle colors for each side adjacent to the current face
-        faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
-        faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
+        #faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+        faceLeft = self._getFaceLeftNormalOrientation(face)
+        #faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
+        faceRight = self._getFaceRightNormalOrientation(face)
         sideAdjColors = [self._getMiddleColorByFace(faceLeft),self._getMiddleColorByFace(faceRight)]
         return sideAdjColors
+    
+    def _getFaceLeftNormalOrientation(self, face):
+        faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+        return faceLeft
+        
+    def _getFaceRightNormalOrientation(self, face):
+        faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
+        return faceRight
+
+    def _getFaceLeftFlippedOrientation(self, face):
+        faceLeft = face + 1 if (face + 1) <= 3 else 0 #face to left of flipped cube
+        return faceLeft
+    
+    def _getFaceRightFlippedOrientation(self, face):
+        faceRight = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
+        return faceRight
+        
+    def _getSideFacePairings(self):
+        # returns a list of lists containing each color pairing of side faces, 4 total
+        colorPairings = []
+        for face in range(0,4):
+            pass
+            
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
         solutionString = ''
