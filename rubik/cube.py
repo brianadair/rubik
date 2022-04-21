@@ -994,7 +994,9 @@ class Cube:
                 for flipFace in range(0,4):
                     rightEdge = self._getFaceRightEdgeSquare(flipFace)
                     rightEdgeAdj = self._getAdjacencyListBySquare(rightEdge)
-                    if self._isRightEdgeMismatchedForMiddleLayer(flipFace, rightEdgeAdj):
+                    rightEdgeAdjCopy = rightEdgeAdj.copy()
+                    rightEdgeAdjCopy.append(edge)
+                    if self._isRightEdgeMismatchedForMiddleLayer(flipFace, rightEdgeAdjCopy):
                         flipSequence = self._rotateRightForMiddleLayer(flipFace, self._getFaceRightNormalOrientation(flipFace))
                         sequence = sequence + flipSequence
                         break
