@@ -17,8 +17,10 @@ class Cube:
     faceCorners = [0,2,8,6]
     faceEdges = [1,3,5,7]
     midIncrement = 4
-    leftEdgeIncrement = 3
-    rightEdgeIncrement = 5
+    topEdgeIncrement = self.faceEdges[0]
+    leftEdgeIncrement = self.faceEdges[1]
+    rightEdgeIncrement = self.faceEdges[2]
+    leftEdgeIncrement = self.faceEdges[3]
     faceIncrement = 9
     
     maxSideLocation = 35
@@ -830,6 +832,14 @@ class Cube:
         leftEdge = (face * self.faceIncrement) + self.leftEdgeIncrement
         return leftEdge
     
+    def _getFaceTopEdgeSquare(self, face):
+        topEdge = (face * self.faceIncrement) + self.topEdgeIncrement
+        return topEdge
+    
+    def _getFaceBottomEdgeSquare(self, face):
+        bottomEdge = (face * self.faceIncrement) + self.bottomEdgeIncrement
+        return bottomEdge
+    
     def _isRightEdgePlacementCorrectForFace(self, face):
         edge = self._getFaceRightEdgeSquare(face)
         edgeAdjList = self._getAdjacencyListBySquare(edge)
@@ -884,9 +894,39 @@ class Cube:
             colorPairingSingle = []            
         return colorPairings
     
-    def _getTargetForMiddleLayerFinalSequence(self):
+    def _getRightEdgeSideFaceColorPairingByFace(self, face):
+        colorPairing = []
+        colorPairing.append(self._getMiddleColorByFace(face))
+        colorPairing.append(self._getMiddleColorByFace(self._getFaceRightNormalOrientation(face)))
+        return colorPairing
+
+    def _getLeftEdgeSideFaceColorPairingByFace(self, face):
+        colorPairing = []
+        colorPairing.append(self._getMiddleColorByFace(face))
+        colorPairing.append(self._getMiddleColorByFace(self._getFaceLeftNormalOrientation(face)))
+        return colorPairing
+        
+    def _getTargetForMiddleLayerFinalSequence(self, face):
         #return left or right
-        pass
+        target = None
+        if self._isSideFaceMiddleVerticalMatched(face):
+            topEdge = self._getFaceTopEdgeSquare(face)
+            leftEdge = self._getFaceLeftEdgeSquare(face)
+            rightEdge = self._getFaceRightEdgeSquare(face)
+            
+            topEdgeAdjList = self._getAdjacencyListBySquare(topEdge)
+            topEdgeAdjColors = self._getColorComboForAdjList(topEdgeAdjList)  
+            
+            rightAdjColors = self._getRightEdgeSideFaceColorPairingByFace(face)
+            leftAdjColors = self._getLeftEdgeSideFaceColorPairingByFace(face)
+                         
+            if set(topEdgeAdjColors).issubset(rightAdjColors):
+                target = self._getFaceRightNormalOrientation(face)
+            elif set(topEdgeAdjColors).issubset(leftAdjColors):
+                target = self._getFaceLeftNormalOrientation(face)
+            
+            print(f"TARGET: {target}")
+        return target
         
         
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
