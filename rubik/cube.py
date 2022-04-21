@@ -855,11 +855,14 @@ class Cube:
         return bottomEdge
     
     def _isRightEdgePlacementCorrectForFace(self, face):
+        topMid = self._getMiddleColorByFace(4)
         edge = self._getFaceRightEdgeSquare(face)
         edgeAdjList = self._getAdjacencyListBySquare(edge)
-        edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
+        edgeAdjCopy = edgeAdjList.copy()
+        edgeAdjCopy.append(edge)
+        edgeAdjColors = self._getColorComboForAdjList(edgeAdjCopy)
         sideAdjColors = self._getMiddleColorsForAdjList(edgeAdjList)
-        if set(edgeAdjColors).issubset(sideAdjColors):
+        if set(edgeAdjColors).issubset(sideAdjColors) and topMid not in edgeAdjColors:
             return True
         else:
             return False
