@@ -397,7 +397,6 @@ class Test(unittest.TestCase):
         print(f"9906 cube: {test_cube.cube_state}")
         self.assertEquals(actualResult, 'ulULUFuf')
     
-    @unittest.skip('working')    
     def test_09907_ShouldReturnRightTargetForMiddleLayerFinalMove(self):
         pass
         parm = {'op': 'solve',
