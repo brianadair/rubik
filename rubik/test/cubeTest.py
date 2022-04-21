@@ -423,8 +423,9 @@ class Test(unittest.TestCase):
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
         test_cube = Cube(parm)
         actualResult = test_cube._positionTopEdgeToMiddleLayer(0)
+        expectedResult = 'UURurufUF'
         print(f"9909 solution: {actualResult}")
-        self.assertEquals(actualResult, 1)
+        self.assertEquals(actualResult, expectedResult)
     
        
     def test_101_ShouldReturnTopMiddleColor(self):
