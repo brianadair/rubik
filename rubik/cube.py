@@ -883,9 +883,7 @@ class Cube:
             colorPairings.append(colorPairingSingle)
             colorPairingSingle = []            
         return colorPairings
-    
-           
-    
+        
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
         solutionString = ''
         sequenceBuilder = ''
@@ -902,7 +900,21 @@ class Cube:
             solutionString = ''
         else:
             solutionString = sequenceBuilder
-        return solutionString    
+        return solutionString  
+    
+    def _rotateRightForMiddleLayer(self, face, faceRight):
+        faces = list(self.face_map.keys())
+        front = faces[face]
+        right = faces[faceRight]
+        sequence = 'U' + right + 'u' + right.lower() + 'u' + front.lower() + 'U' + front
+        print(f"faces{faces} front{front} right{right}")
+        self._moveSequence(sequence)
+        return sequence
+    
+    def _rotateLeftForMiddleLayer(self, face, faceLeft):
+        sequence = 'ulULUFuf'
+        pass
+          
  ## <-- END NEW FOR A6
             
     def _getRandomScramble(self):

@@ -374,8 +374,11 @@ class Test(unittest.TestCase):
         actualResult = test_cube._isRightEdgePlacementCorrectForFace(2)
         print(f"9904 Right edge of face matched?: {actualResult}")
         self.assertEquals(actualResult, True)
-      
         
+    def test_09905_ShouldReturnSolutionStringForMiddleLayerRightRotation(self):
+        pass
+    
+       
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
