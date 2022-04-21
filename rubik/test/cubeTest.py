@@ -432,7 +432,7 @@ class Test(unittest.TestCase):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 #'cube': 'rbyrbbgbbboorrrrrrbgwggggggbbyooyooooyyoyygyrywwwwwwww'}#cube2 false
-                'cube':'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb}'
+                'cube':'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}
         test_cube = Cube(parm)
         actualResult = test_cube._solveMiddleLayerSolution()
         expectedResult = ''
