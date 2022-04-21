@@ -338,7 +338,7 @@ class Test(unittest.TestCase):
         pass
     
     #@unittest.skip('part of solving middle layer')
-    def test_0991_ShouldReturnSideFaceAdjColorListForFace(self):
+    def test_09901_ShouldReturnSideFaceAdjColorListForFace(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
@@ -347,14 +347,32 @@ class Test(unittest.TestCase):
         expectedResult = ['o','r']
         self.assertEquals(actualResult, expectedResult)
         
-    def test_0992_ShouldReturnAllSideFaceAdjColorPairings(self):
+    def test_09902_ShouldReturnAllSideFaceAdjColorPairings(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
         test_cube = Cube(parm)
         actualResult = test_cube._getSideFaceColorPairings()
         print(f"Color pairings in test: {actualResult}")
-        
+    
+    @unittest.skip('may not need')
+    def test_09903_ShouldReturnTrueOnMismatchedEdgeForMiddleLayer(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._isEdgeMismatchedForMiddleLayer(['',''])
+        print(f"Color pairings in test: {actualResult}")
+
+    def test_09904_ShouldReturnTrueOnMatchedRightEdgeForMiddleLayer(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                'cube': 'bgoyggrgbwgbororryryoybbobggoooorrryybwwyrwyggwybwwwwb'} #above cube after ll move
+        test_cube = Cube(parm)
+        actualResult = test_cube._isRightEdgePlacementCorrectForFace(2)
+        print(f"Right edge of face matched?: {actualResult}")
+      
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

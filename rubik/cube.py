@@ -17,7 +17,10 @@ class Cube:
     faceCorners = [0,2,8,6]
     faceEdges = [1,3,5,7]
     midIncrement = 4
+    leftEdgeIncrement = 3
+    rightEdgeIncrement = 5
     faceIncrement = 9
+    
     maxSideLocation = 35
     
     face_map = {
@@ -819,6 +822,24 @@ class Cube:
         sideAdjColors = [self._getMiddleColorByFace(faceLeft),self._getMiddleColorByFace(faceRight)]
         return sideAdjColors
     
+    def _getFaceRightEdgeSquare(self, face):
+        rightEdge = (face * self.faceIncrement) + self.rightEdgeIncrement
+        return rightEdge
+
+    def _getFaceLeftEdgeSquare(self, face):
+        leftEdge = (face * self.faceIncrement) + self.leftEdgeIncrement
+        return leftEdge
+    
+    def _isRightEdgePlacementCorrectForFace(self, face):
+        edge = self._getFaceRightEdgeSquare(face)
+        edgeAdjList = self._getAdjacencyListBySquare(edge)
+        edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
+        sideAdjColors = self._getMiddleColorsForAdjList(edgeAdjList)
+        if set(edgeAdjColors).issubset(sideAdjColors):
+            return True
+        else:
+            return False
+    
     def _getFaceLeftNormalOrientation(self, face):
         faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
         return faceLeft
@@ -843,11 +864,16 @@ class Cube:
             colorPairingSingle.append(self._getMiddleColorByFace(face))
             colorPairingSingle.append(self._getMiddleColorByFace(self._getFaceRightNormalOrientation(face)))
             colorPairings.append(colorPairingSingle)
-            colorPairingSingle = []
-            print(f"Color pairings {colorPairings}")
-            
+            colorPairingSingle = []            
         return colorPairings
-            
+    
+    def _isEdgeMismatchedForMiddleLayer(self, edgeAdjColors): 
+        colorPairings = self._getSideFaceColorPairings()
+        if edgeAdjColors in colorPairings:
+            return True
+        else:
+            return False
+              
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
         solutionString = ''
