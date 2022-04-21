@@ -291,6 +291,7 @@ class Cube:
             print(f"{solutionString} {self.cube_state}")
         else:
             print(f"SOLVED THE MIDDLE!! {solutionString} {self.cube_state}")    
+        self.solution = self.solution + solutionString
         return solutionString
     
     def _daisyMiddleLayer(self):

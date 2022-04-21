@@ -164,7 +164,24 @@ class SolveTest(unittest.TestCase):
             #print(f"BOTTOM LAYER {r}: {cubeState} initialized")
             self.assertEquals(actualResult, 'ok')
             print(f"BOTTOM LAYER {r}: {result} {result.get('solution')}")     
-    
+
+    @unittest.skip
+    def test_104_ShouldProduceMiddleLayerFromRandomCubes(self):
+        parm = {'op':'solve',
+                'cube':'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'}
+        test_cube = Cube(parm)
+        for r in range(1,50):
+            test_cube._getRandomScramble()
+            if not test_cube._isValidCube():
+                print(f"ERROR: Not a valid cube!!! {test_cube.cube_state}")
+            cubeState = test_cube.cube_state
+            randomParm = {'op':'solve',
+                          'cube': cubeState}
+            result = solve._solve(randomParm)
+            actualResult = result.get('status')
+            #print(f"BOTTOM LAYER {r}: {cubeState} initialized")
+            self.assertEquals(actualResult, 'ok')
+            print(f"BOTTOM LAYER {r}: {result} {result.get('solution')}")      
 
 
          

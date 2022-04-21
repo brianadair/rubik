@@ -438,7 +438,6 @@ class Test(unittest.TestCase):
         print(f"9910 solution: {actualResult}")
         self.assertEquals(actualResult, expectedResult)
 
-       
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',
                 'cube': 'ybbbbwggboywrrbygwrgoygyroggobrorryowwbwygowwyrrowoybg'}
@@ -514,6 +513,8 @@ class Test(unittest.TestCase):
         test_cube = Cube(parm)
         resultTrue = 0
         resultFalse = 0
+        middleTrue = 0
+        middleFalse = 0
         for r in range(1,500):
             test_cube._getRandomScramble()
             result = test_cube._isValidCube()
@@ -532,9 +533,18 @@ class Test(unittest.TestCase):
                 resultTrue = resultTrue + 1
             else:
                 resultFalse = resultFalse + 1
-            print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
+            
+            solution = solution + test_cube._solveMiddleLayerSolution()
+            result = test_cube._isMiddleLayerComplete()
+            if result == True:
+                middleTrue = middleTrue + 1
+            else:
+                middleFalse = middleFalse + 1            
+            
             #self.assertEquals(result, True)
-        print(f"Final results: True ({resultTrue}) False ({resultFalse})")
+        print(f"Final bottom results: True ({resultTrue}) False ({resultFalse})")
+        print(f"Final middle results: True ({middleTrue}) False ({middleFalse})")
        
     def test_107_ShouldSolveBottomLayerOnDownCrossEncodedCube(self):
         parm = {'op': 'solve',
