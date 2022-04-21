@@ -404,9 +404,18 @@ class Test(unittest.TestCase):
                 'cube': 'wgbbggogbryrororryyrrybyobbggoroooogwbgyybgrwywywwwwwb'} #above cube after U move
         test_cube = Cube(parm)
         actualResult = test_cube._getTargetForMiddleLayerFinalSequence(0)
-        print(f"9906 sequence: {actualResult}")
-        print(f"9906 cube: {test_cube.cube_state}")
-        self.assertEquals(actualResult, 'R')
+        print(f"9907 target: {actualResult}")
+        self.assertEquals(actualResult, 1)
+        
+    def test_09908_ShouldReturnLeftTargetForMiddleLayerFinalMove(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                'cube': 'ogbggggboygbwroyryryrybyobbyrgroyoowgbwbyrworrogwwwwwb'} #above cube after U move
+        test_cube = Cube(parm)
+        actualResult = test_cube._getTargetForMiddleLayerFinalSequence(0)
+        print(f"9908 target: {actualResult}")
+        self.assertEquals(actualResult, 1)
 
 
     

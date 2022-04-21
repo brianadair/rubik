@@ -911,9 +911,6 @@ class Cube:
         target = None
         if self._isSideFaceMiddleVerticalMatched(face):
             topEdge = self._getFaceTopEdgeSquare(face)
-            leftEdge = self._getFaceLeftEdgeSquare(face)
-            rightEdge = self._getFaceRightEdgeSquare(face)
-            
             topEdgeAdjList = self._getAdjacencyListBySquare(topEdge)
             topEdgeAdjCopy = topEdgeAdjList.copy()
             topEdgeAdjCopy.append(topEdge)
