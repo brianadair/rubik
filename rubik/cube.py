@@ -920,7 +920,7 @@ class Cube:
         faces = list(self.face_map.keys())
         front = faces[face]
         left = faces[faceLeft]
-        sequence = 'u' + left.lower + 'U' + left + 'U' + front + 'u' + front.lower
+        sequence = 'u' + left.lower() + 'U' + left + 'U' + front + 'u' + front.lower()
         print(f"faces{faces} front{front} left{left}")
         self._moveSequence(sequence)
         return sequence          
