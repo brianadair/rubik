@@ -378,8 +378,8 @@ class Test(unittest.TestCase):
     def test_09905_ShouldReturnSolutionStringForMiddleLayerRightRotation(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
-                #'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
-                'cube': 'bgoyggrgbwgbororryryoybbobggoooorrryybwwyrwyggwybwwwwb'} #above cube after ll move
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+                #'cube': 'bgoyggrgbwgbororryryoybbobggoooorrryybwwyrwyggwybwwwwb'} #above cube after ll move
         test_cube = Cube(parm)
         actualResult = test_cube._rotateRightForMiddleLayer(0, 1)
         print(f"9905 sequence: {actualResult}")
