@@ -841,13 +841,17 @@ class Cube:
             return False
  
     def _areEdgeColorsInSideEdgeColorPairings(self, edgeAdjColors):
-        if edgeAdjColors in self._getSideFaceColorPairings():
-            return True
-        else:
-            return False
+        print(f"{edgeAdjColors} in {self._getSideFaceColorPairings()}")
+        sidePairings = self._getSideFaceColorPairings()
+        for pairing in sidePairings:
+            if set(edgeAdjColors).issubset(pairing):
+        #if edgeAdjColors in self._getSideFaceColorPairings():
+                return True
+        return False
     
     def _isEdgeMismatchedForMiddleLayer(self, face, edgeAdjList):
         edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
+        print(f"edge mismatch: {edgeAdjColors}")
         if self._areEdgeColorsInSideEdgeColorPairings(edgeAdjColors) and not self._isRightEdgePlacementCorrectForFace(face):
             return True
         else:
