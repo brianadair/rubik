@@ -915,6 +915,8 @@ class Cube:
             rightEdge = self._getFaceRightEdgeSquare(face)
             
             topEdgeAdjList = self._getAdjacencyListBySquare(topEdge)
+            topEdgeAdjCopy = topEdgeAdjList.copy()
+            topEdgeAdjCopy.append(topEdge)
             topEdgeAdjColors = self._getColorComboForAdjList(topEdgeAdjList)  
             
             rightAdjColors = self._getRightEdgeSideFaceColorPairingByFace(face)
