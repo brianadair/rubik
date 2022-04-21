@@ -986,7 +986,7 @@ class Cube:
     
     def _positionTopEdgeToMiddleLayer(self, face):
         solutionString = ''
-        while not self._isSideFaceMiddleVerticalMatched(face): # change to while
+        while not self._isSideFaceMiddleVerticalMatched(face):
             # flip an edge in place
             sequence = self._rotateToMiddleVerticalLineOnSideFace(face)
             if sequence == '':

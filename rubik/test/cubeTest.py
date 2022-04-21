@@ -431,7 +431,8 @@ class Test(unittest.TestCase):
     def test_09910_ShouldReturnSolutionToMiddleLayer(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
-                'cube': 'rbyrbbgbbboorrrrrrbgwggggggbbyooyooooyyoyygyrywwwwwwww'}#cube2 false
+                #'cube': 'rbyrbbgbbboorrrrrrbgwggggggbbyooyooooyyoyygyrywwwwwwww'}#cube2 false
+                'cube':'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb}'
         test_cube = Cube(parm)
         actualResult = test_cube._solveMiddleLayerSolution()
         expectedResult = ''
@@ -505,7 +506,7 @@ class Test(unittest.TestCase):
             #print(f"Test Cube {r}: {result} {test_cube.getCube()} {solution}")
             self.assertEquals(result, True)
             
-    #@unittest.skip("only use for randomized testing when done")
+    @unittest.skip("only use for randomized testing when done")
     def test_106_ShouldCreateBottomCompleteOnManyRandomGeneratedCubes(self):
         parm = {'op': 'solve',
                 'cube': 'gggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyywwwwwwwww'
