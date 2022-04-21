@@ -347,6 +347,14 @@ class Test(unittest.TestCase):
         expectedResult = ['o','r']
         self.assertEquals(actualResult, expectedResult)
         
+    def test_0992_ShouldReturnAllSideFaceAdjColorPairings(self):
+        parm = {'op': 'solve',
+                #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
+                'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
+        test_cube = Cube(parm)
+        actualResult = test_cube._getSideFaceColorPairings()
+        print(f"Color pairings in test: {actualResult}")
+        
         
     def test_101_ShouldReturnTopMiddleColor(self):
         parm = {'op': 'solve',

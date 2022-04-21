@@ -605,7 +605,6 @@ class Cube:
                 adjCopy.append(corner)
                 adjCopy.sort()
 
-                #right = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
                 right = self._getFaceRightFlippedOrientation(face)
                 midColors = []
                 midColors.append(self._getMiddleColorByFace(face))
@@ -815,9 +814,7 @@ class Cube:
     
     def _getSideFaceAdjacencyMiddleColors(self, face):
         #returns a list of middle colors for each side adjacent to the current face
-        #faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
         faceLeft = self._getFaceLeftNormalOrientation(face)
-        #faceRight = face + 1 if (face + 1) <= 3 else 0 #face to right of flipped cube
         faceRight = self._getFaceRightNormalOrientation(face)
         sideAdjColors = [self._getMiddleColorByFace(faceLeft),self._getMiddleColorByFace(faceRight)]
         return sideAdjColors
@@ -838,11 +835,13 @@ class Cube:
         faceRight = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
         return faceRight
         
-    def _getSideFacePairings(self):
+    def _getSideFaceColorPairings(self):
         # returns a list of lists containing each color pairing of side faces, 4 total
         colorPairings = []
         for face in range(0,4):
-            pass
+            colorPairings.append(self._getMiddleColorByFace(face))
+            colorPairings.append(self._getMiddleColorByFace(self._getFaceRightNormalOrientation(face)))
+            print(f"Color pairings {colorPairings}")
             
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
