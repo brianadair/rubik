@@ -838,10 +838,15 @@ class Cube:
     def _getSideFaceColorPairings(self):
         # returns a list of lists containing each color pairing of side faces, 4 total
         colorPairings = []
+        colorPairingSingle = []
         for face in range(0,4):
-            colorPairings.append(self._getMiddleColorByFace(face))
-            colorPairings.append(self._getMiddleColorByFace(self._getFaceRightNormalOrientation(face)))
+            colorPairingSingle.append(self._getMiddleColorByFace(face))
+            colorPairingSingle.append(self._getMiddleColorByFace(self._getFaceRightNormalOrientation(face)))
+            colorPairings.append(colorPairingSingle)
+            colorPairingSingle = []
             print(f"Color pairings {colorPairings}")
+            
+        return colorPairings
             
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
