@@ -17,10 +17,10 @@ class Cube:
     faceCorners = [0,2,8,6]
     faceEdges = [1,3,5,7]
     midIncrement = 4
-    topEdgeIncrement = self.faceEdges[0]
-    leftEdgeIncrement = self.faceEdges[1]
-    rightEdgeIncrement = self.faceEdges[2]
-    leftEdgeIncrement = self.faceEdges[3]
+    topEdgeIncrement = faceEdges[0]
+    leftEdgeIncrement = faceEdges[1]
+    rightEdgeIncrement = faceEdges[2]
+    leftEdgeIncrement = faceEdges[3]
     faceIncrement = 9
     
     maxSideLocation = 35
