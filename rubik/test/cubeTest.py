@@ -392,13 +392,13 @@ class Test(unittest.TestCase):
                 'cube': 'ggobggogbwgbororryryrybyobbyrrrooooggbwbyrwygywywwwwwb'}#cube2 false
                 #'cube': 'bgoyggrgbwgbororryryoybbobggoooorrryybwwyrwyggwybwwwwb'} #above cube after ll move
         test_cube = Cube(parm)
-        actualResult = test_cube._rotateLeftForMiddleLayer(0, 1)
+        actualResult = test_cube._rotateLeftForMiddleLayer(0, 3)
         print(f"9906 sequence: {actualResult}")
         print(f"9906 cube: {test_cube.cube_state}")
         self.assertEquals(actualResult, 'ulULUFuf')
     
     @unittest.skip('working')    
-    def test_09906_ShouldReturnRightTargetForMiddleLayerFinalMove(self):
+    def test_09907_ShouldReturnRightTargetForMiddleLayerFinalMove(self):
         pass
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
