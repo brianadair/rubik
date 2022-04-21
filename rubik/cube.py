@@ -926,6 +926,9 @@ class Cube:
                 target = self._getFaceLeftNormalOrientation(face)
             
             print(f"TARGET: {target}")
+            print(f"{topEdgeAdjColors} -> {rightAdjColors}")
+            print(f"{topEdgeAdjColors} -> {leftAdjColors}")
+
         return target
         
         
