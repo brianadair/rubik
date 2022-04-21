@@ -406,7 +406,8 @@ class Test(unittest.TestCase):
         actualResult = test_cube._getTargetForMiddleLayerFinalSequence(0)
         print(f"9907 target: {actualResult}")
         self.assertEquals(actualResult, 1)
-        
+    
+    @unittest.skip('no good test example yet')    
     def test_09908_ShouldReturnLeftTargetForMiddleLayerFinalMove(self):
         parm = {'op': 'solve',
                 #'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'} #cube1 true
