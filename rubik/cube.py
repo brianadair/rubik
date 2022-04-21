@@ -839,6 +839,19 @@ class Cube:
             return True
         else:
             return False
+ 
+    def _areEdgeColorsInSideEdgeColorPairings(self, edgeAdjColors):
+        if edgeAdjColors in self._getSideFaceColorPairings():
+            return True
+        else:
+            return False
+    
+    def _isEdgeMismatchedForMiddleLayer(self, face, edgeAdjList):
+        edgeAdjColors = self._getColorComboForAdjList(edgeAdjList)
+        if self._areEdgeColorsInSideEdgeColorPairings(edgeAdjColors) and not self._isRightEdgePlacementCorrectForFace(face):
+            return True
+        else:
+            return False
     
     def _getFaceLeftNormalOrientation(self, face):
         faceLeft = face - 1 if (face - 1) >= 0 else abs(face - 3) #face to right of flipped cube
@@ -867,13 +880,7 @@ class Cube:
             colorPairingSingle = []            
         return colorPairings
     
-    def _isEdgeMismatchedForMiddleLayer(self, edgeAdjColors): 
-        colorPairings = self._getSideFaceColorPairings()
-        if edgeAdjColors in colorPairings:
-            return True
-        else:
-            return False
-              
+           
     
     def _rotateToMiddleVerticalLineOnSideFace(self, face):
         solutionString = ''
